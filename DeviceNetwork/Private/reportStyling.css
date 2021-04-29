@@ -1,0 +1,76 @@
+@charset 'utf-8';
+*{
+	box-sizing: border-box;
+	font-family: "Open Sans", sans-serif;
+}
+#container {
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+}
+#reportForm {
+	flex: 1 1 100%;
+	margin: 20px;
+}
+
+#reports {
+	display: flex;
+	flex-flow: row wrap;
+}
+div.reportType{
+	flex: 1 1 300px;
+	border: solid 4px #4f2683;
+}
+button {
+	height: 100px;
+	font-weight: bold;
+	font-size: 30px;
+	background: #4f2683;
+	color: GhostWhite;
+	border: solid 2px GhostWhite;
+	cursor: pointer;
+	width: 100%
+}
+
+#reports p {
+	margin: 10px;
+}
+
+select {
+	margin: 8px;
+}
+
+
+#display {
+	flex: 1 1 100%;
+	border: 8px double #3d1452;
+	padding: 10px;
+	margin: 20px;	
+}
+
+#display h3 {
+	margin: 2%;
+}
+
+.heading {
+	background: #4f2683;
+	color: GhostWhite;
+	text-align: center;
+	padding: 10px;
+	width: 80%;
+	margin: auto;
+}
+.breakdown {
+	display: flex;
+	flex-flow: column;
+}
+.floor, .overview {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	height: 25%;
+}
+.generic {
+	flex: 1 1 12.5%;
+	display: inline;
+}
