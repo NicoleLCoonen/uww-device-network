@@ -7,6 +7,7 @@
 	display: flex;
 	flex-flow: column;
 	justify-content: space-between;
+	padding:2%;
 }
 #reportForm {
 	flex: 1 1 100%;
@@ -40,16 +41,28 @@ select {
 	margin: 8px;
 }
 
+#print{
+	width: 10%;
+	font-size: 22px;
+	align-self:flex-end;
+	margin-right: 2%;
+	height:12%;
+}
 
 #display {
 	flex: 1 1 100%;
 	border: 8px double #3d1452;
-	padding: 10px;
-	margin: 20px;	
+	padding: 3%;
+	margin: 2%;	
 }
 
 #display h3 {
 	margin: 2%;
+}
+
+#display > div {
+	margin: 2%;
+	padding:1%;
 }
 
 .heading {
@@ -63,14 +76,56 @@ select {
 .breakdown {
 	display: flex;
 	flex-flow: column;
+	margin:2%
 }
-.floor, .overview {
+.floor{
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
 	height: 25%;
+	margin: 2%;
+}	
+.overview{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	height: 25%;
+	margin-top:2%;
+	margin-bottom: 1%;
+	padding:1%;
 }
 .generic {
 	flex: 1 1 12.5%;
 	display: inline;
+	margin: 1%;
+}
+
+.floor table{
+	width: 80%;
+	margin: 2%;
+	padding:1%;
+	border: 2px solid #3d1452 ;
+	border-collapse: collapse;
+    color: #fff;
+	text-align: center;
+}
+tr {
+	border-bottom: 2px dotted #3d1452;
+}
+tr:nth-child(even){
+	background-color: Gainsboro;
+	color: #3d1452;
+}
+tr:nth-child(odd){
+	background-color: #fff;
+	color: #3d1452;
+}
+	
+th{
+	border-top: 1px solid  #3d1452;
+	border-bottom: 1px solid  #3d1452;
+}
+td{
+	text-align: left;
+	padding: 2%;
 }
