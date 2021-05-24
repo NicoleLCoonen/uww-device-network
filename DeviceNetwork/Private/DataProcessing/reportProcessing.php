@@ -1,65 +1,28 @@
 <?php
-$results = array();
-$modelArr = array();
+require_once('queryFunctions.php');
+
 $compTotal = 0;
-	if(is_post_request()){
+	if(is_post_request() && isset($_POST["data-report"])){
 		$reportType = $_POST["data-report"];
 		
 		if($reportType === "general"){
-			$sql = "SELECT * FROM Data_ports WHERE Port_Status=1";
 			
-			$resultSet = mysqli_query($db, $sql);
-			confirm_result_set($resultSet);
-			$result["On"] = mysqli_num_rows($resultSet);
-			
-			unset($sql, $resultSet);
-			
-			$sql = "SELECT * FROM Data_ports WHERE Port_Status=0 && Damaged=0" ;
-			
-			$resultSet = mysqli_query($db, $sql);
-			confirm_result_set($resultSet);
-			$result["Off"] = mysqli_num_rows($resultSet);
-			
-			unset($sql, $resultSet);
-			
-			$sql = "SELECT * FROM Data_ports WHERE Port_Status=0 && Damaged=1" ;
-			
-			$resultSet = mysqli_query($db, $sql);
-			confirm_result_set($resultSet);
-			$result["Broken"] = mysqli_num_rows($resultSet);
-			
-			unset($sql, $resultSet);
-				
-			$result["TotalPorts"] = $result["On"] + $result["Off"] + $result["Broken"];
-			
-			$sql = "SELECT DISTINCT Model FROM Computers" ;
-			
-			$resultSet = mysqli_query($db, $sql);
-			confirm_result_set($resultSet);
-			
-			while($modelResult = mysqli_fetch_assoc($resultSet)){
-				
-				if($modelResult["Model"] == ""){continue;}
-				else{array_push($modelArr, $modelResult["Model"]);};
+			$result = count_ports_by_status();
+			$modelArr = get_models();
+			$models = count_models($modelArr);
+			$vendorArr = get_vendors();
+				 
+			foreach($vendorArr as $vendor){
+				 $sql = "SELECT * FROM Printers_and_Scanners WHERE Vendor='" . db_escape($db, $vendor) . "'";
+				 $deviceResult = mysqli_query($db, $sql);
+				 confirm_result_set($deviceResult);
+				 $vendors[$vendor] = mysqli_num_rows($deviceResult);
 			};
 			
-			unset($sql, $resultSet);
+			$results[] = $result; 
+			$results[] = $models;
+			$results[] = $vendors;
 			
-			foreach($modelArr as $model){
-				$sql = "SELECT * FROM Computers WHERE Model='" . $model . "'";
-				$resultSet = mysqli_query($db, $sql);
-				$result[$model] = mysqli_num_rows($resultSet);
-				$compTotal = $compTotal + $result[$model];
-			};
-			
-			$result["compTotal"] = $compTotal ;
-			
-			//print_r($result);
-			//print_r($modelArr);
-			//echo("Total: " . $result["TotalPorts"] . "</br>");
-			//echo("On: " . $result["On"] . "</br>");
-			//echo("Off: " . $result["Off"] . "</br>");
-			//echo("Broken: " . $result["Broken"] . "</br>");
 			
 		}else if($reportType === "withdrawn"){
 			
@@ -67,8 +30,7 @@ $compTotal = 0;
 			
 			$result_set = mysqli_query($db, $sql);
 			
-			echo($sql);
-			return($result_set);
+			
 			
 		}else if($reportType === "models"){
 			$floors = array();
@@ -76,59 +38,27 @@ $compTotal = 0;
 			$main = array();
 			$third = array();
 			
-			$sql = "SELECT DISTINCT Model FROM Computers" ;
-			
-			$resultSet = mysqli_query($db, $sql);
-			confirm_result_set($resultSet);
-			
-			while($modelResult = mysqli_fetch_assoc($resultSet)){
-				
-				if($modelResult["Model"] == ""){continue;}
-				else{array_push($modelArr, $modelResult["Model"]);};
-			};
-			
-			unset($sql, $resultSet);
+			$modelArr = get_models();
 			
 			foreach($modelArr as $model){
 				$sql = "SELECT * FROM Computers WHERE Model='" . $model . "'";
 				$resultSet = mysqli_query($db, $sql);
 				$result[$model] = mysqli_num_rows($resultSet);
-				
+				$locationArr = array();
 				// f = first floor count; m = main floor count; t = third floor count;
 				$f = 0;
 				$m = 0;
 				$t = 0;	
 				
-				while($breakdown = mysqli_fetch_assoc($resultSet)){
-					$connection = $breakdown["Connection"];
-					$auxSql = "SELECT * FROM Data_ports WHERE ID=" . $connection;
-					
-					$conResultSet = mysqli_query($db, $auxSql);
-					confirm_result_set($conResultSet);
-					
-					while($conResult = mysqli_fetch_assoc($conResultSet)){
-						$group = $conResult["Port_Group"];
-						$moreAuxSql = "SELECT * FROM Port_Groups WHERE ID=" . $group;
-						
-						$groupResultSet = mysqli_query($db, $moreAuxSql);
-						confirm_result_set($groupResultSet);
-						
-						while($groupResult = mysqli_fetch_assoc($groupResultSet)){
-							$location = $groupResult["Location"];
+				while($device = mysqli_fetch_assoc($resultSet)){
+					$location = locate_device($device);
+					array_push($locationArr, $location);	
 							
-							if(($location >= 1 && $location <= 5) || ($location >= 21 && $location <= 23)){
-								$f++;
-							} else if (($location >= 15 && $location <= 17) ||( $location == 19)) {
-								$t++;
-							} else{
-								$m++;
-							};		
-						}
-					};
 				};
-				$first[$model] = $f;
-				$main[$model] = $m;
-				$third[$model] = $t;
+				$count = count_by_floor($locationArr, $f, $m, $t);
+				$first[$model] = $count[0]; //corresponds to $f
+				$main[$model] = $count[1]; //corresponds to $m
+				$third[$model] = $count[2]; //corresponds to $t
 				
 			};
 			
@@ -136,21 +66,130 @@ $compTotal = 0;
 			$floors["Main Floor"] = $main;
 			$floors["Third Floor"] = $third;
 			
+			
 		}else if($reportType === "thirdParty"){
 			
-			$sql = "SELECT DISTINCT Vendor FROM Printers_and_Scanners" ;
+			$vendorArr = get_vendors();
+				 
+				 foreach($vendorArr as $vendor){
+					 $sql = "SELECT * FROM Printers_and_Scanners WHERE Vendor='" . db_escape($db, $vendor) . "'";
+					 $deviceResult = mysqli_query($db, $sql);
+					 confirm_result_set($deviceResult);
+					 $result[$vendor] = mysqli_num_rows($deviceResult);
+					 $locationArr = array(); 
+					 // f = first floor count; m = main floor count; t = third floor count;
+					 $f = 0;
+					 $m = 0;
+					 $t = 0;	
+					
+					while($device = mysqli_fetch_assoc($deviceResult)){
+						$location = locate_device($device);
+						array_push($locationArr, $location);		
+					};
+					$count = count_by_floor($locationArr, $f, $m, $t);
+					$first[$vendor] = $count[0]; //corresponds to $f
+					$main[$vendor] = $count[1]; //corresponds to $m
+					$third[$vendor] = $count[2]; //corresponds to $t
+				};
+			
+				$floors["First Floor"] = $first;
+				$floors["Main Floor"] = $main;
+				$floors["Third Floor"] = $third;
+			
+				
+		}else if($reportType === "available"){
+			$floors = array();
+			$firstFloor = array();
+			$mainFloor = array();
+			$thirdFloor = array();
+			$sql = "SELECT * FROM data_ports WHERE Port_Status=1";
 			
 			$resultSet = mysqli_query($db, $sql);
-			confirm_result_set($resultSet);
+			$locationArr = array(); 
 			
-			while($vendorResult = mysqli_fetch_assoc($resultSet)){
-				 
-				 foreach($vendorResult as $vendor){
-					 
-				 };
+			
+			while($port = mysqli_fetch_assoc($resultSet)){
+			
+				//Separates available ports from those in use.
+				//Looks for a computer connection first, then printer/scanner connections
+				$sql = "SELECT * FROM computers WHERE Connection=" . $port['ID'];
+
+				$deviceResult = mysqli_query($db, $sql);
+				$dr = mysqli_fetch_row($deviceResult);
+				if($dr === null){
+					$auxSql = 'SELECT * FROM Printers_and_Scanners WHERE Connection=' . $port['ID'];
+					
+					$auxResult = mysqli_query($db, $auxSql);
+					$ar = mysqli_fetch_row($auxResult);
+					if($ar === null){
+						$location = locate_port($port);
+						array_push($locationArr, $location);	
+									
+						if(($location >= 1 && $location <= 5) || ($location >= 21 && $location <= 23)){
+							array_push($firstFloor, $port);
+						} else if (($location >= 15 && $location <= 17) ||( $location == 19)) {
+							array_push($thirdFloor, $port);
+						} else{
+							array_push($mainFloor, $port);
+						};
+						
+					};
+				};
+			};
+			// f = first floor count; m = main floor count; t = third floor count;
+			$f = 0;
+			$m = 0;
+			$t = 0;	
+			$count = count_by_floor($locationArr, $f, $m, $t);
+			$result["Total"] = $count[0] + $count[1] + $count[2];
+			$result["First Floor"] = $count[0]; //corresponds to $f;
+			$result["Main Floor"] = $count[1]; //corresponds to $m
+			$result["Third Floor"] = $count[2]; //corresponds to $t 
+			
+			$floors["First Floor"] = $firstFloor;
+			$floors["Main Floor"] = $mainFloor;
+			$floors["Third Floor"] = $thirdFloor;
+			
+		}else if($reportType === "broken"){
+			$floors = array();
+			$firstFloor = array();
+			$mainFloor = array();
+			$thirdFloor = array();
+			$sql = "SELECT * FROM data_ports WHERE Port_Status=0 AND Damaged=1";
+			$resultSet = mysqli_query($db, $sql);
+			
+			// f = first floor count; m = main floor count; t = third floor count;
+			$f = 0;
+			$m = 0;
+			$t = 0;	
+			
+			while($port = mysqli_fetch_assoc($resultSet)){
+				$location = locate_port($port);
+						
+				if(($location >= 1 && $location <= 5) || ($location >= 21 && $location <= 23)){
+					$f++;
+					array_push($firstFloor, $port);
+				} else if (($location >= 15 && $location <= 17) ||( $location == 19)) {
+					$t++;
+					array_push($thirdFloor, $port);
+				} else{
+					$m++;
+					array_push($mainFloor, $port);
+				};		
+				
 			};
 			
+			$result["Total"] = $f + $m + $t;
+			$result["First Floor"] = $f;
+			$result["Main Floor"] = $m;
+			$result["Third Floor"] = $t; 
+			
+			$floors["First Floor"] = $firstFloor;
+			$floors["Main Floor"] = $mainFloor;
+			$floors["Third Floor"] = $thirdFloor;
 		};
 			
-	};
+			
+	};	
+	
 ?>
