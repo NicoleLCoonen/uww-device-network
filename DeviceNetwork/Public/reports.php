@@ -1,4 +1,6 @@
-<?php require_once("../Private/Connect/initialize.php") ;?>
+<?php require_once("../Private/Connect/initialize.php") ;
+	if(!isset($_POST['data-report'])){$reportType = '';};
+?>
 
 <!doctype html>
 <html>
@@ -8,6 +10,7 @@
 	<meta charset="utf-8" lang ="en-us">
 	<link rel='stylesheet' href='../Private/reportStyling.css'>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
 	<script src='../Private/reports.js'> </script>
 </head>
 </head>
@@ -20,9 +23,9 @@
 		<span>
 			<select  name="floorSelect">
 				<option value="" disabled selected hidden>Back to Maps</option>
-				<option value="<?php echo url_for("DNPtesting.php") ;?>">Main Floor</option>
-				<option value="<?php echo url_for("DNPthirdFloor.php") ;?>">Third Floor</option>
-				<option value="<?php echo url_for("DNPfirstFloor.php") ;?>">First Floor</option>
+				<option value="<?php echo url_for("DeviceNetworkMain.php") ;?>">Main Floor</option>
+				<option value="<?php echo url_for("DeviceNetworkThird.php") ;?>">Third Floor</option>
+				<option value="<?php echo url_for("DeviceNetworkFirst.php") ;?>">First Floor</option>
 			</select>
 		</span>
 		
@@ -71,16 +74,37 @@
 				</div>	
 			</form>
 		
-	<?php require("../Private/DataProcessing/reportProcessing.php") ; ?>
-
-			<div id='display' data-report-type="<?php if(isset($reportType) && $reportType !== ""){echo($reportType);};?>" hidden>
+	<?php require("../Private/DataProcessing/reportProcessing.php") ; 
+			if(is_post_request() && isset($_POST["data-report"])){
+	?>
+			<button type='print' id='print'> &#128438; Print Report</button>
+			<div id='display' data-report-type="<?php if(isset($reportType)){echo($reportType);};?>" hidden>
 				
 				
-				<div id="general" hidden>
-					<p>This is where the general report will go</p>
+				<div id="general" hidden="true">
+					<div class='heading'>
+						<h2>Library Equipment and Network</h2>
+						<h3>General Report</h3>
+						<p><?php echo date("m/d/y")?></p>
+					</div>
+					<?php if(isset($results)&& $reportType === "general"){
+							$display = '';
+							foreach($results as $r){
+								$display .= create_overview($r);
+							};
+						
+							if(isset($floors)){
+								$display .= create_breakdown($floors);
+							};
+								
+							echo($display);
+							//print_r($results);
+						};
+					?>
+					
 				</div>
 			
-				<div id="withdrawn" hidden>
+				<div id="withdrawn" hidden="true">
 					<div class='heading'>
 						<h2>Library Public and Staff Computers</h2>
 						<h3>Withdrawal Records</h3>
@@ -97,7 +121,9 @@
 							<th>Date Removed</th>
 							<th>Destination</th>
 							<th>Notes</th>
-							<?php if(isset($result_set) && $reportType === "withdrawn"){
+							<?php 
+								// this section was copied in from another project. streamline w/ the create_table_ functions later
+								if(isset($result_set) && $reportType === "withdrawn"){
 									confirm_result_set($result_set);
 								
 									while($result = mysqli_fetch_assoc($result_set)){
@@ -135,7 +161,7 @@
 					</div>	
 				</div>
 				
-				<div id="models" hidden>
+				<div id="models" hidden="true">
 					<div class='heading'>
 						<h2>Library Public and Staff Computers</h2>
 						<h3>Model Report</h3>
@@ -143,57 +169,109 @@
 					</div>
 					
 					<?php if(isset($result) && $reportType === "models" ){
-							
-							$display = "<div class='overview'><h3>Total: </h3>";
-							
-							foreach($result as $model => $number){
-								 $display .= ("<div class='generic'><h5>" . $model . ":</h5><p>". $number . "</p></div>");
-							};
-							
-							$display .= "</div>";
-							
-							if(isset($floors)){
-								$display .= "<div class='breakdown'>";
-									foreach($floors as $title => $content){
-										$class = "";
-										$substr = explode(" ",$title);
-										
-										foreach($substr as $str){
-											$str = trim($str);
-											$class .= $str; 
-										};
-									
-										$display .= "<div class='floor " . $class . "'>";
-										$display .= "<h3>" . $title . ":</h3>";
-											
-											foreach($content as $mdl => $no){
-												$display .= "<div class='generic'><h5>" . $mdl . ":</h5><p>". $no . "</p></div>";
-											};
-											
-										$display .= "</div>";
-									};
+
+							$display = create_overview($result);
 								
-								$display .= "</div>";
+								
+							if(isset($floors)){
+								$display .= create_breakdown($floors);
 							};
-							
+								
 							echo($display);
-					};
-					
-					
+						};
 					?>
 					
 				</div>
+					<div id="thirdParty" hidden="true">
+						<div class='heading'>
+							<h2>Library Equipment</h2>
+							<h3>Third-Party Vendors</h3>
+							<p><?php echo date("m/d/y")?></p>
+						</div>
+						
+						<?php if(isset($result) && $reportType === "thirdParty" ){
+
+								$display = create_overview($result);
+								
+								
+								if(isset($floors)){
+									$display .= create_breakdown($floors);
+								};
+								
+								echo($display);
+							};
+
+						?>
+					</div>
 				
-				<div id="thirdParty" hidden>
-					<p>This is where the Third Party report will go</p>
+				<div id="available" hidden="true">
+					<div class='heading'>
+						<h2>Library Data Ports</h2>
+						<h3>Currently Available</h3>
+						<p><?php echo date("m/d/y")?></p>
+					</div>
+					
+					<?php if(isset($result) && $reportType === "available"){
+								$display = create_overview($result);
+								if(isset($floors)){
+									$keys = array_keys($floors);
+									$k = 0;
+									$display .= "<div class='breakdown'>";
+									foreach($floors as $floor){
+										
+										$display .= "<div class='floor'><h4>" . $keys[$k] . "</h4><table>";
+										
+										$display .= create_table_head($floor[0]);
+									
+										foreach($floor as $port){
+											$display .= create_table_body($port);
+										};
+										$display .= "</table></div>";
+										$k++;
+									};
+									
+									$display .= "</div>";
+								};
+								
+								print_r($display);
+						};
+					?>
 				</div>
 				
-				<div id="available" hidden>
-					<p>This is where the Available Ports report will go</p>
-				</div>
-				
-				<div id="broken" hidden>
-					<p>This is where the Broken Ports report will go</p>
+				<div id="broken" hidden="true">
+					<div class='heading'>
+						<h2>Library Data Ports</h2>
+						<h3>Broken</h3>
+						<p><?php echo date("m/d/y")?></p>
+					</div>
+					<?php if(isset($result) && $reportType === "broken"){
+							$display = create_overview($result);
+							if(isset($floors)){
+								$keys = array_keys($floors);
+								$k = 0;
+								$display .= "<div class='breakdown'>";
+								foreach($floors as $floor){
+									
+									$display .= "<div class='floor'><h4>" . $keys[$k] . "</h4><table>";
+											
+									$display .= create_table_head($floor[0]);
+								
+									foreach($floor as $port){
+										$display .= create_table_body($port);
+									};
+									
+									$display .= "</table></div>";
+										$k++;
+								};
+								
+								$display .= "</div>";
+							};
+									
+							echo($display);
+						};
+						
+					};
+					?>
 				</div>
 				
 			</div>
