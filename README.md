@@ -21,11 +21,12 @@ In order to develop this project, I needed to build a database from scratch. I c
 help of student library staff members, who took on the responsibilities of data verification and entry. It would be unfair not to
 give them their due credit for their work, which they performed admirably and to the highest degree of accuracy.
 
-Clark Heideman
-Louisa Latimer
-Eriana Thomas
-Maddi Burclaw
-Sofia Maglio
+Clark Heideman,
+Louisa Latimer,
+Eriana Thomas,
+Maddi Burclaw,
+Sofia Maglio,
+and
 Anna Zickus
 
 I also recieved invaluable guidance from my colleague, Branden McCready.
