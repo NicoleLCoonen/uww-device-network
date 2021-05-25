@@ -5,8 +5,11 @@ This is a tool I am developing for the University of Wisconsin - Whitewater to e
 and where it is, as well as the status of our data jacks. Prior to the development of this project, all of that information
 was compiled in PDF files, which I have included in order to show how far this project came. If you look at the PDFs, you 
 will see that they contain a lot of unrelated information on things like seating and stack layout, resulting in visual clutter.
-In addition, status information is rendered using red/green coloring, and model information is conveyed with font. This makes
-for an unituitive and inacessible map, and the format makes it more tedious to keep updated. 
+In addition, status information is rendered using red/green coloring, and computer information is conveyed with font. Computer
+model information is not included at all, but is stored in a separate file, which uses font-type (bold, italic, or normal) to 
+distinguish between models. I am not including that file, as it contains other information our organization has been advised not
+to share. Needless to say, the way this information was broken up and displayed proved unituitive, inacessible and difficult to
+maintain.
 
 When the COVID-19 crisis hit and the library needed to respace its computers, the maps that I initially started working off of
 were 11x17 printouts with updates made in pencil, which were not transferred to the PDFs, so even by the time I started working
