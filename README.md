@@ -29,8 +29,9 @@ Louisa Latimer,
 Eriana Thomas,
 Maddi Burclaw,
 Sofia Maglio,
+Anna Zickus,
 and
-Anna Zickus
+Christian Alvites-Sandoval
 
 I also recieved invaluable guidance from my colleague, Branden McCready.
 
