@@ -22,7 +22,8 @@
 	// The array of ports is then stored in another associative array like this:
 	
 	// [Group #], [location code],[y coords,], [ports] => (port 1)
-	//																=>	[Name], [Status], [Etc]		
+	//																=>	[Name], [Status], [Device]
+																							//	=> [Name], [Model], [Etc]
 												//	   => (port 2)
 														//			=>	[Name], [Status], [Etc]	
 												//	   => (port 3)
@@ -65,7 +66,7 @@
 			$sql = "SELECT * FROM computers WHERE Connection=" . $result['ID'] ;
 			
 			$device_result = mysqli_query($db, $sql) ;
-			//print_r($device_result);
+			
 			$rows = mysqli_num_rows($device_result);
 			
 			if($rows > 0){
@@ -81,15 +82,31 @@
 				unset($device_result) ;
 				$sql = "SELECT * FROM printers_and_scanners WHERE Connection=" . $result['ID'] ;
 				$device_result = mysqli_query($db, $sql) ;
+				$rows .= mysqli_num_rows($device_result);
 				
-				if($device_result !== null){
-					$device = mysqli_fetch_assoc($device_result) ;
-					if($device !== null){
-						
-						$result['Device'] = $device ;
-						$c++ ;
+				if($rows > 0){
+					if($device_result !== null){
+						$device = mysqli_fetch_assoc($device_result) ;
+						if($device !== null){
+							
+							$result['Device'] = $device ;
+							$c++ ;
+						};
 					};
-				
+				}else if($rows === 0){
+					unset($sql) ;
+					unset($device_result) ;
+					$sql = "SELECT * FROM staff_computers WHERE Connection=" . $result['ID'] ;
+					$device_result = mysqli_query($db, $sql);
+					
+					if($device_result !== null){
+						$device = mysqli_fetch_assoc($device_result) ;
+						if($device !== null){
+							
+							$result['Device'] = $device ;
+							$c++ ;
+						};
+					};
 				};
 			};
 
