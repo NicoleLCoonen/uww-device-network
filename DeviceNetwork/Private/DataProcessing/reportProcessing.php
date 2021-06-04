@@ -41,7 +41,7 @@ $compTotal = 0;
 			$modelArr = get_models();
 			
 			foreach($modelArr as $model){
-				$sql = "SELECT * FROM Computers WHERE Model='" . $model . "'";
+				$sql = "SELECT * FROM computers WHERE Model='" . $model . "'";
 				$resultSet = mysqli_query($db, $sql);
 				$result[$model] = mysqli_num_rows($resultSet);
 				$locationArr = array();
@@ -72,7 +72,7 @@ $compTotal = 0;
 			$vendorArr = get_vendors();
 				 
 				 foreach($vendorArr as $vendor){
-					 $sql = "SELECT * FROM Printers_and_Scanners WHERE Vendor='" . db_escape($db, $vendor) . "'";
+					 $sql = "SELECT * FROM printers_and_scanners WHERE Vendor='" . db_escape($db, $vendor) . "'";
 					 $deviceResult = mysqli_query($db, $sql);
 					 confirm_result_set($deviceResult);
 					 $result[$vendor] = mysqli_num_rows($deviceResult);
@@ -117,7 +117,7 @@ $compTotal = 0;
 				$deviceResult = mysqli_query($db, $sql);
 				$dr = mysqli_fetch_row($deviceResult);
 				if($dr === null){
-					$auxSql = 'SELECT * FROM Printers_and_Scanners WHERE Connection=' . $port['ID'];
+					$auxSql = 'SELECT * FROM printers_and_scanners WHERE Connection=' . $port['ID'];
 					
 					$auxResult = mysqli_query($db, $auxSql);
 					$ar = mysqli_fetch_row($auxResult);
