@@ -1,7 +1,7 @@
 <?php 
 
 
-// Use this one when working from DNPtesting.php
+// Use this one when working from DeviceNetwork
 require_once('..\Private\Connect\initialize.php') ;
 
 
@@ -34,19 +34,19 @@ function count_ports_by_status(){
 	global $db;
 	$result = array();
 	
-	$sql = "SELECT * FROM Data_ports WHERE Port_Status=1";
+	$sql = "SELECT * FROM data_ports WHERE Port_Status=1";
 			
 	$resultSet = mysqli_query($db, $sql);
 	confirm_result_set($resultSet);
 	$result["On"] = mysqli_num_rows($resultSet);
 			
-	$sql = "SELECT * FROM Data_ports WHERE Port_Status=0 && Damaged=0" ;
+	$sql = "SELECT * FROM data_ports WHERE Port_Status=0 && Damaged=0" ;
 			
 	$resultSet = mysqli_query($db, $sql);
 	confirm_result_set($resultSet);
 	$result["Off"] = mysqli_num_rows($resultSet);
 	
-	$sql = "SELECT * FROM Data_ports WHERE Port_Status=0 && Damaged=1" ;
+	$sql = "SELECT * FROM data_ports WHERE Port_Status=0 && Damaged=1" ;
 			
 	$resultSet = mysqli_query($db, $sql);
 	confirm_result_set($resultSet);
@@ -61,7 +61,7 @@ function get_models() {
 	global $db;
 	$modelArr = array();
 	
-	$sql = "SELECT DISTINCT Model FROM Computers" ;
+	$sql = "SELECT DISTINCT Model FROM computers" ;
 			
 	$resultSet = mysqli_query($db, $sql);
 	confirm_result_set($resultSet);
@@ -80,7 +80,7 @@ function count_models($modelArr){
 	$compTotal = 0;
 	foreach($modelArr as $model){
 	
-		$sql = "SELECT * FROM Computers WHERE Model='" . $model . "'";
+		$sql = "SELECT * FROM computers WHERE Model='" . $model . "'";
 		$resultSet = mysqli_query($db, $sql);
 		confirm_result_set($resultSet);
 		
@@ -98,7 +98,7 @@ function locate_device($device){
 	
 	global $db;
 	$connection = $device["Connection"];
-	$sql = "SELECT * FROM Data_ports WHERE ID=" . $connection;
+	$sql = "SELECT * FROM data_ports WHERE ID=" . $connection;
 					
 	$conResultSet = mysqli_query($db, $sql);
 	confirm_result_set($conResultSet);
@@ -114,7 +114,7 @@ function locate_port($port){
 	global $db;
 	
 	$group = $port["Port_Group"];
-	$sql = "SELECT * FROM Port_Groups WHERE ID=" . $group;
+	$sql = "SELECT * FROM port_groups WHERE ID=" . $group;
 						
 	$resultSet = mysqli_query($db, $sql);
 	confirm_result_set($resultSet);
@@ -173,7 +173,7 @@ function get_vendors() {
 	global $db;
 	$vendorArr = array();
 	
-	$sql = "SELECT DISTINCT Vendor FROM Printers_and_Scanners" ;		
+	$sql = "SELECT DISTINCT Vendor FROM printers_and_scanners" ;		
 			
 	$resultSet = mysqli_query($db, $sql);
 	confirm_result_set($resultSet);
@@ -208,3 +208,12 @@ function create_table_body($assocArray){
 	$display .= "</tr>";
 	return $display;
 }
+
+
+
+
+
+
+
+
+?>
