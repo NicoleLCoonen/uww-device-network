@@ -16,7 +16,7 @@ var Markers = {
                 var obj = coords[i];
 				var top = obj.top - 10;
 				var left = obj.left - 10;
-
+				var id = obj.ID
 				var text = obj.text ;
                 var ports = text.ports; 
 				var devices = text.devices;
@@ -72,7 +72,7 @@ var Markers = {
                     left: left
                 }).html('<span class="caption"> Ports: ' + ports +  '; Devices: ' + devices + 
 					'</br><button class="smallButton" type="button" name="Details"><small>Details</small></button></span>'
-					+ PORT_HEAD + portTable + CLOSE_TABLE).data("top", top).data("left", left).
+					+ PORT_HEAD + portTable + CLOSE_TABLE).data("top", top).data("left", left).data('id', id).
                 appendTo(target);
 				
 				
@@ -91,7 +91,7 @@ var Markers = {
         },
 		
 		 viewContent: function(){
-			   $('span.marker').hover(function() {
+			   $('span.marker').hover(function(){
 				   if(lookAtMe === 0 && searching ===0){
 					   let $marker = $(this);
 					   $marker.css({"z-index": 2});
@@ -108,7 +108,7 @@ var Markers = {
 		},
 		
 		focusContent: function(){
-			$('span.marker').click(function() {
+			$('span.marker').on('click', function() {
 				if(searching === 0){
 						lookAtMe = 1 ;
 						let $marker = $(this).closest('span.marker') ;
@@ -176,8 +176,10 @@ var Markers = {
 			$userInput = $('#userInput').val();	
 				if($userInput !== ""){
 					searching = 1 ;
-					let raiseDead = $("#necromancer").prop("checked");
+					let raiseDead = $("#necromancer:checked");
+					
 					let match = ":contains(" + $userInput + ")" ;
+					let notMatch = ":not(:contains("+ $userInput + "))";
 					$("span.marker").css({"border": "none","background" : " #d7adeb"});
 					let $genResult = $("span.marker" + match);
 					$genResult.css({"border": "2px solid LightCoral", "background": "#4f2683"});
@@ -197,17 +199,13 @@ var Markers = {
 							$result.parents('tr').css({"border": "2px solid LightCoral"});
 						};
 						
-					if(raiseDead === true){
-						let grave = $result.parents("table.graveyard");
-						if(grave.length === 1){
+					if(raiseDead.length > 0){
+						let grave = $result.parents("div.graveyard");
+						if(grave.length >= 1){
 							$('.graveyard').show();
 							let $zombie = $result.closest('tr');
+								$zombie.siblings(':not(:has(th))').hide();
 								$zombie.show();
-							let $corpses = $zombie.nextAll('tr');
-								$corpses.hide();
-							let $bodies = $zombie.prevUntil('tr:has(th)');
-								$bodies.hide();
-							
 						};
 					};
 						
@@ -230,7 +228,7 @@ var Markers = {
 				$('.graveyard').hide();
 				$('table:visible').hide();
 				$('tr').css({"border-bottom": "2px dotted #3d1452"});
-				$('button.icon').css({"border": "2px solid #3d1452"}) ;
+				$('button.icon').css({"border": "2px solid #3d1452"});
 				return(searching) ;
 			});
 			
@@ -249,19 +247,19 @@ var Markers = {
 					$(':checkbox,:radio').prop('checked', false);
 					$('input[disabled]').attr('disabled', false);
 					$(':text').val('');
-					
+					// get data from port table row
 					let $row = $(this).closest("tr");
 					let $portID = $row.children("td").html();
 					let $portName = $row.children("td").next("td").html();
 					let $status = $row.children("td:nth-child(3)").text();
 					let $connection = $row.find("table.device");
 					 
-					
+					// this populates the form with the port data
 					$("#portID").val($portID);
 					$("#portName").val($portName);
 					
 					if($connection.length === 0){	
-					
+						// Clear any previous data from the form
 						$("#deviceID,#model,#deviceName,#nonCap").val('');	
 						$('#delete, #move').attr("disabled", true);					
 						$('#new').attr("disabled", false);
@@ -283,6 +281,8 @@ var Markers = {
 							$("#broken").prop("checked", true);
 						};
 					} else if($connection.length == 1){
+						/* If the port has a connected device, this code
+						   grabs that data */
 						$connection.show();
 						$('#delete, #move').attr("disabled", false);
 						$('#new').attr("disabled", true);
@@ -297,6 +297,11 @@ var Markers = {
 						$("#nonCap").val($nonCap);
 						$("#new").attr("disabled", true);
 						
+						/* Check for the type of device & populates
+						   the form accordingly. Library-owned 
+						   computers have 4 total columns,while 
+						   3rd-party devices have 8.
+						*/
 						if($device.children("td").length > 4) {
 							let $vendor = $device.children("td:nth-child(5)").text(); 
 							let $vendorID = $device.children("td:nth-child(6)").text();
@@ -427,10 +432,10 @@ var Markers = {
 				
 			});	
 		},
-		// This function is unfinished!
+		
 		removeDevice: function(){
 			$("#delete").click(function(){
-			let userConfirm = confirm("Are you sure you want to remove this device?");
+			let userConfirm = window.confirm("Are you sure you want to remove this device?");
 					if(userConfirm !== false){
 					// The morgue collects extra info on the device before it's sent to the graveyard.
 					$("#morgue").show();
@@ -438,8 +443,6 @@ var Markers = {
 					$("#phpDelete").prop("checked", true);
 					$("#move").attr("disabled", true);
 					$('#delete').attr("disabled", true);
-				} else{
-					
 				};	
 			});	
 		},
@@ -462,8 +465,16 @@ var Markers = {
 			});
 		},
 		changeFloor: function(){
-			$('header option').click( function(){
+			$('#floorSelect').change( function(){
 				let url = $(this).val();
+				window.location.assign(url);
+			});
+		},
+		
+		changeLibrary: function(){
+			$('#changeLibrary').click(function(){
+				let url = $('#changeLibrary').attr('data-url');
+				//console.log(url);
 				window.location.assign(url);
 			});
 		},
@@ -471,13 +482,11 @@ var Markers = {
 		redisplayPage: function(){
 			let output = $('#output').text();
 			if(output.length > 0 && output !== 'undefined' ){
-			
-				alert(output);
-					
 				let loc = window.location.href ;
 				window.location.assign(loc);
 			}
 		},
+		
 		
 		adjustMarkers: function(){
 			let natW = $('img.map').prop('naturalWidth');
@@ -502,10 +511,28 @@ var Markers = {
 			$(window).resize();
 		},
 		
-		openReports: function(){
-			$('#reports').click(function(){
-				let loc = $('#reports').attr("data-url");
-				//console.log(loc);
+		/* This code is for a lower-priority functionality to be
+			added later in the project. It is incomplete.
+		
+		relocateMakers: function(){
+			$('#editMarkers').click(function(){
+				//$('span.marker').off('hover');
+				//$('span.marker').off('click');
+				$('span.marker').css('background', '#FFD700').draggable();
+				$('#saveMarkers').show();
+				
+			});
+		},
+		
+		saveMarkers: function(){
+			$('#saveMarkers').click(function(){
+				Markers.fn.redisplayPage();
+			});
+		},*/
+		
+		openPage: function(){
+			$('#reports, #admin').click(function(){
+				let loc = $(this).attr("data-url");
 				window.location.assign(loc);
 				
 			});
@@ -531,9 +558,10 @@ var Markers = {
 		this.fn.addDevice();
 		this.fn.update();
 		this.fn.changeFloor();
+		this.fn.changeLibrary();
 		this.fn.redisplayPage();
 		this.fn.adjustMarkers();
-		this.fn.openReports();
+		this.fn.openPage();
     }
 };
 
