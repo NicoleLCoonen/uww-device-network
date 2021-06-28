@@ -8,9 +8,9 @@
 	<title>Andersen Device Network</title>
 	<meta  name="viewport" content="width=device-width, initial-scale=1.0" >
 	<meta charset="utf-8" lang ="en-us">
-	<link rel='stylesheet' href='../Private/reportStyling.css'>
+	<link rel='stylesheet' href='../Private/reportStyling.css' type='text/css'>
+	<link rel='stylesheet' media='print' href='../Private/print.css' type='text/css'>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	
 	<script src='../Private/reports.js'> </script>
 </head>
 </head>
@@ -21,7 +21,7 @@
 		<h1>Andersen Library Device Network</h1>
 		<h2>Report Center</h2>
 		<span>
-			<select  name="floorSelect">
+			<select  id="floorSelect">
 				<option value="" disabled selected hidden>Back to Maps</option>
 				<option value="<?php echo url_for("DeviceNetworkMain.php") ;?>">Main Floor</option>
 				<option value="<?php echo url_for("DeviceNetworkThird.php") ;?>">Third Floor</option>
@@ -74,7 +74,7 @@
 				</div>	
 			</form>
 		
-	<?php require("../Private/DataProcessing/reportProcessing.php") ; 
+	<?php require_once("../Private/DataProcessing/reportProcessing.php") ; 
 			if(is_post_request() && isset($_POST["data-report"])){
 	?>
 			<button type='print' id='print'> &#128438; Print Report</button>
@@ -98,7 +98,7 @@
 							};
 								
 							echo($display);
-							//print_r($results);
+							
 						};
 					?>
 					
@@ -112,52 +112,35 @@
 					</div>
 					
 					<div class='overview'>	
-						<table >
-							<th>Name</th>
-							<th>Noncap</th>
-							<th>Model</th>
-							<th>Vendor</th>
-							<th>Vendor ID</th>
-							<th>Date Removed</th>
-							<th>Destination</th>
-							<th>Notes</th>
-							<?php 
-								// this section was copied in from another project. streamline w/ the create_table_ functions later
-								if(isset($result_set) && $reportType === "withdrawn"){
-									confirm_result_set($result_set);
-								
-									while($result = mysqli_fetch_assoc($result_set)){
-										foreach($result as $th => $td){
-											if($td == null){
-												$td = "N/A" ;
-											};
-											$result[$th] = $td;	
-										};
-												
-										$date = explode("-", $result["Date_Removed"]) ;
-										$year = $date[0] ;
-										$month = $date[1] ;
-										$day = $date[2] ;
-										$result["Date_Removed"] = $month . "-" . $day . "-" . $year ;
-							?>
-							<tr>
-								<td><?php echo($result["Device_Name"]) ;?></td>
-								<td><?php echo($result["Noncap"]) ;?></td>
-								<td><?php echo($result["Model"]) ;?></td>
-								<td><?php echo($result["Vendor"]) ;?></td>
-								<td><?php echo($result["Vendor_Name"]) ;?></td>
-								<td><?php echo($result["Date_Removed"]) ;?></td>
-								<td><?php echo($result["Sent_To"]) ;?></td>
-								<td><?php echo($result["Notes"]) ;?></td>
-							</tr>	
-
-							<?php					
-									};
-								};
-									
-							?>
-									
-						</table>
+						<?php require_once('graveyard.php');  ?>
+						
+						<form id='recallForm' name='recall' value='' method='post' action="<?php echo(url_for("reports.php")); ?>">
+						<button type="button" id="closeForm">X</button>
+							<div id='deviceInfo'>
+								<input id='deviceID' name='deviceID' type='number'></input>
+								<label for='deviceName'>Device: </label>
+								<input id='deviceName' name='deviceName' type='text'></input>
+								<input id='deviceNC' name='deviceNC' type='text'></input>
+								<input id='deviceModel' name='deviceModel' type='text'></input>
+							</div>
+							<label for='portFloor'>Select a floor to see available ports for this device.</label></br>
+							<select id='portFloor' name='portFloor'>
+								<option value="" disabled selected hidden>Select Floor</option>
+								<option value='<?php if(isset($portJSONfirst)){echo($portJSONfirst);}; ?>'>First Floor</option>
+								<option value='<?php if(isset($portJSONfmain)){echo($portJSONfmain);}; ?>'>Main Floor</option>
+								<option value='<?php if(isset($portJSONthird)){echo($portJSONthird);}; ?>'>Third Floor</option>
+							</select>
+							
+							<div id='portSelection'>
+								<p>Please select a port:</p></br>
+							</div>	
+							<div id='officeSelection' data-caption='<?php if(isset($staffJSON)){echo($staffJSON);}; ?>'>
+								<p>This device is office equipment.</br>Please select an idividual or department to allocate the device to.</p>
+							</div>
+							
+							<button type='submit' id='recallSubmit'>Submit</button>
+						</form>
+						<?php  require_once('../Private/DataProcessing/recall_or_edit.php'); ?>
 					</div>	
 				</div>
 				
