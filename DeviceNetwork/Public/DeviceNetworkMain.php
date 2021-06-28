@@ -1,7 +1,6 @@
 <?php require_once('..\Private\DataProcessing\placeholder.php');
 
 ?>
-
 <!doctype html>
 <head>
 	<title>Andersen Device Network</title>
@@ -9,6 +8,7 @@
 	<meta charset="utf-8" lang ="en-us">
 	<link rel='stylesheet' href='../Private/DNPStyling.css'>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src='../Private/DNPsecured.js'> </script>
 </head>
 
@@ -18,12 +18,14 @@
 		<h1>Andersen Library Device Network</h1>
 		<h2 id='floor'>Main Floor</h2>
 		<span>
+			<button type='button' id='changeLibrary' data-url='<?php echo url_for("DeviceNetworkLenoxUpper.php");?>'>Lenox Maps</button>
 			<select id='floorSelect' name="floorSelect">
 				<option value="" disabled selected hidden>Change Floor</option>
 				<option value="<?php echo url_for("DeviceNetworkThird.php") ;?>">Third Floor</option>
 				<option value="<?php echo url_for("DeviceNetworkFirst.php") ;?>">First Floor</option>
 			</select>
-			<button type="button" id="reports" data-url='<?php echo url_for("reports.php")?>'>Run Reports</button>
+			<button type="button" id="reports" data-url='<?php echo url_for("reports.php");?>'>Run Reports</button>
+			<button type="button" id="admin" data-url='<?php echo url_for("admin.php");?>'>Admin</button>
 		</span>
 	</header>
 
@@ -35,155 +37,28 @@
 				<button id="reset">Clear</button>
 				</br>
 				<label for="necromancer">Include withdrawn devices in results:</label>
-				<input id="necromancer" type="checkbox" value="0" checked="">
+				<input id="necromancer" type="checkbox">
 			</div>
 		<div id="container">	
-			<div class="graveyard">
-				<table class="graveyard">
-					<th>Name</th>
-					<th>Noncap</th>
-					<th>Model</th>
-					<th>Vendor</th>
-					<th>Vendor ID</th>
-					<th>Date Removed</th>
-					<th>Destination</th>
-					<th>Notes</th>
-					<?php if(isset($result_set)){
-						confirm_result_set($result_set);
-						
-						while($result = mysqli_fetch_assoc($result_set)){
-								foreach($result as $th => $td){
-										if($td == null){
-											$td = "N/A" ;
-										};
-									$result[$th] = $td;	
-								};
-								
-								$date = explode("-", $result["Date_Removed"]) ;
-								$year = $date[0] ;
-								$month = $date[1] ;
-								$day = $date[2] ;
-								$result["Date_Removed"] = $month . "-" . $day . "-" . $year ;
-					?>
-					<tr>
-						<td><?php echo($result["Device_Name"]) ;?></td>
-						<td><?php echo($result["Noncap"]) ;?></td>
-						<td><?php echo($result["Model"]) ;?></td>
-						<td><?php echo($result["Vendor"]) ;?></td>
-						<td><?php echo($result["Vendor_Name"]) ;?></td>
-						<td><?php echo($result["Date_Removed"]) ;?></td>
-						<td><?php echo($result["Sent_To"]) ;?></td>
-						<td><?php echo($result["Notes"]) ;?></td>
-					</tr>	
 
-				<?php					
-						};
-					};
-					
-				?>
-					
-				</table>
-			</div>
-			
-			<div id="updateForms" class="sidebar">
-			<button type="button" id="closeForm">&#x2718;</button>
-				<form id="updateDB" method="post" action=" <?php echo url_for("DeviceNetworkMain.php");?>">
-					<h4>Port:</h4>
-					<input type="number" id="portID" name="portID" ></input>
-					<label for="portName">Name:</label>
-					<input type="text" id="portName" name="portName"></input>
-					</br>
-					<label for="status">Port Status:</label>
-					</br>
-					<label for="On">On</label>
-					<input type="radio" id="On" name="status" value="1" checked="false"></input>
-					</br>
-					<label for="Off">Off</label>
-					<input type="radio" id="Off" name="status" value="0" checked="false"></input>
-					</br>
-					<label for="broken">Broken:</label>
-					<input type="checkbox" id="broken" name="broken" ></input>
-					</br>
-					<div class="error" id="connectionError">
-						<p>Do not connect devices to ports that are turned off or broken.</br> 
-						Please double-check the status or move the device.</p>
-					</div>
-					<div class="error" id="portInUse">
-						<p>This port is being used by another device. Please select an available port or cancel this operation and move the device.</p>
-					</div>
-
-					<h4>Device:</h4>
-					<input type="number" id="deviceID" name="deviceID"></input>
-					<label for="deviceName">Name:</label>
-					<input type="text" id="deviceName" name="deviceName" readonly></input>
-					</br>
-					<label for="model">Model:</label>
-					<input type="text" id="model" name="model" readonly></input>
-					</br>
-					<label for="nonCap">NonCap:</label>
-					<input type="text" id="nonCap" name="nonCap" readonly></input>
-					</br>
-					</br>
-					<div id='vendorInfo'>
-					<h5>Additional Info</h5>
-					<caption>These fields only apply to 3rd-Party devices.</caption>
-					</br>
-					<span>
-					<label for="vendor">Vendor:</label>
-					<input type="text" id="vendor" name="vendor"></input>
-					
-					</span>
-					</br>
-					<label for="vendorContact">Phone:</label>
-					<input type="tel" id='vendorContact' pattern="[0-9]{1}-[0-9]{3}-[0-9]{3}-[0-9]{4}" ></input>
-					</br>
-					<label for="vendorName">Vendor Identifier:</label>
-					<input type="text" id="vendorName" name="vendorName" ></input>
-					</br>
-					<caption for="vendorName"><small>This is how the vendor will refer to the device.</small></caption>
-					
-					</br>
-					</div>
-					<div  id="morgue" >
-						<span>
-							<label for="dateRemoved">When was this device removed?</label>
-							<input type="date" id="dateRemoved" name="dateRemoved" placeholder="MM/DD/YYYY"></input>
-							</br>
-							<label for="sentTo">Where did we send it?</label>
-							<select id="sentTo" name="sentTo">
-								<option value="iCIT">iCIT</option>
-								<option value="Surplus">Surplus</option>
-								<option value="Other">Other(Please Specify)</option>
-							</select>
-						</span>
-						</br>
-						<label for="notes">Notes:</label>
-						</br>
-						<textarea id="notes" name="notes" rows="4" col="40" placeholder="Include other relavant info here.">
-						</textarea>
-					</div>
-					<div class="buttons">
-						<button type="submit" id="updateButton">Update</button>
-						<button type="button" id="move">Move</button>
-						<button type="button" id="delete">Remove</button>
-						<button type="button" id="new">New Device</button>
-						<input type="checkbox" id="phpDelete" name="phpDelete" checked="false"></input>
-					</div>
-					
-					<div id="instructions">
-						
-					</div>
-					
-				</form>
-			</div>
-		
+			<?php 
+				
+				require_once('updateForms.php');
+			?>
+		<!-- THIS IS FOR A LOWER PRIORITY FUNCTIONALITY THAT IS NOT COMPLETE 
+			<button type='button' id='editMarkers'>Add/Edit Markers</button>
+			<button type='submit' id='saveMarkers'>Done</button>
+		-->
 			<div id='image-wrapper' data-captions='<?php echo($mainJson) ; ?>'>
-				<img id='MainFloorBlueprint'class="map" src="../Private/MainBlueprintDNP-100.jpg" alt="A map of the Andersen Library's main floor, with markers indicating the locations of Data Ports" max-width="100%" height="auto" />
+				<img id='MainFloorBlueprint'class="map" src="../Private/MainBlueprintDNP-100.jpg" alt="A map of the Andersen Library's main floor, with markers indicating the locations of data ports" max-width="100%" height="auto" />
 				<caption for='MainFloorBlueprint'>For visual clarity, some ports have been grouped together or adjusted slightly from their physical location.</br>
 				Please consider marker loacations to be approximate.</caption>
 			</div>
 		</div>	
-			<?php require("..\Private\DataProcessing\updateDB.php"); ?>
+			<?php 
+				require_once('graveyard.php');
+				require("..\Private\DataProcessing\updateDB.php");
+			?>
 			<p id='output'><?php echo($result) ?></p>
 		
 	</main>
