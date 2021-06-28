@@ -237,7 +237,7 @@ var Markers = {
 		},
 		
 		changeFloor: function(){
-			$('header option').click( function(){
+			$('#floorSelect').change( function(){
 				let url = $(this).val();
 				window.location.assign(url);
 			});
@@ -267,6 +267,13 @@ var Markers = {
 			$(window).resize();
 		},
 		
+		changeLibrary: function(){
+			$('#changeLibrary').click(function(){
+				let url = this.attr('data-url');
+				window.location.assign(url);
+			});
+		},
+		
 		openReports: function(){
 			$('#reports').click(function(){
 				let loc = $('#reports').attr("data-url");
@@ -289,6 +296,7 @@ var Markers = {
 		this.fn.performQuery();
 		this.fn.reset();
 		this.fn.changeFloor();
+		this.fn.changeLibrary();
 		this.fn.adjustMarkers();
 		this.fn.openReports();
     }
