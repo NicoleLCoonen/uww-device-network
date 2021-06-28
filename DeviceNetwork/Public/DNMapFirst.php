@@ -17,13 +17,14 @@
 		<h1>Andersen Library Device Network</h1>
 		<h2 id='floor'>First Floor</h2>
 		<span>
+		<button type='button' id='changeLibrary' data-url='<?php echo url_for("DeviceNetworkLenoxUpper.php");?>'>Lenox Maps</button>
 			<select id='floorSelect'>
 				<option value='' disabled selected hidden>Change Floor</option>
 				<option value="<?php echo url_for("DNMapMain.php");?>">Main Floor</option>
 				<option value="<?php echo url_for("DNMapThird.php") ;?>">Third Floor</option>
-				<button type="button" id="reports" data-url='<?php echo url_for("reports.php")?>'>Run Reports</button>
-				<a href="<?php echo(url_for("DNLogIn.php")); ?>">Log In</a>
 			</select>
+			<button type="button" id="reports" data-url='<?php echo url_for("reports.php")?>'>Run Reports</button>
+			<a href="<?php echo(url_for("DNLogIn.php")); ?>">Log In</a>
 		</span>
 	</header>
 
