@@ -1,34 +1,39 @@
 <?php require_once('queryFunctions.php') ; 
 
 	$jsonfile = "data.json"	;
-
-	// Create an array of Port_Group #s. Manually check DB for highest value. currently 141
-	$group_no = array() ;
+	$group_no = array();
 	
-	for($a = 1 ; $a <= 141 ; $a++) {
-		
-		$group_no[] = $a ;
-	}
+	// Create an array of Port_Group #s.
+	$sql = 'SELECT DISTINCT ID FROM port_groups';
+	$result_set = mysqli_query($db, $sql);
 	
+	while($result = mysqli_fetch_assoc($result_set)){
+		array_push($group_no, $result['ID']);
+	};
+	
+	unset($sql);
+	unset($result_set);
+	unset($result);
 	$firstFloor = array();
 	$mainFloor = array();
 	$thirdFloor = array();
-	//$group_objects = array();
+	$lenoxUpper = array();
+	$lenoxLower = array();
 	$port_groups = array() ;
 	$port_array = array() ;
-	
 	
 	// Gets info on each port in a Port_Group and stores it as an associative array.
 	// The array of ports is then stored in another associative array like this:
 	
 	// [Group #], [location code],[y coords,], [ports] => (port 1)
-	//																=>	[Name], [Status], [Device]
-																							//	=> [Name], [Model], [Etc]
-												//	   => (port 2)
-														//			=>	[Name], [Status], [Etc]	
-												//	   => (port 3)
-														//			=>	[Name], [Status], [Etc]	
+						//			=>	[Name], [Status], [Device]
+						//							=> [Name], [Model], [Etc]
+						//	   => (port 2)
+						//			=>	[Name], [Status], [Etc]	
+						//	   => (port 3)
+						//			=>	[Name], [Status], [Etc]	
 	foreach($group_no as $value) {
+		
 		$sql = 'SELECT * FROM port_groups WHERE ID=' . $value ;
 		
 		$result_set = mysqli_query($db, $sql) ;
@@ -41,6 +46,7 @@
 		while($current_group = mysqli_fetch_assoc($result_set)){
 		
 		$location = $current_group['Location'];	
+		
 		
 		$group = array();
 		
@@ -119,16 +125,20 @@
 		$current_group['text'] = $text ;
 		$current_group["Ports"] = $group ;
 		
-		if(($location >= 1 && $location <= 5) || ($location >= 21 && $location <= 23)){
+		// sorts port groups into their respective floors based on the location code.
+		if(!$location){
+			continue;
+		}else if(($location >= 1 && $location <= 5) || ($location >= 21 && $location <= 23)){
 			array_push($firstFloor, $current_group);
-		} else if (($location >= 15 && $location <= 17) ||( $location == 19)) {
+		}else if (($location >= 15 && $location <= 17) ||( $location == 19)) {
 			array_push($thirdFloor, $current_group);
-		} else {
+		}else if($location == 25){
+			array_push($lenoxLower, $current_group);
+		}else if($location == 24 || $location > 25){
+			array_push($lenoxUpper, $current_group);
+		}else{
 			array_push($mainFloor, $current_group);
 		};
-
-		//array_push($group_objects, $current_group);
-		
 		
 	};
 };
@@ -136,13 +146,15 @@
 	$firstJson = '{"coords" : ' . json_encode($firstFloor, JSON_NUMERIC_CHECK | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_HEX_APOS) . '}';
 	$mainJson = '{"coords" : ' . json_encode($mainFloor, JSON_NUMERIC_CHECK | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_HEX_APOS) . '}';
 	$thirdJson = '{"coords" : ' . json_encode($thirdFloor, JSON_NUMERIC_CHECK | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_HEX_APOS) . '}';
+	$lenoxUJson = '{"coords" : ' . json_encode($lenoxUpper, JSON_NUMERIC_CHECK | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_HEX_APOS) . '}';
+	$lenoxLJson = '{"coords" : ' . json_encode($lenoxLower, JSON_NUMERIC_CHECK | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_HEX_APOS) . '}';
 	//$json = '{"coords" : ' . json_encode($group_objects, JSON_NUMERIC_CHECK | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_HEX_APOS) . '}';
 	
 	//echo($firstJson) . "</br>";
 	//echo($mainJson) . "</br>";
 	//echo($thirdJson) . "</br>";
 	$jsonf = fopen($jsonfile, "w") or die ("Unable to open json file");
-	$success = fwrite($jsonf, $mainJson);
+	$success = fwrite($jsonf, $lenoxUJson);
 	fclose($jsonf);
 	
 	unset($sql) ;
