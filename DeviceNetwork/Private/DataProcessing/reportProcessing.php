@@ -74,7 +74,7 @@ $compTotal = 0;
 			
 			unset($sql);
 			
-			$sql = 'SELECT * FROM library_staff ORDER BY Last_Name, First_Name ASC';
+			$sql = 'SELECT * FROM fake_staff ORDER BY Last_Name, First_Name ASC';
 			
 			$staffSet = mysqli_query($db, $sql);
 			$staffPerson = array();
