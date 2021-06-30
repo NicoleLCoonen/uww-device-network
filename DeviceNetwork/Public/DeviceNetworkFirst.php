@@ -1,6 +1,7 @@
-<?php require_once('..\Private\DataProcessing\placeholder.php');
-
+<?php require_once('../Private/DataProcessing/placeholder.php');
+	 $thisFile = url_for('DeviceNetworkFirst.php'); 
 ?>
+
 
 <!doctype html>
 <head>
@@ -51,7 +52,7 @@
 		
 	</div>	
 		<?php  
-			require("..\Private\DataProcessing\updateDB.php"); 
+			 require("../Private/DataProcessing/updateDB.php");; 
 		?>
 	</main>
 	
