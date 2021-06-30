@@ -1,6 +1,6 @@
 <div id="updateForms" class="sidebar">
 		<button type="button" id="closeForm">X</button>
-			<form id="updateDB" method="post" action=" <?php echo url_for("DeviceNetworkFirst.php");?>">
+			<form id="updateDB" method="post" action=" <?php echo($thisFile);?>">
 				<h4>Port:</h4>
 				<input type="number" id="portID" name="portID" ></input>
 				<label for="portName">Name:</label>
