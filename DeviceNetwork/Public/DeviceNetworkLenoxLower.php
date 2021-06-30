@@ -1,4 +1,4 @@
-<?php require_once('..\Private\DataProcessing\placeholder.php');
+<?php require_once('./Private/DataProcessing/placeholder.php');
 
 ?>
 <!doctype html>
@@ -46,7 +46,7 @@
 		</div>	
 		<?php 
 				require_once('graveyard.php');
-				require("..\Private\DataProcessing\updateDB.php");
+				require("../Private/DataProcessing/updateDB.php");
 			?>
 			<p id='output'><?php echo($result) ?></p>
 		
