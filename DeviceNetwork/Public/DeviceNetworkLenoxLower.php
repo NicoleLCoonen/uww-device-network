@@ -19,7 +19,7 @@
 		<h2 id='floor'>Lower Level</h2>
 		<span>
 			<button type='button' id='changeLibrary' data-url='<?php echo url_for("DeviceNetworkMain.php");?>'>Andersen Maps</button>
-			<button type='button' id='changeFloor' data-url='<?php echo url_for("DeviceNetworkMLenoxUpper.php");?>'>Upper Level</button>
+			<button type='button' id='changeFloor' data-url='<?php echo url_for("DeviceNetworkLenoxUpper.php");?>'>Upper Level</button>
 			<button type="button" id="reports" data-url='<?php echo url_for("reports.php");?>'>Run Reports</button>
 			<button type="button" id="admin" data-url='<?php echo url_for("admin.php");?>'>Admin</button>
 		</span>
