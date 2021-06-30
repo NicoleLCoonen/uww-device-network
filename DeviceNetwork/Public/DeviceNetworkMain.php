@@ -1,5 +1,5 @@
-<?php require_once('..\Private\DataProcessing\placeholder.php');
-
+<?php require_once('../Private/DataProcessing/placeholder.php');
+	 $thisFile = url_for('DeviceNetworkMain.php'); 
 ?>
 <!doctype html>
 <head>
@@ -57,7 +57,7 @@
 		</div>	
 			<?php 
 				require_once('graveyard.php');
-				require("..\Private\DataProcessing\updateDB.php");
+				require("../Private/DataProcessing/updateDB.php");
 			?>
 			<p id='output'><?php echo($result) ?></p>
 		
