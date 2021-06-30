@@ -1,5 +1,5 @@
 <?php require_once('./Private/DataProcessing/placeholder.php');
-
+	 $thisFile = url_for('DeviceNetworkLenoxLower.php'); 
 ?>
 <!doctype html>
 <head>
