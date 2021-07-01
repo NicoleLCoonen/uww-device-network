@@ -30,8 +30,9 @@ Eriana Thomas,
 Maddi Burclaw,
 Sofia Maglio,
 Anna Zickus,
+Christian Alvites-Sandoval,
 and
-Christian Alvites-Sandoval
+Cuauthli Esparza
 
 I also recieved invaluable guidance from my colleague, Branden McCready.
 
