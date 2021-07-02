@@ -32,7 +32,7 @@ Sofia Maglio,
 Anna Zickus,
 Christian Alvites-Sandoval,
 and
-Cuauthli Esparza
+Cuauhtli Esparza
 
 I also recieved invaluable guidance from my colleague, Branden McCready.
 
