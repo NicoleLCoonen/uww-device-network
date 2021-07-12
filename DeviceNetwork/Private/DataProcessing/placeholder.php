@@ -19,6 +19,7 @@
 	$thirdFloor = array();
 	$lenoxUpper = array();
 	$lenoxLower = array();
+	//$group_objects = array();
 	$port_groups = array() ;
 	$port_array = array() ;
 	
@@ -26,12 +27,12 @@
 	// The array of ports is then stored in another associative array like this:
 	
 	// [Group #], [location code],[y coords,], [ports] => (port 1)
-						//			=>	[Name], [Status], [Device]
-						//							=> [Name], [Model], [Etc]
-						//	   => (port 2)
-						//			=>	[Name], [Status], [Etc]	
-						//	   => (port 3)
-						//			=>	[Name], [Status], [Etc]	
+	//																=>	[Name], [Status], [Device]
+																							//	=> [Name], [Model], [Etc]
+												//	   => (port 2)
+														//			=>	[Name], [Status], [Etc]	
+												//	   => (port 3)
+														//			=>	[Name], [Status], [Etc]	
 	foreach($group_no as $value) {
 		
 		$sql = 'SELECT * FROM port_groups WHERE ID=' . $value ;
@@ -83,7 +84,7 @@
 					$c++ ;
 				};
 				
-			} else if($rows === 0) {
+			} else if($rows == 0) {
 				unset($sql) ;
 				unset($device_result) ;
 				$sql = "SELECT * FROM printers_and_scanners WHERE Connection=" . $result['ID'] ;
@@ -94,12 +95,11 @@
 					if($device_result !== null){
 						$device = mysqli_fetch_assoc($device_result) ;
 						if($device !== null){
-							
 							$result['Device'] = $device ;
 							$c++ ;
 						};
 					};
-				}else if($rows === 0){
+				} else if($rows == 0){
 					unset($sql) ;
 					unset($device_result) ;
 					$sql = "SELECT * FROM staff_computers WHERE Connection=" . $result['ID'] ;
@@ -108,9 +108,29 @@
 					if($device_result !== null){
 						$device = mysqli_fetch_assoc($device_result) ;
 						if($device !== null){
-							
-							$result['Device'] = $device ;
+							$d['ID'] = $device['ID'];
+							$d['Computer_Name'] = $device['Computer_Name'];
+							$d['Noncap'] = $device['Noncap'];
+							$d['Model'] = $device['Model'];
+						
+							$sql = "SELECT * FROM accessories WHERE Device_Connection=" . $device['ID'];
+							$aResult = mysqli_query($db, $sql);
+							if($aResult !== null){
+								$x = mysqli_num_rows($aResult);
+								if($x > 0){
+									while($accessory = mysqli_fetch_assoc($aResult)){
+										$a['ID'] = $accessory['ID'];
+										$a['Name'] = $accessory['Model'] . " " . $accessory['Device_Type'];
+										$periphery[] = $a;
+									};
+									$d['Accessories'] = $periphery;
+								};
+							};
+							unset($aResult);
+							unset($periphery);
+							$result['Device'] = $d ;
 							$c++ ;
+							unset($d);
 						};
 					};
 				};
@@ -139,6 +159,9 @@
 		}else{
 			array_push($mainFloor, $current_group);
 		};
+
+		//array_push($group_objects, $current_group);
+		//print_r($lenoxUpper);
 		
 	};
 };
@@ -154,7 +177,7 @@
 	//echo($mainJson) . "</br>";
 	//echo($thirdJson) . "</br>";
 	$jsonf = fopen($jsonfile, "w") or die ("Unable to open json file");
-	$success = fwrite($jsonf, $lenoxUJson);
+	$success = fwrite($jsonf, $mainJson);
 	fclose($jsonf);
 	
 	unset($sql) ;
