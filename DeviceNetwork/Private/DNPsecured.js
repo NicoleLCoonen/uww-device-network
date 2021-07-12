@@ -36,6 +36,7 @@ var Markers = {
 					let portInfo = Object.values(myPort);
 					let status = myPort.Port_Status;
 					let portID = myPort.ID;
+					let insert = '';
 					if(myPort.Damaged === 1) {
 							status += "*" ;
 						};
@@ -46,10 +47,24 @@ var Markers = {
 						tableContent += '<td><button class="icon" type="button">' + ICON + "</button</td>" ;
 						let myDevice = myPort.Device;
 						let deviceInfo = Object.values(myDevice);
+						if(myDevice.hasOwnProperty('Accessories')){
+							let accessories = myDevice.Accessories;
+							for(p = 0; p < accessories.length; p++){
+								let acc = accessories[p];
+								/*add empty table cells just to keep the display tidy.
+								 I'm hiding the first column of data in all tables because that's
+								 where I'm storing ID numbers for now.*/
+								insert += '<tr><td>' + acc.ID + '</td><td>' + acc.Name + '</td><td></td><td></td></tr>';
+							};
+						};
 						if(deviceInfo.length === 5){
 							tableContent += '<td><table class="device"><th>ID</th><th>Name</th><th>Model</th><th>Noncap</th>' ;						
 							tableContent += '<tr><td>' + myDevice.ID + '</td><td>' + myDevice.Computer_Name + "</td><td>" + myDevice.Model + "</td>" ;
-							tableContent += "<td>" + myDevice.Noncap + "</td></tr></table></td>" ;
+							tableContent += "<td>" + myDevice.Noncap + "</td></tr>" ;
+							
+							if( insert !== 'undefined'){ tableContent += insert; };
+							tableContent += "</table></td>";
+							
 						} else {
 							tableContent += '<td><table class="device"><th>ID</th><th>Name</th><th>Model</th><th>Noncap</th>' ;
 							tableContent += '<th>Vendor</th><th>Vendor ID</th><th></th><th></th>';
@@ -287,6 +302,7 @@ var Markers = {
 						$('#delete, #move').attr("disabled", false);
 						$('#new').attr("disabled", true);
 						let $device = $row.find("table.device").find("tr:nth-child(2)");
+						let $accessories = $device.nextAll();
 						let $deviceID = $device.children("td").html();
 						let $deviceName = $device.children("td:nth-child(2)").text();
 						let $model = $device.children("td:nth-child(3)").text();
@@ -296,8 +312,21 @@ var Markers = {
 						$("#model").val($model);
 						$("#nonCap").val($nonCap);
 						$("#new").attr("disabled", true);
+						let inputs = '';
 						
-						/* Check for the type of device & populates
+						// Looks for accessories in the table and generates/populates inputs accordingly
+						for(n = 0; n < $accessories.length; n++ ){
+							 a = $accessories[n]; 
+							let aID = $(a).children('td:first-child').text();
+							let aName = $(a).children('td:nth-child(2)').text();
+							inputs += "<span><input type='text' name='accessory"+ aID + "Name'";
+							inputs += "value='" + aName + "' readonly></input>";
+							inputs += "<input type='checkbox' id='accessory" + aID + "'";
+							inputs += "name='accessory" + aID + "'" + "value='true'>";
+							inputs += "<label for='accessory" + aID + "'>Release</label>";
+						};
+						$('#accessories').html(inputs);
+						/* Check for the type of device & populate
 						   the form accordingly. Library-owned 
 						   computers have 4 total columns,while 
 						   3rd-party devices have 8.
@@ -349,6 +378,7 @@ var Markers = {
 			$("#move").click(function(){
 				$('span.marker').css({"background": "#4f2683", "border": "none"});
 				$("#portName, #portID").val('');
+				$("#portName").attr('required', true),
 				$("#On").prop("checked", false);
 				$("#Off").prop("checked", false);
 				$("#broken").prop("checked", false);
@@ -483,6 +513,7 @@ var Markers = {
 			let output = $('#output').text();
 			if(output.length > 0 && output !== 'undefined' ){
 				let loc = window.location.href ;
+				
 				window.location.assign(loc);
 			}
 		},
@@ -559,7 +590,7 @@ var Markers = {
 		this.fn.update();
 		this.fn.changeFloor();
 		this.fn.changeLibrary();
-		this.fn.redisplayPage();
+		//this.fn.redisplayPage();
 		this.fn.adjustMarkers();
 		this.fn.openPage();
     }
