@@ -1,6 +1,8 @@
 <?php require_once('../Private/DataProcessing/placeholder.php');
 	 $thisFile = url_for('DeviceNetworkMain.php'); 
-?>
+	  
+?> 
+
 <!doctype html>
 <head>
 	<title>Andersen Device Network</title>
@@ -21,17 +23,19 @@
 			<button type='button' id='changeLibrary' data-url='<?php echo url_for("DeviceNetworkLenoxUpper.php");?>'>Lenox Maps</button>
 			<select id='floorSelect' name="floorSelect">
 				<option value="" disabled selected hidden>Change Floor</option>
-				<option value="<?php echo url_for("DeviceNetworkThird.php") ;?>">Third Floor</option>
-				<option value="<?php echo url_for("DeviceNetworkFirst.php") ;?>">First Floor</option>
+				<option value='<?php echo url_for("DeviceNetworkThird.php") ;?>'>Third Floor</option>
+				<option value='<?php echo url_for("DeviceNetworkFirst.php") ;?>'>First Floor</option>
 			</select>
 			<button type="button" id="reports" data-url='<?php echo url_for("reports.php");?>'>Run Reports</button>
-			<button type="button" id="admin" data-url='<?php echo url_for("admin.php");?>'>Admin</button>
+			<!--<button type="button" id="admin" data-url='<?php //echo url_for("admin.php");?>'>Admin</button>-->
+			<a href='<?php echo(url_for("FAQ.php"))?>'>FAQ</a>
 		</span>
+		
 	</header>
 
 	
 	<main>
-		
+
 			<div id="queries">
 				<input id="userInput" type='text' name="userInput" value="" placeholder="Search">
 				<button id="reset">Clear</button>
