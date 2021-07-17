@@ -13,20 +13,22 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src='../Private/reports.js'> </script>
 </head>
-</head>
+
 
 
 <body>
-	<header> 
+	<header class='masthead'>
 		<h1>Andersen Library Device Network</h1>
 		<h2>Report Center</h2>
 		<span>
+		<button type='button' class='norm' id='changeLibrary' data-url='<?php echo url_for("DeviceNetworkLenoxUpper.php");?>'>Lenox Maps</button>
 			<select  id="floorSelect">
-				<option value="" disabled selected hidden>Back to Maps</option>
+				<option value="" disabled selected hidden>Andersen Maps</option>
 				<option value="<?php echo url_for("DeviceNetworkMain.php") ;?>">Main Floor</option>
 				<option value="<?php echo url_for("DeviceNetworkThird.php") ;?>">Third Floor</option>
 				<option value="<?php echo url_for("DeviceNetworkFirst.php") ;?>">First Floor</option>
 			</select>
+			<a href='<?php echo(url_for("FAQ.php"))?>'>FAQ</a>
 		</span>
 		
 	</header>
@@ -43,22 +45,27 @@
 				
 					<div class='reportType'>
 						<button type='submit' name="data-report" value="withdrawn">Withdrawn</button>
-						<p>Provides records of devices withdrawn from the Libraries. Includes information about where the device was sent after withdrawl and the reason(s) it was pulled.</p>
+						<p>Provides records of devices withdrawn from the Libraries. Includes information about where the device was sent after withdrawl and the reason(s) it was pulled. Show this report to recall or surplus devices currently in storage.</p>
 					</div>
 					
 					<div class='reportType'>
 						<button type='submit' name="data-report" value="staff" >Staff Computers</button>
-						<p>Generates a list of staff computers and equipment, including docks and monitors.</p>
+						<p>Generates a list of staff and office computers (desktops and laptops only). Run this report to assign or reasign these devices. </p>
 					</div>
 					
 					<div class='reportType'>
 						<button type='submit' name="data-report" value="models">Models</button>
-						<p>A breakdown of Library devices by Model. Public and Staff computers only.</p>
+						<p>A breakdown of Library devices by Model. Public, non-circulating computers only.</p>
 					</div>
 					
 					<div class='reportType'>
 						<button type='submit' name="data-report" value="thirdParty">Third-Party Devices</button>
 						<p>Generates a list of all Third-Party devices in the Libraries. This may include devices that we have a maintenance contract on as well as devices not provided through iCIT.</p>
+					</div>
+					
+					<div class='reportType'>
+						<button type='submit' name="data-report" value="otherDevices">Tablets and Peripheries</button>
+						<p>Generates a list of all staff and office tablets, monitors, and other peripheries. Run this report to assign or reassign this equipment.</p>
 					</div>
 					
 					<div class='reportType'>
@@ -119,9 +126,9 @@
 							<div id='deviceInfo'>
 								<input id='deviceID' name='deviceID' type='number'></input>
 								<label for='deviceName'>Device: </label>
-								<input id='deviceName' name='deviceName' type='text'></input>
-								<input id='deviceNC' name='deviceNC' type='text'></input>
-								<input id='deviceModel' name='deviceModel' type='text'></input>
+								<input id='deviceName' name='deviceName' type='text' readonly></input>
+								<input id='deviceNC' name='deviceNC' type='text' readonly></input>
+								<input id='deviceModel' name='deviceModel' type='text' readonly></input>
 							</div>
 							<label for='portFloor'>Select a floor to see available ports for this device.</label></br>
 							<select id='portFloor' name='portFloor'>
@@ -140,7 +147,29 @@
 							
 							<button type='submit' id='recallSubmit'>Submit</button>
 						</form>
-						<?php  require_once('../Private/DataProcessing/recall_or_edit.php'); ?>
+						
+						<form name='edit' method='post' action="<?php echo(url_for("reports.php")); ?>">
+							<input id='deviceID' name='deviceID' type='number'></input>
+							<label for='deviceName'>Device: </label>
+							<input id='deviceName' name='deviceName' type='text' readonly></input>
+							<span>
+								<label for="dateRemoved">When was this device removed?</label>
+								<input type="date" id="dateRemoved" name="dateRemoved" placeholder="MM/DD/YYYY"></input>
+								</br>
+								<label for="sentTo">Where did we send it?</label>
+								<select id="sentTo" name="sentTo">
+									<option value="iCIT">iCIT</option>
+									<option value="Surplus">Surplus</option>
+									<option value="Other">Other(Please Specify)</option>
+								</select>
+							</span>
+							</br>
+							<label for="notes">Notes:</label>
+							</br>
+							<textarea id="notes" name="notes" placeholder="Include other relavant info here.">
+							</textarea>
+						</form>
+						
 					</div>	
 				</div>
 				
@@ -260,10 +289,10 @@
 			</div>
 	
 		</div>
-	
+			
 	</main>
 	
-	
+	<?php  require_once('../Private/DataProcessing/recall_or_edit.php'); ?>
 </body>
 
 </html>
