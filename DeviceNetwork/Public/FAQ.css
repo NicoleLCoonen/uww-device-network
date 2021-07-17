@@ -1,0 +1,61 @@
+@charset 'utf-8';
+@media screen{
+*{
+	box-sizing: border-box;
+	font-family: "Open Sans", sans-serif;
+}
+.masthead{
+	background: #4f2683;
+	color: GhostWhite;
+	font-weight: bold;
+	text-align: center;
+	height: 10%;
+	width: 100%;
+	margin: 10px;
+}
+#container {
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+	padding:2%;
+}
+#topicForm {
+	flex: 1 1 100%;
+	margin: 20px;
+}
+#topics {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+#topics p {
+	margin: 10px;
+}
+div.topic{
+	flex: 1 1 300px;
+	border: solid 4px #4f2683;
+}
+button {
+	height: 100px;
+	font-weight: bold;
+	font-size: 30px;
+	background: #4f2683;
+	color: GhostWhite;
+	border: solid 2px GhostWhite;
+	cursor: pointer;
+	width: 100%;
+}
+.norm{
+	width: auto;
+	height: auto;
+	background: Gainsboro;
+	color:#000;
+	font-size: 12px;
+	padding:1%;
+}
+select{
+	margin: 2%;
+}
+
+
+}
