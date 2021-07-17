@@ -1,7 +1,17 @@
 @charset 'utf-8';
+@media screen{
 *{
 	box-sizing: border-box;
 	font-family: "Open Sans", sans-serif;
+}
+.masthead{
+	background: #4f2683;
+	color: GhostWhite;
+	font-weight: bold;
+	text-align: center;
+	height: 10%;
+	width: 100%;
+	margin: 10px;
 }
 #container {
 	display: flex;
@@ -12,6 +22,61 @@
 #reportForm {
 	flex: 1 1 100%;
 	margin: 20px;
+}
+
+#recallForm{
+	display: none;
+	height: 30%;
+	width: 50%;
+	margin: auto;
+	padding:1%;
+	position: fixed;
+	top: 40%;
+	right: 25%;
+	z-index: 10;
+	background: GhostWhite;
+	border: double 2px #4f2683;
+	
+}
+#closeForm {
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	line-height: 20px;
+	right: 5px;
+	top: 5px;
+	color: #1a001a;
+	border: none;
+	background:#fff;
+	font-size:18px;
+	text-align: center;
+}
+
+#portSelection{
+	display:none;
+	height: 70%;
+	width: 30%;
+	float: left;
+	margin-left: 2%;
+	overflow: auto;
+}
+
+#officeSelection{
+	display:none;
+	height: 70%;
+	width:30%;
+	float: right;
+	margin-right: 2%;
+	overflow: auto;
+}
+
+#recallSubmit {
+	width:15%;
+	height: 10%;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	font-size: 20px;
 }
 
 #reports {
@@ -33,6 +98,20 @@ button {
 	width: 100%
 }
 
+button.recall {
+	height:50%;
+	width:100%;
+	font-size: 20px;
+	margin:1%;
+	
+}
+button.edit {
+	height:50%;
+	width:100%;
+	font-size: 20px;
+	margin:1%;
+}
+
 #reports p {
 	margin: 10px;
 }
@@ -52,7 +131,6 @@ select {
 #display {
 	flex: 1 1 100%;
 	border: 8px double #3d1452;
-	padding: 3%;
 	margin: 2%;	
 }
 
@@ -62,6 +140,15 @@ select {
 
 #display > div {
 	margin: 2%;
+	padding:1%;
+}
+
+.norm{
+	width: auto;
+	height: auto;
+	background: Gainsboro;
+	color:#000;
+	font-size: 12px;
 	padding:1%;
 }
 
@@ -86,6 +173,7 @@ select {
 	margin: 2%;
 }	
 .overview{
+	width: 100%;
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
@@ -109,6 +197,19 @@ select {
     color: #fff;
 	text-align: center;
 }
+
+.graveyard table{
+	width:100%
+}
+
+.graveyard th:first-child {
+	display:none;
+}
+
+.graveyard td:first-child {
+	display:none;
+}
+
 tr {
 	border-bottom: 2px dotted #3d1452;
 }
@@ -127,5 +228,18 @@ th{
 }
 td{
 	text-align: left;
-	padding: 2%;
+
+}
+
+
+a {
+	color: GhostWhite;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+select{
+	margin: 2%;
+}
+
 }
