@@ -110,10 +110,21 @@
 				$sql .= ", Model='" . $model . "'";
 				$sql .= ", Connection=" . $portID ;
 				$sql .=  ", Noncap='"  .$nonCap . "'" ;
+				
 			};
-				
-				
-		} else {
+		
+		if($sql !== ''){
+			if(mysqli_query($db, $sql)) {
+				$result .= "Device information successfully updated." ;
+			} else {
+				$result .= "Device information could not be updated. " . $sql ;
+				$result .= mysqli_error($db);	
+			};	
+		};
+		
+		
+		if($delete === 1){
+		
 				$sql = "INSERT INTO graveyard" ;
 				$sql .= " SET Device_Name='" . $deviceName . "'";
 				$sql .= ", Model='" . $model . "'";	
@@ -127,8 +138,8 @@
 						$sql .= ", Vendor_Name='" . $vendorName . "'" ;
 					};
 							
-					$format1 = strpos($_POST['dateRemoved'], '-');
-					$format2 = strpos($_POST['dateRemoved'], '/');
+				$format1 = strpos($_POST['dateRemoved'], '-');
+				$format2 = strpos($_POST['dateRemoved'], '/');
 						
 					if($format1 !== false){
 						$date = explode("-", $_POST['dateRemoved']);
@@ -163,8 +174,14 @@
 				$sql .= ", Date_Removed='" . $year . '-' . $month . '-' . $day . "'" ;	
 				$sql .= ", Sent_To='" . $_POST['sentTo'] . "'" ;
 				$sql .= ", Notes='" . $_POST['notes'] . "'" ;
-				
-		};
+				if(mysqli_query($db, $sql)) {
+					$result .= "Device information successfully updated." ;
+				} else {
+					$result .= "Device information could not be updated. " . $sql ;
+					$result .= mysqli_error($db);	
+				};	
+					
+			};
 		
 		foreach($postKeys as $key){
 			if(preg_match("/accessory\d\z/", $key)){
@@ -178,14 +195,7 @@
 				};
 			};
 		};	
-					
-		if(mysqli_query($db, $sql)) {
-			$result .= "Device information successfully updated." ;
-		} else {
-			$result .= "Device information could not be updated. " . $sql ;
-			$result .= mysqli_error($db);	
-		};			
-			
+						
 		/* Figure out a better way to do this. Records should only
 		 be deleted ONLY once the data has been successfully moved to 
 		 the graveyard.*/
