@@ -2,7 +2,7 @@ var Handler = {
 	
 	fn: {
 		displayReport: function(){
-			$("#display").children().hide();
+			$("#display").children('div').hide();
 			$('.topic button').click(function(){
 				let topic = $(this).attr("data-topic");
 				let showTopic= "#" + topic ;
