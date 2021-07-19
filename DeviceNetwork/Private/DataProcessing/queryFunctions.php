@@ -2,7 +2,7 @@
 
 
 // Use this one when working from DeviceNetwork
-require_once('..\Private\Connect\initialize.php') ;
+require_once('../Private/Connect/initialize.php') ;
 
 
 
