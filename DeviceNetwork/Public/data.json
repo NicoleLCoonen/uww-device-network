@@ -1027,7 +1027,7 @@
         "top": 653.532,
         "text": {
             "ports": 6,
-            "devices": 3
+            "devices": 4
         },
         "Ports": {
             "Port1": {
@@ -1036,18 +1036,25 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "Computer_Name": "L2107-50-LP",
+                    "Computer_Name": "L2201-04-LM",
                     "Connection": 86,
-                    "Noncap": "209499/311209 ICIT",
-                    "Model": "HP 8300",
-                    "ID": 30
+                    "Noncap": 312678,
+                    "Model": "iMac 2015",
+                    "ID": 92
                 }
             },
             "Port2": {
                 "ID": 87,
                 "Port_Name": "2213B-097 D",
                 "Port_Status": "On",
-                "Damaged": 0
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "L2107-50-LP",
+                    "Connection": 87,
+                    "Noncap": "209499/311209 ICIT",
+                    "Model": "HP 8300",
+                    "ID": 30
+                }
             },
             "Port3": {
                 "ID": 88,
@@ -1096,7 +1103,7 @@
         "top": 715.938,
         "text": {
             "ports": 14,
-            "devices": 0
+            "devices": 2
         },
         "Ports": {
             "Port1": {
@@ -1157,13 +1164,27 @@
                 "ID": 101,
                 "Port_Name": "2213B-176 D",
                 "Port_Status": "On",
-                "Damaged": 0
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "L2213-03-LM",
+                    "Connection": 101,
+                    "Noncap": 312682,
+                    "Model": "iMac 2015",
+                    "ID": 93
+                }
             },
             "Port11": {
                 "ID": 102,
                 "Port_Name": "2213B-177 D",
                 "Port_Status": "On",
-                "Damaged": 0
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "L2107-07-LP",
+                    "Connection": 102,
+                    "Noncap": "307492/209505",
+                    "Model": "HP 8300",
+                    "ID": 27
+                }
             },
             "Port12": {
                 "ID": 103,
@@ -1238,11 +1259,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "Computer_Name": "L2107-07-LP",
+                    "Computer_Name": "L2101-02-LP",
                     "Connection": 106,
-                    "Noncap": "307492/209505",
-                    "Model": "HP 8300",
-                    "ID": 27
+                    "Noncap": 307219,
+                    "Model": "HP 8300 AIO",
+                    "ID": 94
                 }
             },
             "Port3": {
@@ -2819,7 +2840,7 @@
             },
             "Port3": {
                 "ID": 376,
-                "Port_Name": "2213B 005 D",
+                "Port_Name": "2213B-005 D",
                 "Port_Status": "Off",
                 "Damaged": 0
             }
@@ -2855,7 +2876,7 @@
         "Ports": {
             "Port1": {
                 "ID": 378,
-                "Port_Name": "2213 B-003 V/D",
+                "Port_Name": "2213B-003 V/D",
                 "Port_Status": "Off",
                 "Damaged": 0
             },
@@ -3144,6 +3165,244 @@
             "Port2": {
                 "ID": 398,
                 "Port_Name": "2213A-D361 2103-1B",
+                "Port_Status": "Off",
+                "Damaged": 0
+            }
+        }
+    },
+    {
+        "ID": 142,
+        "Location": 20,
+        "left": 841.348,
+        "top": 651.77,
+        "text": {
+            "ports": 1,
+            "devices": 1
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 418,
+                "Port_Name": "2213B-007 V/D",
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "ID": 45,
+                    "Computer_Name": "313067-OP",
+                    "Noncap": 313067,
+                    "Model": "ProBook 640 G#",
+                    "Accessories": [
+                        {
+                            "ID": 14,
+                            "Name": "HP 2013 UltraSlim Docking Station"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    {
+        "ID": 143,
+        "Location": 20,
+        "left": 872.845,
+        "top": 612.412,
+        "text": {
+            "ports": 1,
+            "devices": 1
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 419,
+                "Port_Name": "2213B-006 V/D",
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "ID": 9,
+                    "Computer_Name": "312355-OP",
+                    "Noncap": 312355,
+                    "Model": "Elitedesk 800 G2 SFF"
+                }
+            }
+        }
+    },
+    {
+        "ID": 144,
+        "Location": 20,
+        "left": 878.191,
+        "top": 761.068,
+        "text": {
+            "ports": 13,
+            "devices": 0
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 420,
+                "Port_Name": "2213A-D9",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port2": {
+                "ID": 421,
+                "Port_Name": "2213A-D180",
+                "Port_Status": "On",
+                "Damaged": 0
+            },
+            "Port3": {
+                "ID": 422,
+                "Port_Name": "2213A-D181",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port4": {
+                "ID": 423,
+                "Port_Name": "2213A-D8",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port5": {
+                "ID": 424,
+                "Port_Name": "2213A-D10",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port6": {
+                "ID": 425,
+                "Port_Name": "2213A-D185",
+                "Port_Status": "On",
+                "Damaged": 0
+            },
+            "Port7": {
+                "ID": 426,
+                "Port_Name": "2213A-D13",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port8": {
+                "ID": 427,
+                "Port_Name": "2213A-D14",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port9": {
+                "ID": 428,
+                "Port_Name": "2213A-V10",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port10": {
+                "ID": 429,
+                "Port_Name": "2213A-V13",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port11": {
+                "ID": 430,
+                "Port_Name": "2213A-V14",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port12": {
+                "ID": 431,
+                "Port_Name": "2213A-V6",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port13": {
+                "ID": 432,
+                "Port_Name": "2213A-V61",
+                "Port_Status": "Off",
+                "Damaged": 0
+            }
+        }
+    },
+    {
+        "ID": 145,
+        "Location": 20,
+        "left": 879.44,
+        "top": 799.629,
+        "text": {
+            "ports": 2,
+            "devices": 0
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 433,
+                "Port_Name": "2213A-D12",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port2": {
+                "ID": 434,
+                "Port_Name": "2213A-V12",
+                "Port_Status": "Off",
+                "Damaged": 0
+            }
+        }
+    },
+    {
+        "ID": 146,
+        "Location": 20,
+        "left": 950.882,
+        "top": 755.763,
+        "text": {
+            "ports": 1,
+            "devices": 1
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 435,
+                "Port_Name": "2213A-D384 2103-7A",
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "ID": 48,
+                    "Computer_Name": "312790-OP",
+                    "Noncap": 312790,
+                    "Model": "EliteBook 850",
+                    "Accessories": [
+                        {
+                            "ID": 1,
+                            "Name": "EliteDisplay 21.5-Inch Monitor"
+                        },
+                        {
+                            "ID": 2,
+                            "Name": "EliteDisplay 21.5-Inch Monitor"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    {
+        "ID": 147,
+        "Location": 20,
+        "left": 987.642,
+        "top": 755.763,
+        "text": {
+            "ports": 4,
+            "devices": 0
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 436,
+                "Port_Name": "2213A-D065 2103-6A",
+                "Port_Status": "On",
+                "Damaged": 0
+            },
+            "Port2": {
+                "ID": 437,
+                "Port_Name": "2213A-D066 2103-6B",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port3": {
+                "ID": 438,
+                "Port_Name": "2213A-D067 2103-6C",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port4": {
+                "ID": 439,
+                "Port_Name": "2213A-D068 2103-6D",
                 "Port_Status": "Off",
                 "Damaged": 0
             }

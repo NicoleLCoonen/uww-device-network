@@ -29,7 +29,7 @@
 				<h4>Device:</h4>
 				<input type="number" id="deviceID" name="deviceID"></input>
 				<label for="deviceName">Name:</label>
-				<input type="text" id="deviceName" name="deviceName" readonly></input>
+				<input type="text" id="deviceName" name="deviceName" ></input>
 				</br>
 				<label for="model">Model:</label>
 				<input type="text" id="model" name="model" readonly></input>
@@ -70,6 +70,8 @@
 					</br>
 					<textarea id="notes" name="notes" placeholder="Include other relavant info here.">
 					</textarea>
+					<input type='checkbox' id="Recallable" name="Recallable" value=1> 
+					<label for='Recallable'>This device is eligible for recall.</label>
 				</div>
 				<div class="buttons">
 					<button type="submit" id="updateButton">Update</button>

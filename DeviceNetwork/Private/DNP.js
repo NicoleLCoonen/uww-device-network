@@ -7,16 +7,15 @@ var Markers = {
     fn: {
         addMarkers: function() {
             var target = $('#image-wrapper');
-            var data = target.attr('data-captions');
-            var captions = $.parseJSON(data);
+			var data = target.attr('data-captions');
+            var captions = JSON.parse(data);
             var coords = captions.coords; // An array of port group objects 
-		
 
             for (let i = 0; i < coords.length; i++) {
                 var obj = coords[i];
 				var top = obj.top - 10;
 				var left = obj.left - 10;
-
+				var id = obj.ID
 				var text = obj.text ;
                 var ports = text.ports; 
 				var devices = text.devices;
@@ -36,6 +35,7 @@ var Markers = {
 					let portInfo = Object.values(myPort);
 					let status = myPort.Port_Status;
 					let portID = myPort.ID;
+					let insert = '';
 					if(myPort.Damaged === 1) {
 							status += "*" ;
 						};
@@ -46,10 +46,24 @@ var Markers = {
 						tableContent += '<td><button class="icon" type="button">' + ICON + "</button</td>" ;
 						let myDevice = myPort.Device;
 						let deviceInfo = Object.values(myDevice);
+						if(myDevice.hasOwnProperty('Accessories')){
+							let accessories = myDevice.Accessories;
+							for(p = 0; p < accessories.length; p++){
+								let acc = accessories[p];
+								/*add empty table cells just to keep the display tidy.
+								 I'm hiding the first column of data in all tables because that's
+								 where I'm storing ID numbers for now.*/
+								insert += '<tr><td>' + acc.ID + '</td><td>' + acc.Name + '</td><td></td><td></td></tr>';
+							};
+						};
 						if(deviceInfo.length === 5){
 							tableContent += '<td><table class="device"><th>ID</th><th>Name</th><th>Model</th><th>Noncap</th>' ;						
 							tableContent += '<tr><td>' + myDevice.ID + '</td><td>' + myDevice.Computer_Name + "</td><td>" + myDevice.Model + "</td>" ;
-							tableContent += "<td>" + myDevice.Noncap + "</td></tr></table></td>" ;
+							tableContent += "<td>" + myDevice.Noncap + "</td></tr>" ;
+							
+							if( insert !== 'undefined'){ tableContent += insert; };
+							tableContent += "</table></td>";
+							
 						} else {
 							tableContent += '<td><table class="device"><th>ID</th><th>Name</th><th>Model</th><th>Noncap</th>' ;
 							tableContent += '<th>Vendor</th><th>Vendor ID</th><th></th><th></th>';
@@ -72,7 +86,7 @@ var Markers = {
                     left: left
                 }).html('<span class="caption"> Ports: ' + ports +  '; Devices: ' + devices + 
 					'</br><button class="smallButton" type="button" name="Details"><small>Details</small></button></span>'
-					+ PORT_HEAD + portTable + CLOSE_TABLE).data("top", top).data("left", left).
+					+ PORT_HEAD + portTable + CLOSE_TABLE).data("top", top).data("left", left).data('id', id).
                 appendTo(target);
 				
 				
@@ -269,19 +283,12 @@ var Markers = {
 		
 		changeLibrary: function(){
 			$('#changeLibrary').click(function(){
-				let url = this.attr('data-url');
+				let url = $(this).attr('data-url');
 				window.location.assign(url);
 			});
 		},
 		
-		openReports: function(){
-			$('#reports').click(function(){
-				let loc = $('#reports').attr("data-url");
-				//console.log(loc);
-				window.location.assign(loc);
-				
-			});
-		}
+		
 				
 	},
 			
@@ -298,7 +305,6 @@ var Markers = {
 		this.fn.changeFloor();
 		this.fn.changeLibrary();
 		this.fn.adjustMarkers();
-		this.fn.openReports();
     }
 };
 

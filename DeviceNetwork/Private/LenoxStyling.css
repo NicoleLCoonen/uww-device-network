@@ -21,9 +21,8 @@ div.sidebar {
 	position: absolute;
 	border: 8px double #3d1452;
 	display: none;
-	margin: 2.75% auto;
+	margin: 4em auto;
 	z-index: -3;
-	
 }
 div.graveyard {
 	display: none;
@@ -231,6 +230,21 @@ button.smallButton{
 
 button.icon{
 	width: 36px;
+}
+a {
+	color: GhostWhite;
+	font-weight: bold;
+	font-size: 18px;
+	margin: 2%;
+}
+.norm{
+	height: auto;
+	width: auto;
+	margin-bottom: 1%;
+	font-weight: bold;
+	font-size: 16px;
+	background:GhostWhite;
+	color:#4f2683;
 }
 
 #output {

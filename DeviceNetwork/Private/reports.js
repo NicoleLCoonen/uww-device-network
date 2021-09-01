@@ -1,3 +1,4 @@
+
 var Handler = {
 	
 	fn: {
@@ -16,6 +17,14 @@ var Handler = {
 		changeFloor: function(){
 			$('#floorSelect').change( function(){
 				let url = $(this).val();
+				window.location.assign(url);
+			});
+		},
+		
+		changeLibrary: function(){
+			$('#changeLibrary').click(function(){
+				let url = $('#changeLibrary').attr('data-url');
+				//console.log(url);
 				window.location.assign(url);
 			});
 		},
@@ -49,6 +58,8 @@ var Handler = {
 			
 			if(graveyard.length > 0){
 				$(".overview").css('display' , 'block');
+				$('.graveyard th:last-child').prev('th').hide();
+				$('.graveyard td:last-child').prev('td').hide();
 				$('.graveyard th:last-child').show();
 				let $recall = $('.graveyard td:last-child:contains(1)');
 				$recall.replaceWith("<td><button type='button' class='recall'>Recall</button><button type='button' class='edit'>Edit</button></td>");
@@ -94,9 +105,30 @@ var Handler = {
 					$('#deviceModel').val(model);
 					$('#recallForm').val('true').show();
 					
-					$('#portFloor').change(function(){
+					//shows floor selection by branch
+					$('.branch').click(function(){
+						$(this).css("background", "#4f2683");
+						let $branch = $(this).attr('id');
+						$('#selectByBranch').show();
+						if($branch === 'Andersen'){
+							$('#AportFloor').show();
+							$('#Lenox').css("background", "#c3c5f2")
+							$('#LportFloor:visible').hide();
+						}else if($branch === 'Lenox'){
+							$('#LportFloor').show();
+							$('#Andersen').css("background", "#c3c5f2")
+							$('#AportFloor:visible').hide();
+						};
+						
+					});
+					
+					// generates a list of ports as radio inputs labeled with their name
+					$('#AportFloor, #LportFloor').change(function(){
+						// clear previous list
+						let oldList = $('#portSelection').find(":radio , label");
+						oldList.remove();
 						let dataCap = $(this).val();
-						let portList = $.parseJSON(dataCap);
+						let portList = JSON.parse(dataCap);
 						let ports = portList.Ports;
 						let radioSelect ='';
 						
@@ -104,18 +136,20 @@ var Handler = {
 							let portID = ports[i].ID;
 							let portName = ports[i].Port_Name;
 							
-							radioSelect += "<input type='radio' name='newPort' id='" + portID +"' value='" + portID +">";
+							radioSelect += "<input type='radio' name='newPort' id='" + portID +"' value='" + portID +"' >";
 							radioSelect +=	"<label for='" + portID + "'>" + portName + "</label></br>";
 						};
 						
+						// inserts the list and makes the radio input a required field
 						$('#portSelection p').after(radioSelect);
+						$(':radio:first-child[name=newPort]').attr("required", true);
 						$('#portSelection').show();
 						
 					});
 				
 				
 					let officeCheck = name.indexOf('-O');
-						
+						console.log(officeCheck);
 						if(officeCheck !== -1){
 							let staffCap = $('#officeSelection').attr('data-caption');
 							let staffList = $.parseJSON(staffCap);
@@ -131,7 +165,10 @@ var Handler = {
 							};
 						
 							$('#officeSelection p').after(staffSelect);
+							$(':radio:first-child[name=newUser]').attr("required", true);
 							$('#officeSelection').show();
+						}else if(officeCheck === -1){
+							$('#officeSelection').hide();
 						};
 						
 				}else if(formVisible.length === 1){
@@ -173,6 +210,7 @@ var Handler = {
 	init: function() {
 		this.fn.displayReport();
 		this.fn.changeFloor();
+		this.fn.changeLibrary();
 		this.fn.styleToGo();
 		this.fn.orderFlexItems();
 		this.fn.recallDevice();

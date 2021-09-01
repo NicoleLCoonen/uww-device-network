@@ -92,9 +92,9 @@
 				$rows .= mysqli_num_rows($device_result);
 				
 				if($rows > 0){
-					if($device_result !== false){
+					if($device_result !== null){
 						$device = mysqli_fetch_assoc($device_result) ;
-						if($device !== false){
+						if($device !== null){
 							$result['Device'] = $device ;
 							$c++ ;
 						};
@@ -105,9 +105,9 @@
 					$sql = "SELECT * FROM staff_computers WHERE Connection=" . $result['ID'] ;
 					$device_result = mysqli_query($db, $sql);
 					
-					if($device_result !== false){
+					if($device_result !== null){
 						$device = mysqli_fetch_assoc($device_result) ;
-						if($device !== false){
+						if($device !== null){
 							$d['ID'] = $device['ID'];
 							$d['Computer_Name'] = $device['Computer_Name'];
 							$d['Noncap'] = $device['Noncap'];
@@ -115,7 +115,7 @@
 						
 							$sql = "SELECT * FROM accessories WHERE Device_Connection=" . $device['ID'];
 							$aResult = mysqli_query($db, $sql);
-							if($aResult !== false){
+							if($aResult !== null){
 								$x = mysqli_num_rows($aResult);
 								if($x > 0){
 									while($accessory = mysqli_fetch_assoc($aResult)){
@@ -161,8 +161,7 @@
 		};
 
 		//array_push($group_objects, $current_group);
-		//print_r($lenoxUpper);
-		
+	
 	};
 };
 

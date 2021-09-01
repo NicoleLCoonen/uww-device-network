@@ -1,0 +1,22 @@
+@charset 'utf-8';
+@media screen{
+	*{
+		box-sizing: border-box;
+		font-family: "Open Sans", sans-serif;
+	}
+
+	form{
+		width: 40%;
+		padding: 2%;
+	}
+	
+	input{
+		margin: 2%;
+	}
+	
+	table {
+		width: 30%;
+		border-collapse: collapse;
+		
+	}
+}

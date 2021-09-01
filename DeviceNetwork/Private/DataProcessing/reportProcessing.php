@@ -3,8 +3,7 @@ require_once('queryFunctions.php');
 
 $compTotal = 0;
 	if(is_post_request() && isset($_POST["data-report"])){
-		print_r($_POST);
-		
+
 		$reportType = $_POST["data-report"];
 		
 		if($reportType === "general"){
@@ -37,6 +36,8 @@ $compTotal = 0;
 			$firstFloor = array();
 			$mainFloor = array();
 			$thirdFloor = array();
+			$lenoxUpper = array();
+			$lenoxLower = array();
 			$sql = "SELECT * FROM data_ports WHERE Port_Status=1";
 			
 			$resultSet = mysqli_query($db, $sql);
@@ -46,35 +47,45 @@ $compTotal = 0;
 			while($port = mysqli_fetch_assoc($resultSet)){
 			
 				//Separates available ports from those in use.
-				//Looks for a computer connection first, then printer/scanner connections
+				//Looks for a computer connection first, then staff/office equipment, then printer/scanner connections
 				$sql = "SELECT * FROM computers WHERE Connection=" . $port['ID'];
 
 				$deviceResult = mysqli_query($db, $sql);
 				$dr = mysqli_fetch_row($deviceResult);
 				if($dr === null){
-					$auxSql = 'SELECT * FROM printers_and_scanners WHERE Connection=' . $port['ID'];
+					$staffSql = "SELECT * FROM staff_computers WHERE Connection=" . $port['ID'];
 					
-					$auxResult = mysqli_query($db, $auxSql);
-					$ar = mysqli_fetch_row($auxResult);
-					if($ar === null){
-						$location = locate_port($port);
-						array_push($locationArr, $location);	
-						$port = array_slice($port, 0, 2,true);			
-						if(($location >= 1 && $location <= 5) || ($location >= 21 && $location <= 23)){
-							array_push($firstFloor, $port);
-						} else if (($location >= 15 && $location <= 17) ||( $location == 19)) {
-							array_push($thirdFloor, $port);
-						} else{
-							array_push($mainFloor, $port);
-						};
+					$staffDevices = mysqli_query($db, $staffSql);
+					$sr = mysqli_fetch_row($staffDevices);
+					if($sr === null){
+						$auxSql = 'SELECT * FROM printers_and_scanners WHERE Connection=' . $port['ID'];
 						
+						$auxResult = mysqli_query($db, $auxSql);
+						$ar = mysqli_fetch_row($auxResult);
+						if($ar === null){
+							$location = locate_port($port);
+							array_push($locationArr, $location);	
+							$port = array_slice($port, 0, 2,true);
+							
+							if(($location >= 1 && $location <= 5) || ($location >= 21 && $location <= 23)){
+								array_push($firstFloor, $port);
+							}else if (($location >= 15 && $location <= 17) ||( $location == 19)) {
+								array_push($thirdFloor, $port);
+							}else if($location == 25){
+								array_push($lenoxLower, $port);
+							}else if($location == 24 || $location > 25){
+								array_push($lenoxUpper, $port);
+							}else{
+								array_push($mainFloor, $port);
+							};
+						};
 					};
 				};
 			};
 			
 			unset($sql);
 			
-			$sql = 'SELECT * FROM fake_staff ORDER BY Last_Name, First_Name ASC';
+			$sql = 'SELECT * FROM library_staff ORDER BY Last_Name, First_Name ASC';
 			
 			$staffSet = mysqli_query($db, $sql);
 			$staffPerson = array();

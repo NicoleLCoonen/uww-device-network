@@ -124,20 +124,28 @@
 						<form id='recallForm' name='recall' value='' method='post' action="<?php echo(url_for("reports.php")); ?>">
 						<button type="button" id="closeForm">X</button>
 							<div id='deviceInfo'>
-								<input id='deviceID' name='deviceID' type='number'></input>
+								<input id='deviceID' name='deviceID' type='number' hidden></input>
 								<label for='deviceName'>Device: </label>
 								<input id='deviceName' name='deviceName' type='text' readonly></input>
 								<input id='deviceNC' name='deviceNC' type='text' readonly></input>
 								<input id='deviceModel' name='deviceModel' type='text' readonly></input>
 							</div>
-							<label for='portFloor'>Select a floor to see available ports for this device.</label></br>
-							<select id='portFloor' name='portFloor'>
-								<option value="" disabled selected hidden>Select Floor</option>
-								<option value='<?php if(isset($portJSONfirst)){echo($portJSONfirst);}; ?>'>First Floor</option>
-								<option value='<?php if(isset($portJSONfmain)){echo($portJSONfmain);}; ?>'>Main Floor</option>
-								<option value='<?php if(isset($portJSONthird)){echo($portJSONthird);}; ?>'>Third Floor</option>
-							</select>
-							
+							<button id='Andersen' type='button' class='branch'>Andersen</button>
+							<button id='Lenox' type='button' class='branch'>Lenox</button>
+							<span id='selectByBranch' hidden>
+								<label for='portFloor'>Select a floor to see available ports for this device.</label></br>
+								<select id='AportFloor' name='portFloor' hidden>
+									<option value="" disabled selected hidden>Select Floor</option>
+									<option value='<?php if(isset($portJSONfirst)){echo($portJSONfirst);}; ?>'>First Floor</option>
+									<option value='<?php if(isset($portJSONmain)){echo($portJSONmain);}; ?>'>Main Floor</option>
+									<option value='<?php if(isset($portJSONthird)){echo($portJSONthird);}; ?>'>Third Floor</option>
+								</select>
+								<select id='LportFloor' name='portFloor' hidden>
+									<option value="" disabled selected hidden>Select Floor</option>
+									<option value='<?php if(isset($portJSONupper)){echo($portJSONupper);}; ?>'>Upper Level</option>
+									<option value='<?php if(isset($portJSONlower)){echo($portJSONlower);}; ?>'>Lower Level</option>
+								</select>
+							</span>
 							<div id='portSelection'>
 								<p>Please select a port:</p></br>
 							</div>	
@@ -148,7 +156,7 @@
 							<button type='submit' id='recallSubmit'>Submit</button>
 						</form>
 						
-						<form name='edit' method='post' action="<?php echo(url_for("reports.php")); ?>">
+						<!--<form name='edit' method='post' action="<?php //echo(url_for("reports.php")); ?>">
 							<input id='deviceID' name='deviceID' type='number'></input>
 							<label for='deviceName'>Device: </label>
 							<input id='deviceName' name='deviceName' type='text' readonly></input>
@@ -168,7 +176,7 @@
 							</br>
 							<textarea id="notes" name="notes" placeholder="Include other relavant info here.">
 							</textarea>
-						</form>
+						</form>-->
 						
 					</div>	
 				</div>
@@ -292,7 +300,11 @@
 			
 	</main>
 	
-	<?php  require_once('../Private/DataProcessing/recall_or_edit.php'); ?>
+	
+	
+	<?php 
+	
+	require_once('../Private/DataProcessing/recall_or_edit.php'); ?>
 </body>
 
 </html>

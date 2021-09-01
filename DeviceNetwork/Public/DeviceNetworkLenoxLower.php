@@ -1,4 +1,4 @@
-<?php require_once('./Private/DataProcessing/placeholder.php');
+<?php require_once('../Private/DataProcessing/placeholder.php');
 	 $thisFile = url_for('DeviceNetworkLenoxLower.php'); 
 ?>
 <!doctype html>
@@ -18,9 +18,9 @@
 		<h1>Lenox Library Device Network</h1>
 		<h2 id='floor'>Lower Level</h2>
 		<span>
-			<button type='button' id='changeLibrary' data-url='<?php echo url_for("DeviceNetworkMain.php");?>'>Andersen Maps</button>
-			<button type='button' id='changeFloor' data-url='<?php echo url_for("DeviceNetworkLenoxUpper.php");?>'>Upper Level</button>
-			<button type="button" id="reports" data-url='<?php echo url_for("reports.php");?>'>Run Reports</button>
+			<button  class='norm' type='button' id='changeLibrary' data-url='<?php echo url_for("DeviceNetworkMain.php");?>'>Andersen Maps</button>
+			<a href='<?php echo url_for("DeviceNetworkLenoxUpper.php");?>'>Upper Level</a>
+			<button  class='norm' type="button" id="reports" data-url='<?php echo url_for("reports.php");?>'>Run Reports</button>
 			<!--<button type="button" id="admin" data-url='<?php //echo url_for("admin.php");?>'>Admin</button>-->
 			<a href='<?php echo(url_for("FAQ.php"))?>'>FAQ</a>
 		</span>
@@ -34,6 +34,7 @@
 				</br>
 				<label for="necromancer">Include withdrawn devices in results:</label>
 				<input id="necromancer" type="checkbox">
+				<button type='button' id='deviceView'>Switch to device view</button>
 			</div>
 		<div id="container">	
 

@@ -2,27 +2,29 @@ var Handler = {
 	
 	fn: {
 		displayReport: function(){
-			$("#display").children('div').hide();
+			
 			$('.topic button').click(function(){
 				let topic = $(this).attr("data-topic");
 				let showTopic= "#" + topic ;
 				$("#display").show();
-				let $show = $(showTopic).show();
-				$show.siblings().hide;
+				$(showTopic).show();
+				$(showTopic).siblings().hide();
+				
 			});
 		},
 		
-		changeFloor: function(){
-			$('#floorSelect').change( function(){
-				let url = $(this).val();
+			changeLibrary: function(){
+			$('#changeLibrary, #change-Library').click(function(){
+				let url = $(this).attr('data-url');
+				//console.log(url);
 				window.location.assign(url);
 			});
-		}
+		},
 	},
 	
 	init: function() {
 		this.fn.displayReport();
-		this.fn.changeFloor();
+		this.fn.changeLibrary();
 	}
 	
 };

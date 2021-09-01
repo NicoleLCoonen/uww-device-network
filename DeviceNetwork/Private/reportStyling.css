@@ -98,6 +98,7 @@ button {
 	width: 100%
 }
 
+
 button.recall {
 	height:50%;
 	width:100%;
@@ -144,12 +145,22 @@ select {
 }
 
 .norm{
-	width: auto;
 	height: auto;
-	background: Gainsboro;
-	color:#000;
-	font-size: 12px;
-	padding:1%;
+	width: auto;
+	margin-bottom: 1%;
+	font-weight: bold;
+	font-size: 16px;
+	background:GhostWhite;
+	color:#4f2683;
+}
+.branch{
+	height: auto;
+	width: auto;
+	margin-bottom: 1%;
+	font-weight: bold;
+	font-size: 16px;
+	background:#4f2683;
+	color:GhostWhite;
 }
 
 .heading {
@@ -235,11 +246,11 @@ td{
 a {
 	color: GhostWhite;
 	font-weight: bold;
-	font-size: 14px;
+	font-size: 16px;
 }
 
 select{
-	margin: 2%;
+	padding:0.5em;
 }
 
 }

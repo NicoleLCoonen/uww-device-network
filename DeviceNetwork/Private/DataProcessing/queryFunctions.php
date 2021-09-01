@@ -1,16 +1,12 @@
 <?php 
 
-
 // Use this one when working from DeviceNetwork
-require_once('../Private/Connect/initialize.php') ;
-
-
+require_once('..\Private\Connect\initialize.php') ;
 
 // Use this one when working from placeholder.php
 //require_once('..\Connect\initialize.php') ;
 
 // translate on/off
-
 function get_status($bool) {
 	
 	if($bool == true){
@@ -29,6 +25,7 @@ function trim_array($current_array){
 		return $current_array;
 }
 
+//sorts ports into 3 groups based on port_status and damage data
 function count_ports_by_status(){
 	
 	global $db;
@@ -56,6 +53,7 @@ function count_ports_by_status(){
 	return $result;
 }
 
+//creates an array of unique model names
 function get_models() {
 	
 	global $db;
@@ -74,6 +72,7 @@ function get_models() {
 	return$modelArr;
 }
 
+//uses results from get_models to determine how many of each the library owns. useful for determining age at a glance
 function count_models($modelArr){
 	
 	global $db;
@@ -93,7 +92,7 @@ function count_models($modelArr){
 	return $result;
 }
 
-// Determines a device's location based on its' connection
+// Determines a device's location based on its connection
 function locate_device($device){
 	
 	global $db;
@@ -110,6 +109,7 @@ function locate_device($device){
 	
 }
 
+//gets the location code of a port in order to sort by floor, or eventually, by zone.
 function locate_port($port){
 	global $db;
 	
@@ -125,6 +125,8 @@ function locate_port($port){
 	};
 	
 }
+
+//sorts an array 
 function count_by_floor($locationArr, $f, $m, $t){
 	foreach($locationArr as $location){
 	
@@ -139,7 +141,7 @@ function count_by_floor($locationArr, $f, $m, $t){
 	return array($f, $m, $t);
 }
 
-
+// This function, as well as create_breakdown, create_table_head, and create_table_body dynamically create html element(s) of a report
 function create_overview($assocArray) {
 	$display = "<div class='overview'><h3>Total: </h3>";
 	
@@ -168,6 +170,8 @@ function create_breakdown($multiDimArray){
 	$display .= "</div>";
 	return $display;	
 }
+
+// creates an array of unique venodors
 function get_vendors() {
 	
 	global $db;
@@ -191,6 +195,10 @@ function create_table_head($assocArray){
 	$display = "<tr>" ;
 	
 	foreach($keys as $key){
+		if($key === 'Recallable'){
+			$key = "Recall";
+		};
+		
 		$display .= "<th>" . str_replace("_", " ", $key) . "</th>"; 
 	};
 	 
@@ -209,11 +217,32 @@ function create_table_body($assocArray){
 	return $display;
 }
 
+//replaces null values with N/A for a more easily comprehensible report
+function fill_empty_cells($assocArray){
+	foreach($assocArray as $th => $td){
+		if(!$td){
+			$td = "N/A" ;
+		};
+		$assocArray[$th] = $td;	
+	};
+	return($assocArray);
+}
+// converts sql date format (YYYY-MM-DD) to US standard(MM-DD-YYYY)
+function date_from_sql($string){
+	$date = explode("-", $string) ;
+	$year = $date[0] ;
+	$month = $date[1];
+	$day = $date[2] ;
+	$string = $month . "-" . $day . "-" . $year ;
+	return($string);
+	
+}
 
-
-
-
-
+// self-explanatory
+function full_name($assocArray){
+	$fullName = $assocArray["First_Name"] . " " . $assocArray["Last_Name"];
+	return($fullName);
+}
 
 
 ?>

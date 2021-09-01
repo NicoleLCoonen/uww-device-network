@@ -17,12 +17,12 @@
 		<h1>Andersen Library Device Network</h1>
 		<h2 id='floor'>First Floor</h2>
 		<span>
-		<button type='button' class=''norm' id='changeLibrary' data-url='<?php echo url_for("DeviceNetworkLenoxUpper.php");?>'>Lenox Maps</button>
+		<button class='norm' type='button' class=''norm' id='changeLibrary' data-url='<?php echo url_for("DeviceNetworkLenoxUpper.php");?>'>Lenox Maps</button>
 			<select id='floorSelect'>
 				<option value='' disabled selected hidden>Change Floor</option>
 				<option value="<?php echo url_for("DeviceNetworkMain.php");?>">Main Floor</option>
 				<option value="<?php echo url_for("DeviceNetworkThird.php");?>">Third Floor</option>
-				<button type="button" id="reports" data-url='<?php echo(url_for("reports.php"))?>'>Run Reports</button>
+				<button class='norm' type="button" id="reports" data-url='<?php echo(url_for("reports.php"))?>'>Run Reports</button>
 				<!--<button type="button" id="admin" data-url='<?php //echo url_for("admin.php");?>'>Admin</button>-->
 				<a href='<?php echo(url_for("FAQ.php"))?>'>FAQ</a>
 			</select>
@@ -37,6 +37,7 @@
 		</br>
 		<label for="necromancer">Include withdrawn devices in results:</label>
 		<input id="necromancer" type="checkbox" value="0" checked="">
+		<button type='button' id='deviceView'>Switch to device view</button>
 		</div>
 		
 	<div id="container">	

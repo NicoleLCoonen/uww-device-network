@@ -19,6 +19,13 @@
 	justify-content: space-between;
 	padding:2%;
 }
+#display {
+	display:none;
+}
+
+#isplay div{
+	display: none;
+}
 #topicForm {
 	flex: 1 1 100%;
 	margin: 20px;
@@ -46,16 +53,27 @@ button {
 	width: 100%;
 }
 .norm{
-	width: auto;
 	height: auto;
-	background: Gainsboro;
-	color:#000;
-	font-size: 12px;
-	padding:1%;
+	width: auto;
+	margin-bottom: 1%;
+	font-weight: bold;
+	font-size: 16px;
+	background:GhostWhite;
+	color:#4f2683;
 }
 select{
 	margin: 2%;
 }
-
+ a {
+	color: GhostWhite;
+	font-weight: bold;
+	font-size: 18px;
+	margin: 2%; 
+ }
+ 
+ .email {
+	 color: #4f2683;
+	 margin: auto
+ }
 
 }

@@ -5,12 +5,11 @@ var searching = 0 ;
 
 var Markers = {
     fn: {
-        addMarkers: function() {
+       addMarkers: function() {
             var target = $('#image-wrapper');
-            var data = target.attr('data-captions');
-            var captions = $.parseJSON(data);
+			var data = target.attr('data-captions');
+            var captions = JSON.parse(data);
             var coords = captions.coords; // An array of port group objects 
-		
 
             for (let i = 0; i < coords.length; i++) {
                 var obj = coords[i];
@@ -85,7 +84,7 @@ var Markers = {
                $('<span class="marker"/>').css({
                     top: top,
                     left: left
-                }).html('<span class="caption"> Ports: ' + ports +  '; Devices: ' + devices + 
+                }).html('<span class="caption">Ports: ' + ports +  '; Devices: ' + devices + 
 					'</br><button class="smallButton" type="button" name="Details"><small>Details</small></button></span>'
 					+ PORT_HEAD + portTable + CLOSE_TABLE).data("top", top).data("left", left).data('id', id).
                 appendTo(target);
@@ -144,6 +143,9 @@ var Markers = {
 							};
 						
 							let $marker = $(this).closest('span.marker') ;
+							$marker.css({"background": "#4f2683" ,"z-index" : 3 });
+							let $others = $marker.siblings('span.marker');
+							$others.css({"background" : "#c3c5f2", "z-index" : 0 });
 							let $details = $marker.children('table.details');
 								$details.show();
 								
@@ -186,6 +188,47 @@ var Markers = {
 			
 		},
 		
+		toggleDeviceView: function(){
+			let view = $('#deviceView').text();
+			if (view === 'Switch to device view'){
+				$('#deviceView').one("click",function(){
+					$('#queries').after('<p>This view is a work in progress.</p>');
+					let $markers = $('span.marker');
+						for(i = 0; i < $markers.length; i++){
+							let $marker = $($markers[i]);
+							let top = $marker.data("top");
+							let left = $marker.data("left");
+							let deviceCheck = $($marker).find('th:contains("Name")');
+							if(deviceCheck.length ==0){
+								$marker.hide();
+							}else if(deviceCheck.length != 0){
+								for(x=0; x < deviceCheck.length; x++ ){
+									let caption = $marker.find('.caption').text();
+									let count = caption.slice(-9,-7);
+									/*$marker.css("z-index", -5);
+									let table = $marker.find("table.device").detach();
+									$('<span class="deviceMarker"/>').css({
+										top: top,
+										left: left
+									}).text(count).html(table).appendTo("image-wrapper");
+									$("span.deviceMarker").hover(function(){
+										$(this).find(".device").slideToggle(300);
+									});*/
+								};
+							};
+						};
+						
+						$('#deviceView').text('Switch to port view');
+				});
+			};
+				$('#deviceView').click(function(){
+					
+					//let refresh = '<meta http-equiv="refresh" content="0.1">';
+					//$('header').append(refresh);
+				});
+			
+		},
+		
 		performQuery: function(){
 			$('#userInput').keyup(function(){
 			$userInput = $('#userInput').val();	
@@ -197,10 +240,14 @@ var Markers = {
 					let notMatch = ":not(:contains("+ $userInput + "))";
 					$("span.marker").css({"border": "none","background" : " #d7adeb"});
 					let $genResult = $("span.marker" + match);
-					$genResult.css({"border": "2px solid LightCoral", "background": "#4f2683"});
+					$genResult.css({"border": "2px solid LightCoral", "background": "#4f2683", "z-index" : 3});
 					$("tr").css({"border-bottom": "2px dotted #3d1452"});
 					let $result = $("td" + match);
 					let $resultInside = $result.parents('table.device');
+					
+					let $others = $("span.marker" + notMatch);
+					$others.css({"background" : "#c3c5f2", "z-index" : 0 });
+					
 					
 					if($resultInside.length > 0 ){
 						let $parentCell = $resultInside.parents('td');
@@ -212,6 +259,8 @@ var Markers = {
 						if($result.length <= 2){
 							$result.closest('table').show();
 							$result.parents('tr').css({"border": "2px solid LightCoral"});
+						}else {
+							$("span.marker").children(":visible").hide();
 						};
 						
 					if(raiseDead.length > 0){
@@ -252,11 +301,14 @@ var Markers = {
 		displayForms: function() {
 			$("table.details td").dblclick(function() {
 					let w = $("#image-wrapper").css("width");
+					let scrollPos = $('#updateForms').scrollTop()
+					console.log(scrollPos);
 					w = w.slice(0, -2);
 					w = parseFloat(w);
 					w = (w + 20) + "px";
-					$("#updateForms").css("left", w);
+					$("#updateForms").css({"left": w});
 					$("#updateForms").show();
+					let initialTop = $("#updateForms").css("top");
 					$('input[type="number"], #phpDelete').hide();
 					$('input[type="tel"]').val('');
 					$(':checkbox,:radio').prop('checked', false);
@@ -286,7 +338,6 @@ var Markers = {
 						if($status.length === 2) {
 							$("#On").prop("checked", true);
 							$("#new").attr("disabled", false);
-							
 							
 						} else if($status.length === 3) {
 							$("#Off").prop("checked", true);;
@@ -580,6 +631,7 @@ var Markers = {
 		this.fn.showDetails();
 		this.fn.showDevice();
 		this.fn.performQuery();
+		this.fn.toggleDeviceView();
 		this.fn.reset();
 		this.fn.displayForms();
 		this.fn.closeForm();
@@ -598,7 +650,7 @@ var Markers = {
 
 
 
-$(function() {
+window.onload = function() {
     Markers.init();
 
-});
+};

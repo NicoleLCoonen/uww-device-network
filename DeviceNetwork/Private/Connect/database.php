@@ -32,6 +32,4 @@ function db_disconnect($connection) {
 	}
 }
 
-
-
 ?>

@@ -17,14 +17,12 @@
 		<h1>Andersen Library Device Network</h1>
 		<h2 id='floor'>First Floor</h2>
 		<span>
-		<button type='button' id='changeLibrary' data-url='<?php echo url_for("DeviceNetworkLenoxUpper.php");?>'>Lenox Maps</button>
+		<button type='button' class='norm' id='changeLibrary' data-url='<?php echo url_for("DNMapLenoxUpper.php");?>'>Lenox Maps</button>
 			<select id='floorSelect'>
 				<option value='' disabled selected hidden>Change Floor</option>
 				<option value="<?php echo url_for("DNMapMain.php");?>">Main Floor</option>
 				<option value="<?php echo url_for("DNMapThird.php") ;?>">Third Floor</option>
 			</select>
-			<button type="button" id="reports" data-url='<?php echo url_for("reports.php")?>'>Run Reports</button>
-			<a href="<?php echo(url_for("DNLogIn.php")); ?>">Log In</a>
 		</span>
 	</header>
 
@@ -39,52 +37,10 @@
 		</div>
 		
 	<div id="container">	
-		<div class="graveyard">
-			<table class="graveyard">
-				<th>Name</th>
-				<th>Noncap</th>
-				<th>Model</th>
-				<th>Vendor</th>
-				<th>Vendor ID</th>
-				<th>Date Removed</th>
-				<th>Destination</th>
-				<th>Notes</th>
-				<?php if(isset($result_set)){
-					confirm_result_set($result_set);
-					
-					while($result = mysqli_fetch_assoc($result_set)){
-							foreach($result as $th => $td){
-									if($td == null){
-										$td = "N/A" ;
-									};
-								$result[$th] = $td;	
-							};
-							
-							$date = explode("-", $result["Date_Removed"]) ;
-							$year = $date[0] ;
-							$month = $date[1] ;
-							$day = $date[2] ;
-							$result["Date_Removed"] = $month . "-" . $day . "-" . $year ;
-				?>
-				<tr>
-					<td><?php echo($result["Device_Name"]) ;?></td>
-					<td><?php echo($result["Noncap"]) ;?></td>
-					<td><?php echo($result["Model"]) ;?></td>
-					<td><?php echo($result["Vendor"]) ;?></td>
-					<td><?php echo($result["Vendor_Name"]) ;?></td>
-					<td><?php echo($result["Date_Removed"]) ;?></td>
-					<td><?php echo($result["Sent_To"]) ;?></td>
-					<td><?php echo($result["Notes"]) ;?></td>
-				</tr>	
-
-			<?php					
-					};
-				};
+		<?php 
+				require_once('graveyard.php');
 				
 			?>
-				
-			</table>
-		</div>
 		
 		<div id='image-wrapper' data-captions='<?php echo($firstJson) ; ?>'>
 			<img class='map' src="../Private/FirstBlueprintDNP-100.jpg" alt="A map of the Andersen Library's first floor, with markers indicating the locations of Data Ports" max-width="100%" height="auto"/>
