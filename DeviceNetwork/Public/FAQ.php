@@ -81,7 +81,7 @@
 					<li><p>How do I see more detailed information about the ports and devices at a specific location on the map?</p>
 						<details>
 							<p>When you hover your mouse over or click on a marker on the map, a caption will show the number of ports and devices at that location.
-							Underneath that, there is a button that says "Details", which yu can click to display port information. If a port has a device connected to it,
+							Underneath that, there is a button that says "Details", which yOu can click to display port information. If a port has a device connected to it,
 							there will be a button with an electrical plug icon next to the ports status. Clicking that button will reveal more information about the device and its
 							accessories, if applicable.</p>
 						</details>
@@ -104,7 +104,7 @@
 							sure to set the port satus to "On" and leave the "Broken" box unchecked before submitting!</p>
 						</details>
 					</li>
-					<li><p>How do I move add a new device?</p>
+					<li><p>How do I add a new device?</p>
 						<details>
 							<p>To add a device, select an empty port, make sure the status is set to "On", and click the "New Device" button. This will unlock three form fields
 							which you can then fill with relevant data. Be aware that vendor information should only be included for printers, scanners, and other devices provied by 

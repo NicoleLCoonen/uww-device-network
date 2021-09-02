@@ -166,7 +166,7 @@ span.marker:before {
 span.deviceMarker {
     width: 20px;
     height: 20px;
-    background: #4f2683;
+    background: Tomato;
     color: #fff;
     text-align: center;
     position: absolute;
@@ -174,7 +174,7 @@ span.deviceMarker {
     cursor: pointer;
 	z-index: 3;
 	font-family: "Candara", sans-serif;
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: bold;
 }
 

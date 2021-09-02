@@ -57,7 +57,7 @@ var Markers = {
 							};
 						};
 						if(deviceInfo.length === 5){
-							tableContent += '<td><table class="device"><th>ID</th><th>Name</th><th>Model</th><th>Noncap</th>' ;						
+							tableContent += '<td><table class="device computer"><th>ID</th><th>Name</th><th>Model</th><th>Noncap</th>' ;						
 							tableContent += '<tr><td>' + myDevice.ID + '</td><td>' + myDevice.Computer_Name + "</td><td>" + myDevice.Model + "</td>" ;
 							tableContent += "<td>" + myDevice.Noncap + "</td></tr>" ;
 							
@@ -65,7 +65,7 @@ var Markers = {
 							tableContent += "</table></td>";
 							
 						} else {
-							tableContent += '<td><table class="device"><th>ID</th><th>Name</th><th>Model</th><th>Noncap</th>' ;
+							tableContent += '<td><table class="device other"><th>ID</th><th>Name</th><th>Model</th><th>Noncap</th>' ;
 							tableContent += '<th>Vendor</th><th>Vendor ID</th><th></th><th></th>';
 							tableContent += '<tr><td>' + myDevice.ID + '</td><td>' + myDevice.Device_Name + "</td><td>" + myDevice.Model + "</td>" ;
 							tableContent += "<td>" + myDevice.Noncap + "</td><td>" + myDevice.Vendor +"</td><td>" + myDevice.Vendor_Name + "</td>" ;
@@ -189,43 +189,49 @@ var Markers = {
 		},
 		
 		toggleDeviceView: function(){
+			// check the view once
 			let view = $('#deviceView').text();
+			console.log(view);
 			if (view === 'Switch to device view'){
 				$('#deviceView').one("click",function(){
-					$('#queries').after('<p>This view is a work in progress.</p>');
+					$('#queries').append('<p>This view is a work in progress.</p>');
 					let $markers = $('span.marker');
 						for(i = 0; i < $markers.length; i++){
 							let $marker = $($markers[i]);
-							let top = $marker.data("top");
-							let left = $marker.data("left");
 							let deviceCheck = $($marker).find('th:contains("Name")');
 							if(deviceCheck.length ==0){
 								$marker.hide();
 							}else if(deviceCheck.length != 0){
 								for(x=0; x < deviceCheck.length; x++ ){
+									let top = $marker.data("top");
+									let left = $marker.data("left");
+									let id = $marker.data("id");
 									let caption = $marker.find('.caption').text();
 									let count = caption.slice(-9,-7);
-									/*$marker.css("z-index", -5);
-									let table = $marker.find("table.device").detach();
-									$('<span class="deviceMarker"/>').css({
+									$marker.css("z-index", -5);
+									
+								
+								$('<span class="deviceMarker"/>').css({
 										top: top,
 										left: left
-									}).text(count).html(table).appendTo("image-wrapper");
-									$("span.deviceMarker").hover(function(){
+									}).text(count).data("top", top).data("left", left).data('id', id).
+									appendTo('#image-wrapper');
+									
+									/*$("span.deviceMarker").hover(function(){
 										$(this).find(".device").slideToggle(300);
 									});*/
+									
 								};
 							};
 						};
-						
+						// after the view is changed, the above code attaches a new function on the click event, then removes itself.
 						$('#deviceView').text('Switch to port view');
+						$('#deviceView').click(function(){
+						let refresh = '<meta http-equiv="refresh" content="0.01">';
+						$('header').append(refresh);
+					});
 				});
 			};
-				$('#deviceView').click(function(){
-					
-					//let refresh = '<meta http-equiv="refresh" content="0.1">';
-					//$('header').append(refresh);
-				});
 			
 		},
 		
@@ -579,7 +585,7 @@ var Markers = {
 				
 				let markerHalfWidth = $("span.marker").width() / 2;
 				let markerOrigHalfWidth = 10;
-				$("span.marker").each(function(index, element) {
+				$("span.marker, span.deviceMarker").each(function(index, element) {
 					$(element).css('top', (($(element).data("top") + markerOrigHalfWidth) * ratio) - markerHalfWidth);
 					$(element).css('left', (($(element).data("left") + markerOrigHalfWidth) * ratio) - markerHalfWidth);
 				});
