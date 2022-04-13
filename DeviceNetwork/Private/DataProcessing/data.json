@@ -15,11 +15,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 23,
-                    "Computer_Name": "L2101-19-LP",
+                    "Computer_Name": "AN2101-16-LP",
                     "Connection": 1,
-                    "Noncap": 306896,
-                    "Model": "HP 8300 AIO"
+                    "Noncap": 308017,
+                    "Model": "HP 8300 AIO",
+                    "ID": 176
                 }
             },
             "Port2": {
@@ -28,11 +28,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 24,
-                    "Computer_Name": "L2101-15-LP",
+                    "Computer_Name": "AN2101-15-LP",
                     "Connection": 2,
                     "Noncap": "309731/302946",
-                    "Model": "HP 800"
+                    "Model": "HP 800",
+                    "ID": 25
                 }
             }
         }
@@ -51,20 +51,20 @@
                 "ID": 3,
                 "Port_Name": "2213B-110 D",
                 "Port_Status": "On",
-                "Damaged": 0
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2101-24-LP",
+                    "Connection": 3,
+                    "Noncap": 310717,
+                    "Model": "HP 800",
+                    "ID": 175
+                }
             },
             "Port2": {
                 "ID": 4,
                 "Port_Name": "2213B-111 D",
                 "Port_Status": "On",
-                "Damaged": 0,
-                "Device": {
-                    "ID": 22,
-                    "Computer_Name": "L2213-02-LM",
-                    "Connection": 4,
-                    "Noncap": 312680,
-                    "Model": "iMac 2015"
-                }
+                "Damaged": 0
             },
             "Port3": {
                 "ID": 5,
@@ -114,17 +114,17 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 20,
-                    "Computer_Name": "L2213-08-LM",
+                    "Computer_Name": "AN2213-02-LM",
                     "Connection": 8,
-                    "Noncap": 310811,
-                    "Model": "iMac 2015"
+                    "Noncap": 312680,
+                    "Model": "iMac 2015",
+                    "ID": 23
                 }
             },
             "Port2": {
                 "ID": 9,
                 "Port_Name": "L 2213A-242 D-2",
-                "Port_Status": "On",
+                "Port_Status": "Off",
                 "Damaged": 0
             },
             "Port3": {
@@ -133,11 +133,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 21,
-                    "Computer_Name": "L2101-20-LP",
+                    "Computer_Name": "AN2101-14-LP",
                     "Connection": 10,
                     "Noncap": 306899,
-                    "Model": "HP 8300 AIO"
+                    "Model": "HP 8300 AIO",
+                    "ID": 22
                 }
             },
             "Port4": {
@@ -170,11 +170,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 1,
-                    "Computer_Name": "L2101-01-LP",
+                    "Computer_Name": "AN2101-01-LP",
                     "Connection": 13,
                     "Noncap": 308363,
-                    "Model": "HP 8300 AIO"
+                    "Model": "HP 8300 AIO",
+                    "ID": 2
                 }
             },
             "Port3": {
@@ -183,11 +183,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 71,
                     "Computer_Name": "Catalog Laptop-Circ",
                     "Connection": 14,
                     "Noncap": 306485,
-                    "Model": "MacBook Air"
+                    "Model": "MacBook Air",
+                    "ID": 72
                 }
             },
             "Port4": {
@@ -299,7 +299,7 @@
                     "Vendor_Name": 14124700,
                     "Connection": 19,
                     "Noncap": "Cap 159432",
-                    "Vendor_Website": "#https://my.ricoh-usa.com#",
+                    "Vendor_Website": "my.ricoh-usa.com",
                     "Vendor_Phone": "1-888-456-6457"
                 }
             },
@@ -309,11 +309,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 48,
                     "Computer_Name": "PRS-2101-LP",
                     "Connection": 20,
-                    "Noncap": 308549,
-                    "Model": null
+                    "Noncap": "302736/308549",
+                    "Model": "HP 8300",
+                    "ID": 49
                 }
             }
         }
@@ -324,63 +324,69 @@
         "left": 894.191,
         "top": 507.551,
         "text": {
-            "ports": 7,
+            "ports": 8,
             "devices": 2
         },
         "Ports": {
             "Port1": {
-                "ID": 21,
-                "Port_Name": "L 2213B-066 V/D",
+                "ID": 36,
+                "Port_Name": "2213B-132 D",
                 "Port_Status": "Off",
-                "Damaged": 1
+                "Damaged": 0
             },
             "Port2": {
-                "ID": 22,
-                "Port_Name": "2213B-144 D",
-                "Port_Status": "On",
-                "Damaged": 0,
-                "Device": {
-                    "ID": 6,
-                    "Computer_Name": "L2101-10-LP",
-                    "Connection": 22,
-                    "Noncap": 306892,
-                    "Model": "HP 8300 AIO"
-                }
+                "ID": 37,
+                "Port_Name": "2213B-133 D",
+                "Port_Status": "Off",
+                "Damaged": 0
             },
             "Port3": {
-                "ID": 23,
-                "Port_Name": "2213B-145 D",
+                "ID": 38,
+                "Port_Name": "2213B-134 D",
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 5,
-                    "Computer_Name": "L2101-09-LP",
-                    "Connection": 23,
-                    "Noncap": 306893,
-                    "Model": "HP 8300 AIO"
+                    "Computer_Name": "AN2101-03-LP",
+                    "Connection": 38,
+                    "Noncap": 306895,
+                    "Model": "HP 8300 AIO",
+                    "ID": 4
                 }
             },
             "Port4": {
-                "ID": 24,
-                "Port_Name": "2213B-148 D",
+                "ID": 39,
+                "Port_Name": "2213B-135 D",
                 "Port_Status": "On",
-                "Damaged": 0
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2101-04-LP",
+                    "Connection": 39,
+                    "Noncap": 306897,
+                    "Model": "HP 8300 AIO",
+                    "ID": 5
+                }
             },
             "Port5": {
-                "ID": 25,
-                "Port_Name": "L 2213B-149 D",
+                "ID": 44,
+                "Port_Name": "2213B-140 D",
                 "Port_Status": "Off",
                 "Damaged": 0
             },
             "Port6": {
-                "ID": 272,
-                "Port_Name": "2213B-03A",
+                "ID": 45,
+                "Port_Name": "2213B-141 D",
                 "Port_Status": "Off",
                 "Damaged": 0
             },
             "Port7": {
-                "ID": 273,
-                "Port_Name": "2213B-03B",
+                "ID": 46,
+                "Port_Name": "2213B-142 D",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port8": {
+                "ID": 47,
+                "Port_Name": "2213B-143 D",
                 "Port_Status": "Off",
                 "Damaged": 0
             }
@@ -402,11 +408,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 18,
-                    "Computer_Name": "L2101-25-LP",
+                    "Computer_Name": "AN2101-13-LP",
                     "Connection": 26,
                     "Noncap": 306900,
-                    "Model": "HP 8300 AIO"
+                    "Model": "HP 8300 AIO",
+                    "ID": 19
                 }
             },
             "Port2": {
@@ -415,11 +421,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 17,
-                    "Computer_Name": "L2213-07-LM",
+                    "Computer_Name": "AN2101-23-LP",
                     "Connection": 27,
-                    "Noncap": 310809,
-                    "Model": "iMac 2015"
+                    "Noncap": 306954,
+                    "Model": "HP 8300 ",
+                    "ID": 160
                 }
             },
             "Port3": {
@@ -450,20 +456,20 @@
                 "ID": 30,
                 "Port_Name": "2213A-D310 2101-51A",
                 "Port_Status": "On",
-                "Damaged": 0
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2101-17-LP",
+                    "Connection": 30,
+                    "Noncap": "308969/306646",
+                    "Model": "HP 800",
+                    "ID": 170
+                }
             },
             "Port2": {
                 "ID": 31,
                 "Port_Name": "2213A-D311 2101-51B",
                 "Port_Status": "On",
-                "Damaged": 0,
-                "Device": {
-                    "ID": 19,
-                    "Computer_Name": "L2101-29-LP",
-                    "Connection": 31,
-                    "Noncap": "307025/306646",
-                    "Model": "HP 8300"
-                }
+                "Damaged": 0
             }
         }
     },
@@ -525,11 +531,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 2,
-                    "Computer_Name": "L2101-06-LP",
+                    "Computer_Name": "AN2101-02-LP",
                     "Connection": 43,
                     "Noncap": 306894,
-                    "Model": "HP 8300 AIO"
+                    "Model": "HP 8300 AIO",
+                    "ID": 3
                 }
             }
         }
@@ -540,69 +546,63 @@
         "left": 846.077,
         "top": 507.551,
         "text": {
-            "ports": 8,
+            "ports": 7,
             "devices": 2
         },
         "Ports": {
             "Port1": {
-                "ID": 36,
-                "Port_Name": "2213B-132 D",
+                "ID": 21,
+                "Port_Name": "L 2213B-066 V/D",
                 "Port_Status": "Off",
-                "Damaged": 0
+                "Damaged": 1
             },
             "Port2": {
-                "ID": 37,
-                "Port_Name": "2213B-133 D",
-                "Port_Status": "Off",
-                "Damaged": 0
-            },
-            "Port3": {
-                "ID": 38,
-                "Port_Name": "2213B-134 D",
+                "ID": 22,
+                "Port_Name": "2213B-144 D",
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 3,
-                    "Computer_Name": "L2101-07-LP",
-                    "Connection": 38,
-                    "Noncap": 306895,
-                    "Model": "HP 8300 AIO"
+                    "Computer_Name": "AN2101-05-LP",
+                    "Connection": 22,
+                    "Noncap": 306892,
+                    "Model": "HP 8300 AIO",
+                    "ID": 7
+                }
+            },
+            "Port3": {
+                "ID": 23,
+                "Port_Name": "2213B-145 D",
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2101-06-LP",
+                    "Connection": 23,
+                    "Noncap": 306893,
+                    "Model": "HP 8300 AIO",
+                    "ID": 6
                 }
             },
             "Port4": {
-                "ID": 39,
-                "Port_Name": "2213B-135 D",
+                "ID": 24,
+                "Port_Name": "2213B-148 D",
                 "Port_Status": "On",
-                "Damaged": 0,
-                "Device": {
-                    "ID": 4,
-                    "Computer_Name": "L2101-08-LP",
-                    "Connection": 39,
-                    "Noncap": 306897,
-                    "Model": "HP 8300 AIO"
-                }
+                "Damaged": 0
             },
             "Port5": {
-                "ID": 44,
-                "Port_Name": "2213B-140 D",
+                "ID": 25,
+                "Port_Name": "L 2213B-149 D",
                 "Port_Status": "Off",
                 "Damaged": 0
             },
             "Port6": {
-                "ID": 45,
-                "Port_Name": "2213B-141 D",
+                "ID": 272,
+                "Port_Name": "2213B-03A",
                 "Port_Status": "Off",
                 "Damaged": 0
             },
             "Port7": {
-                "ID": 46,
-                "Port_Name": "2213B-142 D",
-                "Port_Status": "Off",
-                "Damaged": 0
-            },
-            "Port8": {
-                "ID": 47,
-                "Port_Name": "2213B-143 D",
+                "ID": 273,
+                "Port_Name": "2213B-03B",
                 "Port_Status": "Off",
                 "Damaged": 0
             }
@@ -642,11 +642,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 7,
-                    "Computer_Name": "L2101-12-LP",
+                    "Computer_Name": "AN2101-07-LP",
                     "Connection": 51,
                     "Noncap": 308361,
-                    "Model": "HP 8300 AIO"
+                    "Model": "HP 8300 AIO",
+                    "ID": 8
                 }
             }
         }
@@ -658,21 +658,14 @@
         "top": 472.684,
         "text": {
             "ports": 4,
-            "devices": 2
+            "devices": 0
         },
         "Ports": {
             "Port1": {
                 "ID": 52,
                 "Port_Name": "L 2213A-253 D-13",
                 "Port_Status": "On",
-                "Damaged": 0,
-                "Device": {
-                    "ID": 11,
-                    "Computer_Name": "L2101-31-LP",
-                    "Connection": 52,
-                    "Noncap": "310707/302949",
-                    "Model": "HP 800"
-                }
+                "Damaged": 0
             },
             "Port2": {
                 "ID": 53,
@@ -684,14 +677,7 @@
                 "ID": 54,
                 "Port_Name": "L 2213A-255 D-15",
                 "Port_Status": "On",
-                "Damaged": 0,
-                "Device": {
-                    "ID": 10,
-                    "Computer_Name": "L2101-21-LP",
-                    "Connection": 54,
-                    "Noncap": 306902,
-                    "Model": "HP 8300 AIO"
-                }
+                "Damaged": 0
             },
             "Port4": {
                 "ID": 55,
@@ -723,11 +709,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 13,
-                    "Computer_Name": "L2101-13-LP",
+                    "Computer_Name": "AN2101-12-LP",
                     "Connection": 57,
-                    "Noncap": 304335,
-                    "Model": "HP 800"
+                    "Noncap": "308958/209507",
+                    "Model": "HP 800",
+                    "ID": 169
                 }
             },
             "Port3": {
@@ -736,11 +722,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 14,
-                    "Computer_Name": "L2213-06-LM",
+                    "Computer_Name": "AN2101-22-LP",
                     "Connection": 58,
-                    "Noncap": 310808,
-                    "Model": "iMac 2015"
+                    "Noncap": 311765,
+                    "Model": "HP 800",
+                    "ID": 163
                 }
             },
             "Port4": {
@@ -779,11 +765,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 16,
-                    "Computer_Name": "L2101-27-LP",
+                    "Computer_Name": "AN2101-19-LP",
                     "Connection": 62,
                     "Noncap": 308745,
-                    "Model": "HP 8300 AIO"
+                    "Model": "HP 8300 AIO",
+                    "ID": 17
                 }
             },
             "Port4": {
@@ -792,11 +778,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 15,
-                    "Computer_Name": "L2101-26-LP",
+                    "Computer_Name": "AN2101-18-LP",
                     "Connection": 63,
                     "Noncap": 307871,
-                    "Model": "HP 8300 AIO"
+                    "Model": "HP 8300 AIO",
+                    "ID": 16
                 }
             }
         }
@@ -815,33 +801,26 @@
                 "ID": 64,
                 "Port_Name": "2213A-218 D",
                 "Port_Status": "On",
-                "Damaged": 0,
-                "Device": {
-                    "ID": 8,
-                    "Computer_Name": "L2213-10-LM",
-                    "Connection": 64,
-                    "Noncap": 310810,
-                    "Model": "iMac 2015"
-                }
+                "Damaged": 0
             },
             "Port2": {
                 "ID": 65,
                 "Port_Name": "2213A-219 D",
                 "Port_Status": "On",
-                "Damaged": 0,
-                "Device": {
-                    "ID": 9,
-                    "Computer_Name": "L2213-09-LM",
-                    "Connection": 65,
-                    "Noncap": 310813,
-                    "Model": "iMac 2015"
-                }
+                "Damaged": 0
             },
             "Port3": {
                 "ID": 66,
                 "Port_Name": "2213A-220 D",
                 "Port_Status": "On",
-                "Damaged": 0
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2101-21-LP",
+                    "Connection": 66,
+                    "Noncap": "309988/209504",
+                    "Model": "HP 800",
+                    "ID": 168
+                }
             },
             "Port4": {
                 "ID": 67,
@@ -859,7 +838,14 @@
                 "ID": 76,
                 "Port_Name": "2213A-221 D",
                 "Port_Status": "On",
-                "Damaged": 0
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2101-01-LM",
+                    "Connection": 76,
+                    "Noncap": 312677,
+                    "Model": "iMac 2015",
+                    "ID": 136
+                }
             }
         }
     },
@@ -882,11 +868,11 @@
                     "ID": 10,
                     "Device_Name": "Scanner 55-91",
                     "Model": "elo + iVina Monitor, SS A3 Bookedge FB6280E, BulletScan S400",
-                    "Vendor": "Today's Business Solutions (TBS)",
+                    "Vendor": "Today\u0027s Business Solutions (TBS)",
                     "Vendor_Name": "(Center)Simplescan",
                     "Connection": 69,
                     "Noncap": "N/A",
-                    "Vendor_Website": "#https://tbsit360.com/#",
+                    "Vendor_Website": "tbsit360.com",
                     "Vendor_Phone": "1-630-567-1370"
                 }
             },
@@ -899,11 +885,11 @@
                     "ID": 9,
                     "Device_Name": "Scanner 39-76",
                     "Model": "elo Monitor,SS A3 Bookedge FB6280E, Sheetfeed Scanner AD240",
-                    "Vendor": "Today's Business Solutions (TBS)",
+                    "Vendor": "Today\u0027s Business Solutions (TBS)",
                     "Vendor_Name": "(Basement Left)2",
                     "Connection": 70,
                     "Noncap": "N/A",
-                    "Vendor_Website": "#https://tbsit360.com/#",
+                    "Vendor_Website": "tbsit360.com",
                     "Vendor_Phone": "1-630-567-1370"
                 }
             }
@@ -949,11 +935,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 47,
-                    "Computer_Name": "L2101-05-LP",
+                    "Computer_Name": "AN2101-11-LP",
                     "Connection": 79,
                     "Noncap": 308954,
-                    "Model": "HP 800"
+                    "Model": "HP 800",
+                    "ID": 174
                 }
             },
             "Port2": {
@@ -962,11 +948,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 12,
-                    "Computer_Name": "L2101-03-LP",
+                    "Computer_Name": "AN2101-10-LP",
                     "Connection": 80,
                     "Noncap": 306903,
-                    "Model": "HP 8300"
+                    "Model": "HP 8300 AIO",
+                    "ID": 13
                 }
             }
         }
@@ -1005,11 +991,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 30,
                     "Computer_Name": "PRS-2107-LP",
                     "Connection": 84,
-                    "Noncap": 308416,
-                    "Model": null
+                    "Noncap": "308416/30?018",
+                    "Model": "HP 8300",
+                    "ID": 31
                 }
             },
             "Port5": {
@@ -1027,7 +1013,7 @@
         "top": 653.532,
         "text": {
             "ports": 6,
-            "devices": 3
+            "devices": 4
         },
         "Ports": {
             "Port1": {
@@ -1036,18 +1022,25 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 29,
-                    "Computer_Name": "L2107-50-LP",
+                    "Computer_Name": "AN2207-02-LM",
                     "Connection": 86,
-                    "Noncap": "209499/311209 ICIT",
-                    "Model": "HP 8300"
+                    "Noncap": 312678,
+                    "Model": "iMac 2015",
+                    "ID": 92
                 }
             },
             "Port2": {
                 "ID": 87,
                 "Port_Name": "2213B-097 D",
                 "Port_Status": "On",
-                "Damaged": 0
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2107-06-LP",
+                    "Connection": 87,
+                    "Noncap": "209499/311209 ICIT",
+                    "Model": "HP 8300",
+                    "ID": 30
+                }
             },
             "Port3": {
                 "ID": 88,
@@ -1055,11 +1048,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 28,
-                    "Computer_Name": "L2101-30-LP",
+                    "Computer_Name": "AN2107-05-LP",
                     "Connection": 88,
                     "Noncap": "302947/310934",
-                    "Model": "HP 800"
+                    "Model": "HP 800",
+                    "ID": 29
                 }
             },
             "Port4": {
@@ -1068,11 +1061,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 27,
-                    "Computer_Name": "L2107-06-LP",
+                    "Computer_Name": "AN2107-04-LP",
                     "Connection": 89,
                     "Noncap": "307160/209506",
-                    "Model": "HP 8300"
+                    "Model": "HP 8300",
+                    "ID": 28
                 }
             },
             "Port5": {
@@ -1096,7 +1089,7 @@
         "top": 715.938,
         "text": {
             "ports": 14,
-            "devices": 0
+            "devices": 2
         },
         "Ports": {
             "Port1": {
@@ -1157,13 +1150,27 @@
                 "ID": 101,
                 "Port_Name": "2213B-176 D",
                 "Port_Status": "On",
-                "Damaged": 0
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2107-01-LM",
+                    "Connection": 101,
+                    "Noncap": 312682,
+                    "Model": "iMac 2015",
+                    "ID": 93
+                }
             },
             "Port11": {
                 "ID": 102,
                 "Port_Name": "2213B-177 D",
                 "Port_Status": "On",
-                "Damaged": 0
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2107-03-LP",
+                    "Connection": 102,
+                    "Noncap": "309829/209505",
+                    "Model": "HP 800",
+                    "ID": 165
+                }
             },
             "Port12": {
                 "ID": 103,
@@ -1225,11 +1232,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 25,
-                    "Computer_Name": "L2107-01-LP",
+                    "Computer_Name": "AN2107-02-LP",
                     "Connection": 105,
-                    "Noncap": "310915/209495",
-                    "Model": "HP 8300"
+                    "Noncap": "310915/209495\r\n310915/209495",
+                    "Model": "HP 8300",
+                    "ID": 26
                 }
             },
             "Port2": {
@@ -1238,11 +1245,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 26,
-                    "Computer_Name": "L2107-07-LP",
+                    "Computer_Name": "AN2107-01-LP",
                     "Connection": 106,
-                    "Noncap": "307492/209505",
-                    "Model": "HP 8300"
+                    "Noncap": 307219,
+                    "Model": "HP 8300 AIO",
+                    "ID": 94
                 }
             },
             "Port3": {
@@ -1284,14 +1291,14 @@
             "Port1": {
                 "ID": 117,
                 "Port_Name": "2213A-D306 2101-49A",
-                "Port_Status": "Off",
+                "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 42,
-                    "Computer_Name": "L2101-28-LP",
+                    "Computer_Name": "AN2101-20-LP",
                     "Connection": 117,
-                    "Noncap": 307491,
-                    "Model": "HP 8300 AIO"
+                    "Noncap": "310712/304444",
+                    "Model": "HP 800",
+                    "ID": 171
                 }
             },
             "Port2": {
@@ -1393,7 +1400,7 @@
         "top": 594.852,
         "text": {
             "ports": 2,
-            "devices": 1
+            "devices": 2
         },
         "Ports": {
             "Port1": {
@@ -1402,18 +1409,29 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 49,
-                    "Computer_Name": "PRS-2201-LP",
+                    "ID": 3,
+                    "Device_Name": "Printer 2201",
+                    "Model": "HP LaserJet 9050dn",
+                    "Vendor": "HP Support",
+                    "Vendor_Name": 688948,
                     "Connection": 121,
-                    "Noncap": 308521,
-                    "Model": null
+                    "Noncap": "Not Found",
+                    "Vendor_Website": "hp.com/go/mpsservice",
+                    "Vendor_Phone": "1-800-745-2025"
                 }
             },
             "Port2": {
                 "ID": 122,
                 "Port_Name": "2213B-160 D",
                 "Port_Status": "On",
-                "Damaged": 0
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "PRS-2201-LP",
+                    "Connection": 122,
+                    "Noncap": "308521/204057",
+                    "Model": "HP 8300",
+                    "ID": 50
+                }
             }
         }
     },
@@ -1454,26 +1472,47 @@
         "top": 838.054,
         "text": {
             "ports": 3,
-            "devices": 0
+            "devices": 3
         },
         "Ports": {
             "Port1": {
                 "ID": 341,
                 "Port_Name": "IDF 2213A-76 2211-1A",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-18-LP",
+                    "Connection": 341,
+                    "Noncap": 311600,
+                    "Model": "HP 800 AIO",
+                    "ID": 99
+                }
             },
             "Port2": {
                 "ID": 342,
                 "Port_Name": "IDF 2213A-P77 2211-1B",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-17-LP",
+                    "Connection": 342,
+                    "Noncap": 311599,
+                    "Model": "HP 800 AIO",
+                    "ID": 100
+                }
             },
             "Port3": {
                 "ID": 343,
                 "Port_Name": "IDF 2213A-294 2211-1C",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-19-LP",
+                    "Connection": 343,
+                    "Noncap": 311601,
+                    "Model": "HP 800 AIO",
+                    "ID": 102
+                }
             }
         }
     },
@@ -1499,11 +1538,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 32,
-                    "Computer_Name": "L2213-03-LP",
+                    "Computer_Name": "AN2213-07-LP",
                     "Connection": 129,
                     "Noncap": "310932/305818/305813",
-                    "Model": "HP 800"
+                    "Model": "HP 800",
+                    "ID": 33
                 }
             },
             "Port3": {
@@ -1512,11 +1551,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 33,
-                    "Computer_Name": "L2213-04-LP",
+                    "Computer_Name": "AN2213-06-LP",
                     "Connection": 130,
                     "Noncap": "310929/305815/305814",
-                    "Model": "HP 800"
+                    "Model": "HP 800",
+                    "ID": 34
                 }
             }
         }
@@ -1528,44 +1567,86 @@
         "top": 838.054,
         "text": {
             "ports": 6,
-            "devices": 0
+            "devices": 6
         },
         "Ports": {
             "Port1": {
                 "ID": 344,
                 "Port_Name": "2213B-072D",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-31-LP",
+                    "Connection": 344,
+                    "Noncap": 311604,
+                    "Model": "HP 800 AIO",
+                    "ID": 101
+                }
             },
             "Port2": {
                 "ID": 345,
                 "Port_Name": "2213B-073D",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-26-LP",
+                    "Connection": 345,
+                    "Noncap": 311591,
+                    "Model": "HP 8300 AIO",
+                    "ID": 103
+                }
             },
             "Port3": {
                 "ID": 346,
                 "Port_Name": "2213B-074D",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-25-LP",
+                    "Connection": 346,
+                    "Noncap": 311589,
+                    "Model": "HP 800 AIO",
+                    "ID": 104
+                }
             },
             "Port4": {
                 "ID": 347,
                 "Port_Name": "2213B-075D",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-24-LP",
+                    "Connection": 347,
+                    "Noncap": 311580,
+                    "Model": "HP 800 AIO",
+                    "ID": 105
+                }
             },
             "Port5": {
                 "ID": 348,
                 "Port_Name": "IDF 2213A-293 2211-3A",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-23-LP",
+                    "Connection": 348,
+                    "Noncap": 311606,
+                    "Model": "HP 800 AIO",
+                    "ID": 106
+                }
             },
             "Port6": {
                 "ID": 349,
                 "Port_Name": "IDF 2213A-P296 2211-3A",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-27-LP",
+                    "Connection": 349,
+                    "Noncap": 311585,
+                    "Model": "HP 800 AIO",
+                    "ID": 107
+                }
             }
         }
     },
@@ -1612,20 +1693,34 @@
         "top": 838.054,
         "text": {
             "ports": 2,
-            "devices": 0
+            "devices": 2
         },
         "Ports": {
             "Port1": {
                 "ID": 350,
                 "Port_Name": "2213B-070D",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-28-LP",
+                    "Connection": 350,
+                    "Noncap": 311608,
+                    "Model": "HP 800 AIO",
+                    "ID": 108
+                }
             },
             "Port2": {
                 "ID": 351,
                 "Port_Name": "2213B-071D",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-20-LP",
+                    "Connection": 351,
+                    "Noncap": 311605,
+                    "Model": "HP 800 AIO",
+                    "ID": 109
+                }
             }
         }
     },
@@ -1636,14 +1731,21 @@
         "top": 911.95,
         "text": {
             "ports": 3,
-            "devices": 0
+            "devices": 1
         },
         "Ports": {
             "Port1": {
                 "ID": 134,
                 "Port_Name": "2213A-D343 2230-06",
                 "Port_Status": "On",
-                "Damaged": 0
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2232-01-LP",
+                    "Connection": 134,
+                    "Noncap": "310930/305807/305811",
+                    "Model": "HP 800",
+                    "ID": 164
+                }
             },
             "Port2": {
                 "ID": 135,
@@ -1666,32 +1768,60 @@
         "top": 838.054,
         "text": {
             "ports": 4,
-            "devices": 0
+            "devices": 4
         },
         "Ports": {
             "Port1": {
                 "ID": 352,
                 "Port_Name": "IDF 2213A-P68 2211-4A",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-29-LP",
+                    "Connection": 352,
+                    "Noncap": 311594,
+                    "Model": "HP 800 AIO",
+                    "ID": 110
+                }
             },
             "Port2": {
                 "ID": 353,
                 "Port_Name": "IDF 2213A-P69 2211-4B",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-30-LP",
+                    "Connection": 353,
+                    "Noncap": 311597,
+                    "Model": "HP 800 AIO",
+                    "ID": 111
+                }
             },
             "Port3": {
                 "ID": 354,
                 "Port_Name": "IDF 2213A-P291 2211-4C",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-22-LP",
+                    "Connection": 354,
+                    "Noncap": 311603,
+                    "Model": "HP 800 AIO",
+                    "ID": 112
+                }
             },
             "Port4": {
                 "ID": 355,
                 "Port_Name": "IDF 2213A-P295 2211-4D",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-21-LP",
+                    "Connection": 355,
+                    "Noncap": 311607,
+                    "Model": "HP 800 AIO",
+                    "ID": 113
+                }
             }
         }
     },
@@ -1702,32 +1832,60 @@
         "top": 948.731,
         "text": {
             "ports": 4,
-            "devices": 0
+            "devices": 4
         },
         "Ports": {
             "Port1": {
                 "ID": 356,
                 "Port_Name": "IDF 2213A-P88",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-05-LP",
+                    "Connection": 356,
+                    "Noncap": 311582,
+                    "Model": "HP 800 AIO",
+                    "ID": 127
+                }
             },
             "Port2": {
                 "ID": 357,
                 "Port_Name": "IDF 2213A-P89",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-11-LP",
+                    "Connection": 357,
+                    "Noncap": 311586,
+                    "Model": "HP 800 AIO",
+                    "ID": 156
+                }
             },
             "Port3": {
                 "ID": 358,
                 "Port_Name": "IDF 2213A-P90",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-13-LP",
+                    "Connection": 358,
+                    "Noncap": 311598,
+                    "Model": "HP 800 AIO",
+                    "ID": 128
+                }
             },
             "Port4": {
                 "ID": 359,
                 "Port_Name": "IDF 2213A-P91",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-12-LP",
+                    "Connection": 359,
+                    "Noncap": 311587,
+                    "Model": "HP 800 AIO",
+                    "ID": 129
+                }
             }
         }
     },
@@ -1747,11 +1905,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 35,
-                    "Computer_Name": "L2107-04-LP",
+                    "Computer_Name": "AN2213-04-LP",
                     "Connection": 137,
                     "Noncap": 309622,
-                    "Model": "HP 8300"
+                    "Model": "HP 8300",
+                    "ID": 36
                 }
             },
             "Port2": {
@@ -1766,11 +1924,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 36,
-                    "Computer_Name": "L2107-03-LP",
+                    "Computer_Name": "AN2213-03-LP",
                     "Connection": 139,
                     "Noncap": 310704,
-                    "Model": "HP 8300"
+                    "Model": "HP 8300",
+                    "ID": 37
                 }
             }
         }
@@ -1782,32 +1940,60 @@
         "top": 948.731,
         "text": {
             "ports": 4,
-            "devices": 0
+            "devices": 4
         },
         "Ports": {
             "Port1": {
                 "ID": 360,
                 "Port_Name": "IDF 2213A-P84",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-08-LP",
+                    "Connection": 360,
+                    "Noncap": 311590,
+                    "Model": "HP 800 AIO",
+                    "ID": 123
+                }
             },
             "Port2": {
                 "ID": 361,
                 "Port_Name": "IDF 2213A-P85",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-04-LP",
+                    "Connection": 361,
+                    "Noncap": 311592,
+                    "Model": "HP 800 AIO",
+                    "ID": 124
+                }
             },
             "Port3": {
                 "ID": 362,
                 "Port_Name": "IDF 2213A-P86",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-07-LP",
+                    "Connection": 362,
+                    "Noncap": 311595,
+                    "Model": "HP 800 AIO",
+                    "ID": 125
+                }
             },
             "Port4": {
                 "ID": 363,
                 "Port_Name": "IDF 2213A-P87",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-09-LP",
+                    "Connection": 363,
+                    "Noncap": 311575,
+                    "Model": "HP 800 AIO",
+                    "ID": 126
+                }
             }
         }
     },
@@ -1818,32 +2004,60 @@
         "top": 948.731,
         "text": {
             "ports": 4,
-            "devices": 0
+            "devices": 4
         },
         "Ports": {
             "Port1": {
                 "ID": 364,
                 "Port_Name": "IDF 2213A-81 2211-7A",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-01-LP",
+                    "Connection": 364,
+                    "Noncap": 311588,
+                    "Model": "HP 800 AIO",
+                    "ID": 117
+                }
             },
             "Port2": {
                 "ID": 365,
                 "Port_Name": "IDF 2213A-P82 2211-7B",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-15-LP",
+                    "Connection": 365,
+                    "Noncap": 311610,
+                    "Model": "HP 800 AIO",
+                    "ID": 120
+                }
             },
             "Port3": {
                 "ID": 366,
                 "Port_Name": "IDF 2213A-83 2211-7C",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-10-LP",
+                    "Connection": 366,
+                    "Noncap": 311596,
+                    "Model": "HP 800 AIO",
+                    "ID": 122
+                }
             },
             "Port4": {
                 "ID": 367,
                 "Port_Name": "IDF 2213A-P299 2211-7D",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-06-LP",
+                    "Connection": 367,
+                    "Noncap": 311593,
+                    "Model": "HP 800 AIO",
+                    "ID": 121
+                }
             }
         }
     },
@@ -1869,11 +2083,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 37,
-                    "Computer_Name": "L2101-17-LP",
+                    "Computer_Name": "AN2213-02-LP",
                     "Connection": 141,
                     "Noncap": 309725,
-                    "Model": "HP 800"
+                    "Model": "HP 800",
+                    "ID": 38
                 }
             },
             "Port3": {
@@ -1882,11 +2096,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 50,
-                    "Computer_Name": "L2201-08-LP",
+                    "Computer_Name": "AN2213-01-LP",
                     "Connection": 142,
-                    "Noncap": 310570,
-                    "Model": null
+                    "Noncap": "310570/302891",
+                    "Model": "HP 800",
+                    "ID": 51
                 }
             }
         }
@@ -1898,38 +2112,73 @@
         "top": 948.731,
         "text": {
             "ports": 6,
-            "devices": 0
+            "devices": 5
         },
         "Ports": {
             "Port1": {
                 "ID": 368,
                 "Port_Name": "IDF 2213A-297 221-6A",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-16-LP",
+                    "Connection": 368,
+                    "Noncap": 311581,
+                    "Model": "HP 800 AIO",
+                    "ID": 115
+                }
             },
             "Port2": {
                 "ID": 369,
                 "Port_Name": "IDF 2213A-298 2211-6B",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-TCH-LP",
+                    "Connection": 369,
+                    "Noncap": 311609,
+                    "Model": "HP 800 AIO",
+                    "ID": 114
+                }
             },
             "Port3": {
                 "ID": 370,
                 "Port_Name": "2213B-078D",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-14-LP",
+                    "Connection": 370,
+                    "Noncap": 311584,
+                    "Model": "HP 800 AIO",
+                    "ID": 118
+                }
             },
             "Port4": {
                 "ID": 371,
                 "Port_Name": "2213B-079D",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-03-LP",
+                    "Connection": 371,
+                    "Noncap": 311602,
+                    "Model": "HP 800 AIO",
+                    "ID": 119
+                }
             },
             "Port5": {
                 "ID": 372,
                 "Port_Name": "2213B-080D",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2211-02-LP",
+                    "Connection": 372,
+                    "Noncap": 311611,
+                    "Model": "HP 800 AIO",
+                    "ID": 116
+                }
             },
             "Port6": {
                 "ID": 373,
@@ -2030,14 +2279,14 @@
             "Port1": {
                 "ID": 148,
                 "Port_Name": "IDF 2213A-274 L 2101-34",
-                "Port_Status": "Off",
+                "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 43,
-                    "Computer_Name": "L2201-11-LM",
+                    "Computer_Name": "AN2201-01-LM",
                     "Connection": 148,
                     "Noncap": 312679,
-                    "Model": "iMac 2015"
+                    "Model": "iMac 2015",
+                    "ID": 44
                 }
             },
             "Port2": {
@@ -2074,20 +2323,20 @@
                 "ID": 152,
                 "Port_Name": "IDF 2213A-278 L 2101-38",
                 "Port_Status": "On",
-                "Damaged": 0,
-                "Device": {
-                    "ID": 44,
-                    "Computer_Name": "L2201-06-LM",
-                    "Connection": 152,
-                    "Noncap": 310806,
-                    "Model": "iMac 2015"
-                }
+                "Damaged": 0
             },
             "Port3": {
                 "ID": 153,
                 "Port_Name": "IDF 2213A-279 L 2101-39",
                 "Port_Status": "On",
-                "Damaged": 0
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2201-06-LP",
+                    "Connection": 153,
+                    "Noncap": "309803/304481",
+                    "Model": "HP 800",
+                    "ID": 173
+                }
             },
             "Port4": {
                 "ID": 154,
@@ -2143,11 +2392,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 45,
-                    "Computer_Name": "L2201-08-LM",
+                    "Computer_Name": "AN2201-05-LP",
                     "Connection": 158,
-                    "Noncap": 310801,
-                    "Model": "iMac 2015"
+                    "Noncap": 307497,
+                    "Model": "HP 8300",
+                    "ID": 172
                 }
             },
             "Port3": {
@@ -2174,11 +2423,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 46,
-                    "Computer_Name": "L2201-05-LM",
+                    "Computer_Name": "AN2201-04-LP",
                     "Connection": 160,
-                    "Noncap": 310812,
-                    "Model": "iMac 2015"
+                    "Noncap": 309727,
+                    "Model": "HP 800",
+                    "ID": 161
                 }
             },
             "Port2": {
@@ -2187,11 +2436,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 39,
-                    "Computer_Name": "L2201-04-LP",
+                    "Computer_Name": "AN2201-03-LP",
                     "Connection": 161,
                     "Noncap": "310939 ICIT",
-                    "Model": "HP 8300"
+                    "Model": "HP 8300",
+                    "ID": 40
                 }
             },
             "Port3": {
@@ -2218,11 +2467,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 40,
-                    "Computer_Name": "L2201-01-LP",
+                    "Computer_Name": "AN2201-02-LP",
                     "Connection": 163,
                     "Noncap": 310933,
-                    "Model": "HP 800"
+                    "Model": "HP 800",
+                    "ID": 41
                 }
             },
             "Port2": {
@@ -2231,11 +2480,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 41,
-                    "Computer_Name": "L2201-02-LP",
+                    "Computer_Name": "AN2201-01-LP",
                     "Connection": 164,
                     "Noncap": 310572,
-                    "Model": "HP 800"
+                    "Model": "HP 800",
+                    "ID": 42
                 }
             },
             "Port3": {
@@ -2262,11 +2511,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 31,
-                    "Computer_Name": "L2213-02-LP",
+                    "Computer_Name": "AN2213-08-LP",
                     "Connection": 166,
                     "Noncap": "310569/305812/305816",
-                    "Model": "HP 800"
+                    "Model": "HP 800",
+                    "ID": 32
                 }
             }
         }
@@ -2311,11 +2560,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 38,
-                    "Computer_Name": "L2230-01-SLP",
+                    "Computer_Name": "AN2230-01-SLP",
                     "Connection": 170,
                     "Noncap": 310709,
-                    "Model": "HP 800"
+                    "Model": "HP 800",
+                    "ID": 39
                 }
             }
         }
@@ -2342,11 +2591,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 72,
-                    "Computer_Name": "L2213-05-LP",
+                    "Computer_Name": "AN2227-01-LP",
                     "Connection": 172,
-                    "Noncap": null,
-                    "Model": null
+                    "Noncap": "305817/305819",
+                    "Model": "HP 800",
+                    "ID": 73
                 }
             },
             "Port3": {
@@ -2745,11 +2994,11 @@
                 "Port_Status": "On",
                 "Damaged": 0,
                 "Device": {
-                    "ID": 34,
-                    "Computer_Name": "L2201-09-LP",
+                    "Computer_Name": "AN2213-05-LP",
                     "Connection": 167,
                     "Noncap": 310936,
-                    "Model": "HP 800"
+                    "Model": "HP 800",
+                    "ID": 35
                 }
             }
         }
@@ -2761,14 +3010,21 @@
         "top": 478.195,
         "text": {
             "ports": 3,
-            "devices": 0
+            "devices": 2
         },
         "Ports": {
             "Port1": {
                 "ID": 264,
                 "Port_Name": "Unlabeled on pillar - 1",
-                "Port_Status": "Off",
-                "Damaged": 0
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2101-09-LP",
+                    "Connection": 264,
+                    "Noncap": "310707/302949",
+                    "Model": "HP 800",
+                    "ID": 166
+                }
             },
             "Port2": {
                 "ID": 265,
@@ -2779,6 +3035,605 @@
             "Port3": {
                 "ID": 266,
                 "Port_Name": "Unlabeled on pillar - 3",
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "Computer_Name": "AN2101-08-LP",
+                    "Connection": 266,
+                    "Noncap": 306817,
+                    "Model": "HP 8300 AIO",
+                    "ID": 167
+                }
+            }
+        }
+    },
+    {
+        "ID": 116,
+        "Location": 20,
+        "left": 977.494,
+        "top": 658.053,
+        "text": {
+            "ports": 3,
+            "devices": 0
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 374,
+                "Port_Name": "2213B 182 D",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port2": {
+                "ID": 375,
+                "Port_Name": "2213B 183 D",
+                "Port_Status": "On",
+                "Damaged": 0
+            },
+            "Port3": {
+                "ID": 376,
+                "Port_Name": "2213B-005 D",
+                "Port_Status": "Off",
+                "Damaged": 0
+            }
+        }
+    },
+    {
+        "ID": 117,
+        "Location": 20,
+        "left": 1024.48,
+        "top": 692.548,
+        "text": {
+            "ports": 1,
+            "devices": 0
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 377,
+                "Port_Name": "2213A-D188",
+                "Port_Status": "Off",
+                "Damaged": 0
+            }
+        }
+    },
+    {
+        "ID": 118,
+        "Location": 20,
+        "left": 1003.599,
+        "top": 614.732,
+        "text": {
+            "ports": 2,
+            "devices": 0
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 378,
+                "Port_Name": "2213B-003 V/D",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port2": {
+                "ID": 379,
+                "Port_Name": "2213B-184 D",
+                "Port_Status": "Off",
+                "Damaged": 1
+            }
+        }
+    },
+    {
+        "ID": 119,
+        "Location": 20,
+        "left": 1027.944,
+        "top": 609.987,
+        "text": {
+            "ports": 1,
+            "devices": 0
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 380,
+                "Port_Name": "2213B-125 D",
+                "Port_Status": "On",
+                "Damaged": 0
+            }
+        }
+    },
+    {
+        "ID": 120,
+        "Location": 20,
+        "left": 1057.681,
+        "top": 610.664,
+        "text": {
+            "ports": 1,
+            "devices": 0
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 381,
+                "Port_Name": "2213B-124 D",
+                "Port_Status": "On",
+                "Damaged": 0
+            }
+        }
+    },
+    {
+        "ID": 121,
+        "Location": 20,
+        "left": 1080.571,
+        "top": 623.987,
+        "text": {
+            "ports": 1,
+            "devices": 0
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 382,
+                "Port_Name": "2213B-123 D",
+                "Port_Status": "On",
+                "Damaged": 0
+            }
+        }
+    },
+    {
+        "ID": 122,
+        "Location": 20,
+        "left": 1090.4,
+        "top": 653.37,
+        "text": {
+            "ports": 1,
+            "devices": 0
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 383,
+                "Port_Name": "2213B-122 D",
+                "Port_Status": "On",
+                "Damaged": 0
+            }
+        }
+    },
+    {
+        "ID": 123,
+        "Location": 20,
+        "left": 1036.386,
+        "top": 853.531,
+        "text": {
+            "ports": 2,
+            "devices": 0
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 384,
+                "Port_Name": "2213A-D356 2103-2A",
+                "Port_Status": "On",
+                "Damaged": 0
+            },
+            "Port2": {
+                "ID": 385,
+                "Port_Name": "2213A-D357 2103-2B",
+                "Port_Status": "Off",
+                "Damaged": 0
+            }
+        }
+    },
+    {
+        "ID": 124,
+        "Location": 20,
+        "left": 1001.164,
+        "top": 853.531,
+        "text": {
+            "ports": 2,
+            "devices": 0
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 386,
+                "Port_Name": "2213A-D358 2103-3A",
+                "Port_Status": "On",
+                "Damaged": 0
+            },
+            "Port2": {
+                "ID": 387,
+                "Port_Name": "2213A-D359 2103-3B",
+                "Port_Status": "Off",
+                "Damaged": 0
+            }
+        }
+    },
+    {
+        "ID": 125,
+        "Location": 20,
+        "left": 958.486,
+        "top": 853.531,
+        "text": {
+            "ports": 2,
+            "devices": 0
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 388,
+                "Port_Name": "2213A-D360 2103-4A",
+                "Port_Status": "On",
+                "Damaged": 0
+            },
+            "Port2": {
+                "ID": 389,
+                "Port_Name": "2213A-D361 2103-4B",
+                "Port_Status": "Off",
+                "Damaged": 0
+            }
+        }
+    },
+    {
+        "ID": 126,
+        "Location": 20,
+        "left": 817.192,
+        "top": 778.582,
+        "text": {
+            "ports": 1,
+            "devices": 0
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 390,
+                "Port_Name": "2213B-016 V/D",
+                "Port_Status": "Off",
+                "Damaged": 0
+            }
+        }
+    },
+    {
+        "ID": 127,
+        "Location": 20,
+        "left": 817.192,
+        "top": 796.615,
+        "text": {
+            "ports": 1,
+            "devices": 0
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 391,
+                "Port_Name": "2213B-017 V/D",
+                "Port_Status": "Off",
+                "Damaged": 0
+            }
+        }
+    },
+    {
+        "ID": 128,
+        "Location": 20,
+        "left": 822.021,
+        "top": 848.702,
+        "text": {
+            "ports": 1,
+            "devices": 0
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 392,
+                "Port_Name": "2213B-018 V/D",
+                "Port_Status": "On",
+                "Damaged": 0
+            }
+        }
+    },
+    {
+        "ID": 129,
+        "Location": 20,
+        "left": 741.308,
+        "top": 842.11,
+        "text": {
+            "ports": 1,
+            "devices": 0
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 393,
+                "Port_Name": "2213B-022 V/D",
+                "Port_Status": "On",
+                "Damaged": 0
+            }
+        }
+    },
+    {
+        "ID": 130,
+        "Location": 20,
+        "left": 701.076,
+        "top": 807.458,
+        "text": {
+            "ports": 1,
+            "devices": 0
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 394,
+                "Port_Name": "2213B-024 V/D",
+                "Port_Status": "On",
+                "Damaged": 0
+            }
+        }
+    },
+    {
+        "ID": 131,
+        "Location": 20,
+        "left": 742.106,
+        "top": 736.224,
+        "text": {
+            "ports": 2,
+            "devices": 0
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 395,
+                "Port_Name": "2213B-015 V/D",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port2": {
+                "ID": 396,
+                "Port_Name": "2213B-026 V/D",
+                "Port_Status": "On",
+                "Damaged": 0
+            }
+        }
+    },
+    {
+        "ID": 132,
+        "Location": 20,
+        "left": 1032.773,
+        "top": 712.109,
+        "text": {
+            "ports": 2,
+            "devices": 0
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 397,
+                "Port_Name": "2213A-D364 2103-1A",
+                "Port_Status": "On",
+                "Damaged": 0
+            },
+            "Port2": {
+                "ID": 398,
+                "Port_Name": "2213A-D361 2103-1B",
+                "Port_Status": "Off",
+                "Damaged": 0
+            }
+        }
+    },
+    {
+        "ID": 142,
+        "Location": 20,
+        "left": 841.348,
+        "top": 651.77,
+        "text": {
+            "ports": 1,
+            "devices": 1
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 418,
+                "Port_Name": "2213B-007 V/D",
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "ID": 45,
+                    "Computer_Name": "313067-OP",
+                    "Noncap": 313067,
+                    "Model": "ProBook 640 G#",
+                    "Accessories": [
+                        {
+                            "ID": 14,
+                            "Name": "HP 2013 UltraSlim Docking Station"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    {
+        "ID": 143,
+        "Location": 20,
+        "left": 872.845,
+        "top": 612.412,
+        "text": {
+            "ports": 1,
+            "devices": 1
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 419,
+                "Port_Name": "2213B-006 V/D",
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "ID": 9,
+                    "Computer_Name": "312355-OP",
+                    "Noncap": 312355,
+                    "Model": "Elitedesk 800 G2 SFF"
+                }
+            }
+        }
+    },
+    {
+        "ID": 144,
+        "Location": 20,
+        "left": 878.191,
+        "top": 761.068,
+        "text": {
+            "ports": 13,
+            "devices": 0
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 420,
+                "Port_Name": "2213A-D9",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port2": {
+                "ID": 421,
+                "Port_Name": "2213A-D180",
+                "Port_Status": "On",
+                "Damaged": 0
+            },
+            "Port3": {
+                "ID": 422,
+                "Port_Name": "2213A-D181",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port4": {
+                "ID": 423,
+                "Port_Name": "2213A-D8",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port5": {
+                "ID": 424,
+                "Port_Name": "2213A-D10",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port6": {
+                "ID": 425,
+                "Port_Name": "2213A-D185",
+                "Port_Status": "On",
+                "Damaged": 0
+            },
+            "Port7": {
+                "ID": 426,
+                "Port_Name": "2213A-D13",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port8": {
+                "ID": 427,
+                "Port_Name": "2213A-D14",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port9": {
+                "ID": 428,
+                "Port_Name": "2213A-V10",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port10": {
+                "ID": 429,
+                "Port_Name": "2213A-V13",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port11": {
+                "ID": 430,
+                "Port_Name": "2213A-V14",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port12": {
+                "ID": 431,
+                "Port_Name": "2213A-V6",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port13": {
+                "ID": 432,
+                "Port_Name": "2213A-V61",
+                "Port_Status": "Off",
+                "Damaged": 0
+            }
+        }
+    },
+    {
+        "ID": 145,
+        "Location": 20,
+        "left": 879.44,
+        "top": 799.629,
+        "text": {
+            "ports": 2,
+            "devices": 0
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 433,
+                "Port_Name": "2213A-D12",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port2": {
+                "ID": 434,
+                "Port_Name": "2213A-V12",
+                "Port_Status": "Off",
+                "Damaged": 0
+            }
+        }
+    },
+    {
+        "ID": 146,
+        "Location": 20,
+        "left": 950.882,
+        "top": 755.763,
+        "text": {
+            "ports": 1,
+            "devices": 1
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 435,
+                "Port_Name": "2213A-D384 2103-7A",
+                "Port_Status": "On",
+                "Damaged": 0,
+                "Device": {
+                    "ID": 48,
+                    "Computer_Name": "312790-OP",
+                    "Noncap": 312790,
+                    "Model": "EliteBook 850",
+                    "Accessories": [
+                        {
+                            "ID": 1,
+                            "Name": "EliteDisplay 21.5-Inch Monitor"
+                        },
+                        {
+                            "ID": 2,
+                            "Name": "EliteDisplay 21.5-Inch Monitor"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    {
+        "ID": 147,
+        "Location": 20,
+        "left": 987.642,
+        "top": 755.763,
+        "text": {
+            "ports": 4,
+            "devices": 0
+        },
+        "Ports": {
+            "Port1": {
+                "ID": 436,
+                "Port_Name": "2213A-D065 2103-6A",
+                "Port_Status": "On",
+                "Damaged": 0
+            },
+            "Port2": {
+                "ID": 437,
+                "Port_Name": "2213A-D066 2103-6B",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port3": {
+                "ID": 438,
+                "Port_Name": "2213A-D067 2103-6C",
+                "Port_Status": "Off",
+                "Damaged": 0
+            },
+            "Port4": {
+                "ID": 439,
+                "Port_Name": "2213A-D068 2103-6D",
                 "Port_Status": "Off",
                 "Damaged": 0
             }

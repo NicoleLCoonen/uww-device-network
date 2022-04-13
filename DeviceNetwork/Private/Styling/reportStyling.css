@@ -1,0 +1,256 @@
+@charset 'utf-8';
+@media screen{
+*{
+	box-sizing: border-box;
+	font-family: "Open Sans", sans-serif;
+}
+.masthead{
+	background: #4f2683;
+	color: GhostWhite;
+	font-weight: bold;
+	text-align: center;
+	height: 10%;
+	width: 100%;
+	margin: 10px;
+}
+#container {
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+	padding:2%;
+}
+#reportForm {
+	flex: 1 1 100%;
+	margin: 20px;
+}
+
+#recallForm{
+	display: none;
+	height: 30%;
+	width: 50%;
+	margin: auto;
+	padding:1%;
+	position: fixed;
+	top: 40%;
+	right: 25%;
+	z-index: 10;
+	background: GhostWhite;
+	border: double 2px #4f2683;
+	
+}
+#closeForm {
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	line-height: 20px;
+	right: 5px;
+	top: 5px;
+	color: #1a001a;
+	border: none;
+	background:#fff;
+	font-size:18px;
+	text-align: center;
+}
+
+#portSelection{
+	display:none;
+	height: 70%;
+	width: 30%;
+	float: left;
+	margin-left: 2%;
+	overflow: auto;
+}
+
+#officeSelection{
+	display:none;
+	height: 70%;
+	width:30%;
+	float: right;
+	margin-right: 2%;
+	overflow: auto;
+}
+
+#recallSubmit {
+	width:15%;
+	height: 10%;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	font-size: 20px;
+}
+
+#reports {
+	display: flex;
+	flex-flow: row wrap;
+}
+div.reportType{
+	flex: 1 1 300px;
+	border: solid 4px #4f2683;
+}
+button {
+	height: 100px;
+	font-weight: bold;
+	font-size: 30px;
+	background: #4f2683;
+	color: GhostWhite;
+	border: solid 2px GhostWhite;
+	cursor: pointer;
+	width: 100%
+}
+
+
+button.recall {
+	height:50%;
+	width:100%;
+	font-size: 20px;
+	margin:1%;
+	
+}
+button.edit {
+	height:50%;
+	width:100%;
+	font-size: 20px;
+	margin:1%;
+}
+
+#reports p {
+	margin: 10px;
+}
+
+select {
+	margin: 8px;
+}
+
+#print{
+	width: 10%;
+	font-size: 22px;
+	align-self:flex-end;
+	margin-right: 2%;
+	height:12%;
+}
+
+#display {
+	flex: 1 1 100%;
+	border: 8px double #3d1452;
+	margin: 2%;	
+}
+
+#display h3 {
+	margin: 2%;
+}
+
+#display > div {
+	margin: 2%;
+	padding:1%;
+}
+
+.norm{
+	height: auto;
+	width: auto;
+	margin-bottom: 1%;
+	font-weight: bold;
+	font-size: 16px;
+	background:GhostWhite;
+	color:#4f2683;
+}
+.branch{
+	height: auto;
+	width: auto;
+	margin-bottom: 1%;
+	font-weight: bold;
+	font-size: 16px;
+	background:#4f2683;
+	color:GhostWhite;
+}
+
+.heading {
+	background: #4f2683;
+	color: GhostWhite;
+	text-align: center;
+	padding: 10px;
+	width: 80%;
+	margin: auto;
+}
+.breakdown {
+	display: flex;
+	flex-flow: column;
+	margin:2%
+}
+.floor{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	height: 25%;
+	margin: 2%;
+}	
+.overview{
+	width: 100%;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	height: 25%;
+	margin-top:2%;
+	margin-bottom: 1%;
+	padding:1%;
+}
+.generic {
+	flex: 1 1 12.5%;
+	display: inline;
+	margin: 1%;
+}
+
+.floor table{
+	width: 80%;
+	margin: 2%;
+	padding:1%;
+	border: 2px solid #3d1452 ;
+	border-collapse: collapse;
+    color: #fff;
+	text-align: center;
+}
+
+.graveyard table{
+	width:100%
+}
+
+.graveyard th:first-child {
+	display:none;
+}
+
+.graveyard td:first-child {
+	display:none;
+}
+
+tr {
+	border-bottom: 2px dotted #3d1452;
+}
+tr:nth-child(even){
+	background-color: Gainsboro;
+	color: #3d1452;
+}
+tr:nth-child(odd){
+	background-color: #fff;
+	color: #3d1452;
+}
+	
+th{
+	border-top: 1px solid  #3d1452;
+	border-bottom: 1px solid  #3d1452;
+}
+td{
+	text-align: left;
+
+}
+
+
+a {
+	color: GhostWhite;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+select{
+	padding:0.5em;
+}
+
+}

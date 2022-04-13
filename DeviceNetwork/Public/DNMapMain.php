@@ -1,4 +1,4 @@
-<?php require_once('..\Private\DataProcessing\placeholder.php');
+<?php require_once('..\Private\DataProcessing\dataAssembly.php');
 
 ?>
 
@@ -7,9 +7,9 @@
 	<title>Andersen Device Network</title>
 	<meta  name="viewport" content="width=device-width, initial-scale=1.0" >
 	<meta charset="utf-8" lang ="en-us">
-	<link rel='stylesheet' href='../Private/DNPStyling.css'>
+	<link rel='stylesheet' href='../Private/Styling/portViewStyling.css'>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src='../Private/DNP.js'> </script>
+	<script src='../Private/JavaScript/portOrientation.js'> </script>
 </head>
 
 
@@ -33,16 +33,16 @@
 				<input id="userInput" type='text' name="userInput" value="" placeholder="Search">
 				<button id="reset">Clear</button>
 				</br>
-				<label for="necromancer">Include withdrawn devices in results:</label>
-				<input id="necromancer" type="checkbox" value="0" checked="">
+				<label for="includeWithdrawn">Include withdrawn devices in results:</label>
+				<input id="includeWithdrawn" type="checkbox" value="0" checked="">
 			</div>
 	<?php 
 				require_once('graveyard.php');
 				
 			?>
 			
-			<div id='image-wrapper' data-captions='<?php echo($mainJson) ; ?>'>
-				<img id='MainFloorBlueprint'class="map" src="../Private/MainBlueprintDNP-100.jpg" alt="A map of the Andersen Library's main floor, with markers indicating the locations of Data Ports" max-width="100%" height="auto" />
+			<div id='image-wrapper' data-captions='<?php echo($mainJsonP) ; ?>'>
+				<img id='MainFloorBlueprint'class="map" src="../Private/Styling/MainBlueprintDNP-100.jpg" alt="A map of the Andersen Library's main floor, with markers indicating the locations of Data Ports" max-width="100%" height="auto" />
 				<caption for='MainFloorBlueprint'>For visual clarity, some ports have been grouped together or adjusted slightly from their physical location.</br>
 				Please consider marker loacations to be approximate.</caption>
 			</div>

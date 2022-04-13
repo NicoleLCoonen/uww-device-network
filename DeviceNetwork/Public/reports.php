@@ -8,10 +8,11 @@
 	<title>Andersen Device Network</title>
 	<meta  name="viewport" content="width=device-width, initial-scale=1.0" >
 	<meta charset="utf-8" lang ="en-us">
-	<link rel='stylesheet' href='../Private/reportStyling.css' type='text/css'>
-	<link rel='stylesheet' media='print' href='../Private/print.css' type='text/css'>
+	<link rel='stylesheet' href='../Private/Styling/reportStyling.css' type='text/css'>
+	<link rel='stylesheet' media='print' href='../Private/Styling/print.css' type='text/css'>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src='../Private/reports.js'> </script>
+	<script src='../Private/JavaScript/generalFunction.js'></script>
+	<script src='../Private/JavaScript/reports.js'> </script>
 </head>
 
 
@@ -76,6 +77,11 @@
 					<div class='reportType'>
 						<button type='submit' name="data-report" value="broken" >Broken Ports</button>
 						<p>Generates a list of all ports marked as being broken. May indicate visible damage or that a port has been taped over and presumed broken.</p>
+					</div>
+					
+					<div class='reportType'>
+						<button type='submit' name="data-report" value="check">Lenox Data Collection Check</button>
+						<p>An overview of Lenox library data.</p>
 					</div>
 					
 				</div>	
@@ -291,6 +297,40 @@
 						};
 						
 					};
+					?>
+				</div>
+				
+				<div id="check" hidden="true">
+					<div class='heading'>
+						<h2>Lenox Data Ports</h2>
+						<h3>Data Collection Check</h3>
+						<p><?php echo date("m/d/y")?></p>
+					</div>
+					
+					<?php if(isset($result) && $reportType === "available"){
+								$display = create_overview($result);
+								if(isset($floors)){
+									$keys = array_keys($floors);
+									$k = 0;
+									$display .= "<div class='breakdown'>";
+									foreach($floors as $floor){
+										
+										$display .= "<div class='floor'><h4>" . $keys[$k] . "</h4><table>";
+										
+										$display .= create_table_head($floor[0]);
+									
+										foreach($floor as $port){
+											$display .= create_table_body($port);
+										};
+										$display .= "</table></div>";
+										$k++;
+									};
+									
+									$display .= "</div>";
+								};
+								
+								print_r($display);
+						};
 					?>
 				</div>
 				

@@ -1,5 +1,6 @@
 
 		<div class="graveyard" >
+		<button type="button" id="closeGraveyard">X</button>
 			<?php if(isset($result_set)){
 					
 					$stop = 0;

@@ -1,4 +1,4 @@
-<?php require_once('../Private/DataProcessing/placeholder.php');
+<?php require_once('../Private/DataProcessing/dataAssembly.php');
 	 $thisFile = url_for('DeviceNetworkLenoxUpper.php'); 
 ?>
 <!doctype html>
@@ -6,10 +6,11 @@
 	<title>Lenox Device Network</title>
 	<meta  name="viewport" content="width=device-width, initial-scale=1.0" >
 	<meta charset="utf-8" lang ="en-us">
-	<link rel='stylesheet' href='../Private/LenoxStyling.css'>
+	<link rel='stylesheet' href='../Private/Styling/LenoxStyling.css'>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script src='../Private/DNPsecured.js'> </script>
+	<script src='../Private/JavaScript/generalFunction.js'></script>
+	<script id='setView' src='../Private/JavaScript/portViewEdit.js'> </script>
 </head>
 
 
@@ -32,8 +33,8 @@
 				<input id="userInput" type='text' name="userInput" value="" placeholder="Search">
 				<button id="reset">Clear</button>
 				</br>
-				<label for="necromancer">Include withdrawn devices in results:</label>
-				<input id="necromancer" type="checkbox">
+				<label for="includeWithdrawn">Include withdrawn devices in results:</label>
+				<input id="includeWithdrawn" type="checkbox">
 				<button type='button' id='deviceView'>Switch to device view</button>
 			</div>
 		<div id="container">	
@@ -42,8 +43,8 @@
 				
 				require_once('updateForms.php');
 			?>
-			<div id='image-wrapper' data-captions='<?php echo($lenoxUJson); ?>'>
-				<img id='blueprint'class="map" src="../Private/LenoxBlueprintUpper-100.jpg" alt="A map of the Lenox Library's main floor, with markers indicating the locations of data ports" max-width="100%" height="auto" />
+			<div id='image-wrapper' data-captions-port='<?php echo($lenoxUJsonP); ?>' data-captions-device='<?php echo($lenoxUJsonD); ?>'>
+				<img id='blueprint'class="map" src="../Private/Styling/LenoxBlueprintUpper-100.jpg" alt="A map of the Lenox Library's main floor, with markers indicating the locations of data ports" max-width="100%" height="auto" />
 			</div>
 		</div>	
 		<?php 

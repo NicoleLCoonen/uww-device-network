@@ -163,6 +163,8 @@
 						continue;
 					}else if(strpos($key, "_Name") !== false){
 						$sql .= "Device_Name='" . $data . "', ";
+					}else if (strpos($key, "Flex") !==false){
+						continue;
 					}else {
 						$sql .= $key . "='" . $data . "', ";
 					};
@@ -211,7 +213,7 @@
 			}else{
 				$sql .= '0';
 			};
-			echo $sql . "</br>";
+			//echo $sql . "</br>";
 		
 			
 		if(mysqli_query($db, $sql)) {
@@ -231,6 +233,8 @@
 			
 			
 	};
+	echo $sql . "</br>";
+	echo $result;
 	
 		if(strpos($result, "not") === false){
 			echo  '<meta http-equiv="refresh" content="0.25">';

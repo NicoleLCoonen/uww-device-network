@@ -1,4 +1,4 @@
-<?php require_once('..\Private\DataProcessing\placeholder.php');
+<?php require_once('..\Private\DataProcessing\dataAssembly.php');
 
 ?>
 
@@ -6,9 +6,10 @@
 <head>
 	<title>Andersen Device Network</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
-	<link rel='stylesheet' href='../Private/DNPStyling.css'>
+	<link rel='stylesheet' href='../Private/Styling/portViewStyling.css'>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src='../Private/DNP.js'> </script>
+	<script src='../Private/JavaScript/generalFunction.js'></script>
+	<script id='setView' src='../Private/JavaScript/portOrientation.js'> </script>
 </head>
 
 
@@ -32,8 +33,8 @@
 		<input id="userInput" type='text' name="userInput" value="" placeholder="Search">
 		<button id="reset">Clear</button>
 		</br>
-		<label for="necromancer">Include withdrawn devices in results:</label>
-		<input id="necromancer" type="checkbox" value="0" checked="">
+		<label for="includeWithdrawn">Include withdrawn devices in results:</label>
+		<input id="includeWithdrawn" type="checkbox" value="0" checked="">
 		</div>
 		
 	<div id="container">	
@@ -42,8 +43,8 @@
 				
 			?>
 		
-		<div id='image-wrapper' data-captions='<?php echo($firstJson) ; ?>'>
-			<img class='map' src="../Private/FirstBlueprintDNP-100.jpg" alt="A map of the Andersen Library's first floor, with markers indicating the locations of Data Ports" max-width="100%" height="auto"/>
+		<div id='image-wrapper' data-captions-port='<?php echo($firstJsonP) ; ?>' data-captions-device='<?php echo($firstJsonD) ; ?>'>
+			<img class='map' src="../Private/Styling/FirstBlueprintDNP-100.jpg" alt="A map of the Andersen Library's first floor, with markers indicating the locations of Data Ports" max-width="100%" height="auto"/>
 		</div>
 		
 	</body>

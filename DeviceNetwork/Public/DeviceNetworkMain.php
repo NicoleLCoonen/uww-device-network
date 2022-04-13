@@ -1,6 +1,11 @@
-<?php require_once('../Private/DataProcessing/placeholder.php');
+<?php require_once('../Private/DataProcessing/dataAssembly.php');
 	 $thisFile = url_for('DeviceNetworkMain.php'); 
-	  
+	 if(isset($_COOKIE["view"])){
+		$view = $_COOKIE["view"];
+	 }else{
+		echo "<script>window.alert(Cookies are disabled; some features may not work as expected.)</script>" ;
+	 };	
+	 
 ?> 
 
 <!doctype html>
@@ -8,10 +13,10 @@
 	<title>Andersen Device Network</title>
 	<meta  name="viewport" content="width=device-width, initial-scale=1.0" >
 	<meta charset="utf-8" lang ="en-us">
-	<link rel='stylesheet' href='../Private/DNPStyling.css'>
+	<link rel='stylesheet' href='<?php echo $style[$view] ;?>'>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script src='../Private/DNPsecured.js'> </script>
+	<script id='setView' src='<?php echo $views[$view] ;?>'></script>
 </head>
 
 
@@ -40,9 +45,9 @@
 				<input id="userInput" type='text' name="userInput" value="" placeholder="Search">
 				<button id="reset">Clear</button>
 				</br>
-				<label for="necromancer">Include withdrawn devices in results:</label>
-				<input id="necromancer" type="checkbox">
-				<button type='button' id='deviceView'>Switch to device view</button>
+				<label for="includeWithdrawn">Include withdrawn devices in results:</label>
+				<input id="includeWithdrawn" type="checkbox">
+				<!--<button type='button' id='changeView' data-view='<?php //echo $view ;?>'><?php //echo $buttonText[$view] ;?></button>-->
 			</div>
 		<div id="container">	
 
@@ -54,8 +59,8 @@
 			<button type='button' id='editMarkers'>Add/Edit Markers</button>
 			<button type='submit' id='saveMarkers'>Done</button>
 		-->
-			<div id='image-wrapper' data-captions='<?php echo($mainJson) ; ?>'>
-				<img id='MainFloorBlueprint'class="map" src="../Private/MainBlueprintDNP-100.jpg" alt="A map of the Andersen Library's main floor, with markers indicating the locations of data ports" max-width="100%" height="auto" />
+			<div id='image-wrapper' data-captions-port='<?php echo($mainJsonP) ; ?>' data-captions-device='<?php echo($mainJsonD) ; ?>'>
+				<img id='MainFloorBlueprint'class="map" src="../Private/Styling/MainBlueprintDNP-100.jpg" alt="A map of the Andersen Library's main floor, with markers indicating the locations of data ports" max-width="100%" height="auto" />
 				<caption for='MainFloorBlueprint'>For visual clarity, some ports have been grouped together or adjusted slightly from their physical location.</br>
 				Please consider marker loacations to be approximate.</caption>
 			</div>

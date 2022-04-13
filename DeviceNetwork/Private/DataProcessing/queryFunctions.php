@@ -3,7 +3,7 @@
 // Use this one when working from DeviceNetwork
 require_once('..\Private\Connect\initialize.php') ;
 
-// Use this one when working from placeholder.php
+// Use this one when working from dataAssembly.php
 //require_once('..\Connect\initialize.php') ;
 
 // translate on/off
@@ -11,18 +11,49 @@ function get_status($bool) {
 	
 	if($bool == true){
 		return $bool = "On" ; 
+	}else{
+		return $bool = "Off" ;
 	}
-	else{return $bool = "Off" ; }
+}
+
+// translate from bit to flex-flow property
+function set_orientation($bool) {
+	
+	if($bool == true){
+		return $bool = "row" ;
+	}else{
+		return $bool = "column" ;
+	}
 }
 
 //removes the Port_Group field
-function trim_array($current_array){
+function trim_port($current_array){
 
-		$keep = array_pop($current_array) ;
-		$trash = array_pop($current_array) ;
-		$current_array['Damaged'] = $keep ;
+	$keep = array_pop($current_array) ;
+	$trash = array_pop($current_array) ;
+	$current_array['Damaged'] = $keep ;
 		
-		return $current_array;
+	return $current_array;
+}
+
+function trim_connection($current_array){
+	
+	$keys = array_keys($current_array) ;
+	$index = array_search('Connection', $keys) ;
+	array_splice($current_array, $index, 1) ;
+	return $current_array ;
+}
+
+//removes flex-order property from a device/accessory
+//the Flex_Order will always be the last item in the assocArray.
+function trim_flex($current_array){
+	$check = key_exists("Flex_Order", $current_array);
+	if($check === true){
+		array_pop($current_array) ;
+		return $current_array ;
+	}else{
+		return $current_array ;
+	} ;
 }
 
 //sorts ports into 3 groups based on port_status and damage data
@@ -127,18 +158,22 @@ function locate_port($port){
 }
 
 //sorts an array 
-function count_by_floor($locationArr, $f, $m, $t){
+function count_by_floor($locationArr, $f, $m, $t, $LL, $Lu){
 	foreach($locationArr as $location){
 	
 		if(($location >= 1 && $location <= 5) || ($location >= 21 && $location <= 23)){
 			$f++;
 		} else if (($location >= 15 && $location <= 17) ||( $location == 19)) {
 			$t++;
-		} else{
+		} else if($location == 25){
+			$LL++;
+		}else if($location == 24 || $location > 25){
+			$Lu++;
+		}else{
 			$m++;
 		};		
 	};	
-	return array($f, $m, $t);
+	return array($f, $m, $t, $LL, $Lu);
 }
 
 // This function, as well as create_breakdown, create_table_head, and create_table_body dynamically create html element(s) of a report
@@ -243,6 +278,7 @@ function full_name($assocArray){
 	$fullName = $assocArray["First_Name"] . " " . $assocArray["Last_Name"];
 	return($fullName);
 }
+
 
 
 ?>
